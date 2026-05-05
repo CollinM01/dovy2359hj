@@ -1,0 +1,212 @@
+{
+  "general": {
+    "search": {
+      "search": "Search",
+      "search_for": "Search for",
+      "placeholder": "Search our store",
+      "results_with_count": {
+        "one": "{{ count }} result for \"{{ terms }}\"",
+        "other": "{{ count }} results for \"{{ terms }}\""
+      },
+      "no_results": "No results for \"{{ terms }}\""
+    },
+    "pagination": {
+      "label": "Pagination",
+      "page": "Page {{ number }}",
+      "next": "Next",
+      "previous": "Previous"
+    },
+    "password_page": {
+      "opening_soon": "Opening Soon",
+      "login_form_heading": "Enter store using password",
+      "login_form_password_label": "Password",
+      "login_form_password_placeholder": "Your password",
+      "login_form_submit": "Enter",
+      "signup_form_email_placeholder": "Email address",
+      "signup_form_success": "We'll send you an email right before we open!",
+      "admin_link_html": "Are you the store owner? <a href=\"/admin\">Log in here</a>"
+    }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "close": "Close",
+    "open": "Open",
+    "open_navigation": "Open navigation",
+    "close_navigation": "Close navigation",
+    "open_cart": "Open cart",
+    "close_cart": "Close cart"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "quantity_minimum_message": "Sorry, the minimum order quantity is {{ min }}.",
+      "description": "Description",
+      "features": "Features",
+      "care_instructions": "Care Instructions",
+      "shipping_returns": "Shipping & Returns",
+      "on_sale": "Sale",
+      "regular_price": "Regular price",
+      "sale_price": "Sale price",
+      "unit_price": "Unit price",
+      "unit_price_separator": "per",
+      "added_to_cart": "Added to cart",
+      "error_adding_to_cart": "Error adding to cart"
+    },
+    "general": {
+      "from": "From",
+      "price": "Price",
+      "results_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} products"
+      }
+    }
+  },
+  "cart": {
+    "title": "Your Cart",
+    "empty": "Your cart is currently empty.",
+    "note": "Order notes",
+    "note_placeholder": "How can we help you?",
+    "checkout": "Checkout",
+    "subtotal": "Subtotal",
+    "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+    "continue_shopping": "Continue Shopping",
+    "view_cart": "View Cart",
+    "remove": "Remove",
+    "item_count": {
+      "one": "{{ count }} item",
+      "other": "{{ count }} items"
+    },
+    "update": "Update"
+  },
+  "sections": {
+    "header": {
+      "cart_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      },
+      "menu": "Menu"
+    },
+    "footer": {
+      "copyright": "© {{ year }}, {{ shop_name }}",
+      "powered_by_shopify": "Powered by Shopify"
+    },
+    "announcement_bar": {
+      "announcement": "Announcement"
+    },
+    "collection_template": {
+      "items_with_count": {
+        "one": "{{ count }} item",
+        "other": "{{ count }} items"
+      }
+    }
+  },
+  "templates": {
+    "404": {
+      "title": "Page not found",
+      "subtext": "Sorry, the page you were looking for no longer exists.",
+      "link": "Return home"
+    },
+    "search": {
+      "title": "Search",
+      "results_title": "Search results",
+      "no_results": "Your search for \"{{ terms }}\" did not yield any results.",
+      "results_with_count": {
+        "one": "{{ count }} result for \"{{ terms }}\"",
+        "other": "{{ count }} results for \"{{ terms }}\""
+      }
+    },
+    "blog": {
+      "title": "Blog",
+      "back_to": "Back to {{ title }}",
+      "by_author": "by {{ author }}",
+      "read_more": "Read more"
+    },
+    "article": {
+      "by_line": "by {{ author }} on {{ date }}",
+      "back_to": "Back to {{ title }}"
+    },
+    "account": {
+      "title": "Account",
+      "orders": "Orders",
+      "order_history": "Order history",
+      "no_orders": "You haven't placed any orders yet.",
+      "shop_now": "Start shopping",
+      "logout": "Log out",
+      "details": "Account details",
+      "default_address": "Default address"
+    },
+    "login": {
+      "title": "Log in",
+      "login": "Log in",
+      "email": "Email",
+      "password": "Password",
+      "forgot_password": "Forgot your password?",
+      "create_account": "Create account",
+      "no_account": "New customer?",
+      "error": "Incorrect email or password."
+    },
+    "register": {
+      "title": "Create account",
+      "submit": "Create account",
+      "login": "Already have an account?",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "order": {
+      "title": "Order {{ name }}",
+      "date": "Placed on {{ date }}",
+      "cancelled": "Order cancelled on {{ date }}",
+      "cancelled_reason": "Reason: {{ reason }}",
+      "billing_address": "Billing address",
+      "shipping_address": "Shipping address",
+      "payment_status": "Payment status",
+      "fulfillment_status": "Fulfillment status",
+      "product": "Product",
+      "sku": "SKU",
+      "price": "Price",
+      "quantity": "Quantity",
+      "total": "Total",
+      "subtotal": "Subtotal",
+      "tax": "Tax",
+      "shipping": "Shipping",
+      "total_price": "Total price"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "default": "Default",
+      "add_new": "Add a new address",
+      "edit_address": "Edit address",
+      "delete": "Delete",
+      "set_default": "Set as default",
+      "confirm_delete": "Are you sure you wish to delete this address?",
+      "first_name": "First name",
+      "last_name": "Last name",
+      "company": "Company",
+      "address1": "Address",
+      "address2": "Apartment, suite, etc.",
+      "city": "City",
+      "country": "Country",
+      "province": "State / Province",
+      "zip": "ZIP / Postal code",
+      "phone": "Phone",
+      "save": "Save address",
+      "cancel": "Cancel"
+    }
+  },
+  "newsletter": {
+    "label": "Email",
+    "placeholder": "your@email.com",
+    "submit": "Subscribe",
+    "success": "Thanks for subscribing!",
+    "error": "Please enter a valid email address."
+  },
+  "quick_view": {
+    "title": "Quick View",
+    "view_full": "View full details"
+  }
+}

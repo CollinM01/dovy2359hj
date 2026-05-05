@@ -1,0 +1,22 @@
+{%- comment -%}
+  Renders a product thumbnail button.
+  Accepts:
+  - media: {Object} Product media object
+  - index: {Integer} Media index
+  - section_id: {String} Section ID for namespacing
+{%- endcomment -%}
+
+<button type="button"
+        class="product-gallery__thumb{% if index == 0 %} is-active{% endif %}"
+        data-thumb
+        data-media-id="{{ media.id }}"
+        aria-label="{{ media.alt | default: product.title | escape }}"
+        aria-current="{{ index == 0 }}">
+  {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+    <span class="product-gallery__thumb-play" aria-hidden="true">▶</span>
+  {%- endif -%}
+  <img src="{{ media.preview_image | image_url: width: 120 }}"
+       alt="{{ media.alt | default: product.title | escape }}"
+       width="80" height="80"
+       loading="lazy">
+</button>

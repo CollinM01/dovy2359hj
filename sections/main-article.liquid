@@ -1,0 +1,38 @@
+<article class="section-padding">
+  <div class="container container--narrow">
+    {%- if article.image -%}
+      <div class="article-hero">
+        <img src="{{ article.image | image_url: width: 1400 }}"
+             srcset="{{ article.image | image_url: width: 700 }} 700w, {{ article.image | image_url: width: 1400 }} 1400w"
+             sizes="(max-width: 900px) 100vw, 900px"
+             alt="{{ article.image.alt | default: article.title | escape }}"
+             loading="eager">
+      </div>
+    {%- endif -%}
+
+    <header class="article-header">
+      <h1 class="article-title">{{ article.title }}</h1>
+      <p class="article-meta">
+        {{ 'templates.article.by_line' | t: author: article.author, date: article.published_at | date: '%B %d, %Y' }}
+      </p>
+    </header>
+
+    <div class="article-content rte">
+      {{ article.content }}
+    </div>
+
+    <div style="margin-top: var(--space-10)">
+      <a href="{{ blog.url }}" class="btn btn--outline">
+        {% render 'icon-arrow' %}
+        {{ 'templates.article.back_to' | t: title: blog.title }}
+      </a>
+    </div>
+  </div>
+</article>
+
+{% schema %}
+{
+  "name": "Article",
+  "settings": []
+}
+{% endschema %}

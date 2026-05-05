@@ -1,0 +1,77 @@
+<div id="QuickViewModalSection" class="quick-view-modal-section">
+  <div class="quick-view-modal__content">
+    <product-form>
+      <div class="product-page">
+        <div class="product-gallery-wrapper">
+          <product-media-gallery id="MediaGallery-QuickView" class="product-gallery">
+            <div class="product-gallery__main">
+              {%- for media in product.media limit: 1 -%}
+                <div class="product-gallery__item active"
+                     id="Media-QV-{{ media.id }}"
+                     data-media-id="{{ media.id }}">
+                  {%- if media.media_type == 'image' -%}
+                    <img src="{{ media | image_url: width: 800 }}"
+                         alt="{{ media.alt | escape }}"
+                         width="{{ media.width }}"
+                         height="{{ media.height }}"
+                         loading="eager">
+                  {%- endif -%}
+                </div>
+              {%- else -%}
+                <div class="product-gallery__item active">
+                  {{ 'product-1' | placeholder_svg_tag: 'product-gallery__placeholder' }}
+                </div>
+              {%- endfor -%}
+            </div>
+          </product-media-gallery>
+        </div>
+
+        <div class="product-info">
+          <p class="product-vendor">{{ product.vendor }}</p>
+          <h2 class="product-title">{{ product.title }}</h2>
+          <div id="price-QuickView">
+            {% render 'price', product: product, use_variant: true, show_badges: true %}
+          </div>
+
+          <form method="post" action="/cart/add"
+                id="product-form-QuickView"
+                data-product-id="{{ product.id }}"
+                data-section-id="QuickView">
+            <input type="hidden" name="form_type" value="product">
+            <input type="hidden" name="utf8" value="✓">
+            <input type="hidden" name="id" id="variant-id-QuickView" value="{{ product.selected_or_first_available_variant.id }}">
+
+            {% render 'variant-selectors', product: product, section: section %}
+
+            <div class="product-qty-row">
+              <quantity-input class="qty-stepper">
+                <button type="button" class="qty-stepper__btn" name="minus" aria-label="Decrease">{% render 'icon-minus' %}</button>
+                <input type="number" id="Quantity-QuickView" name="quantity" value="1" min="1" class="qty-stepper__input">
+                <button type="button" class="qty-stepper__btn" name="plus" aria-label="Increase">{% render 'icon-plus' %}</button>
+              </quantity-input>
+            </div>
+
+            <button type="submit" id="atc-QuickView" class="btn btn--primary btn--full atc-btn"
+                    {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}>
+              <span class="atc-btn__text">
+                {%- if product.selected_or_first_available_variant.available -%}Add to Cart{%- else -%}Sold Out{%- endif -%}
+              </span>
+              <span class="atc-btn__loader" aria-hidden="true">{% render 'icon-loader' %}</span>
+            </button>
+          </form>
+
+          <div style="margin-top: var(--space-4)">
+            <a href="{{ product.url }}" class="btn btn--ghost">{{ 'quick_view.view_full' | t }}</a>
+          </div>
+        </div>
+      </div>
+    </product-form>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Quick View Modal",
+  "settings": []
+}
+{% endschema %}

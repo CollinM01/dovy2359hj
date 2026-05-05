@@ -1,0 +1,51 @@
+<section class="section-padding">
+  <div class="container">
+    <h1 class="section-title">{{ 'customers.account.title' | t }}</h1>
+    <p>{{ 'customers.account.details' | t }}</p>
+
+    <div style="display:grid; grid-template-columns:1fr 2fr; gap:var(--space-8); margin-top:var(--space-8)">
+      <div>
+        <h2 style="font-size:1.125rem; margin-bottom:var(--space-4)">{{ 'customers.account.profile' | t }}</h2>
+        <p>{{ customer.name }}<br>{{ customer.email }}</p>
+        <a href="{{ routes.account_logout_url }}" class="btn btn--outline" style="margin-top:var(--space-4)">
+          {{ 'customers.account.log_out' | t }}
+        </a>
+      </div>
+
+      <div>
+        <h2 style="font-size:1.125rem; margin-bottom:var(--space-4)">{{ 'customers.account.recent_orders' | t }}</h2>
+        {%- if customer.orders.size == 0 -%}
+          <p>{{ 'customers.orders.none' | t }}</p>
+        {%- else -%}
+          <table style="width:100%; border-collapse:collapse; font-size:0.9rem">
+            <thead>
+              <tr style="border-bottom: 2px solid var(--color-fog)">
+                <th style="padding:var(--space-2) 0; text-align:left">Order</th>
+                <th style="padding:var(--space-2) 0; text-align:left">Date</th>
+                <th style="padding:var(--space-2) 0; text-align:left">Total</th>
+                <th style="padding:var(--space-2) 0; text-align:left">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for order in customer.orders -%}
+                <tr style="border-bottom: 1px solid var(--color-fog)">
+                  <td style="padding:var(--space-3) 0"><a href="{{ order.customer_url }}">#{{ order.name }}</a></td>
+                  <td style="padding:var(--space-3) 0">{{ order.created_at | date: '%B %d, %Y' }}</td>
+                  <td style="padding:var(--space-3) 0">{{ order.total_price | money }}</td>
+                  <td style="padding:var(--space-3) 0">{{ order.financial_status_label }}</td>
+                </tr>
+              {%- endfor -%}
+            </tbody>
+          </table>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Customer Account",
+  "settings": []
+}
+{% endschema %}

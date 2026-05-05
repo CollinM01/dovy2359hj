@@ -1,0 +1,103 @@
+<section class="hero-naturalist" style="--hero-height: {{ section.settings.height }}vh">
+  <div class="hero__media">
+    {%- if section.settings.image != blank -%}
+      <img class="hero__image"
+           src="{{ section.settings.image | image_url: width: 2000 }}"
+           srcset="{{ section.settings.image | image_url: width: 750 }} 750w,
+                   {{ section.settings.image | image_url: width: 1100 }} 1100w,
+                   {{ section.settings.image | image_url: width: 1500 }} 1500w,
+                   {{ section.settings.image | image_url: width: 2000 }} 2000w"
+           sizes="100vw"
+           width="{{ section.settings.image.width }}"
+           height="{{ section.settings.image.height }}"
+           alt="{{ section.settings.image.alt | escape }}"
+           loading="eager"
+           fetchpriority="high">
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
+    {%- endif -%}
+    <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }}"></div>
+  </div>
+
+  <div class="hero__content container">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+    <h1 class="hero__title">{{ section.settings.title }}</h1>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '/collections/all' }}"
+         class="btn btn--primary hero__cta">
+        {{ section.settings.button_label }}
+      </a>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero - Naturalist",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Hero image"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 40,
+      "max": 100,
+      "step": 5,
+      "unit": "vh",
+      "label": "Hero height",
+      "default": 85
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 80,
+      "step": 5,
+      "label": "Overlay opacity %",
+      "default": 30
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Atlas Dovy"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Wear the Wild"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subheading",
+      "default": "Clothing inspired by the Pacific Northwest wilderness."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero - Naturalist"
+    }
+  ]
+}
+{% endschema %}

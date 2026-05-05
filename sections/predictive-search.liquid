@@ -1,0 +1,39 @@
+<div class="predictive-search" role="listbox" id="predictive-search-results" data-predictive-results hidden>
+  {%- if search.performed -%}
+    {%- if search.results.size == 0 -%}
+      <p class="predictive-search__no-results">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+    {%- else -%}
+      {%- assign products = search.results | where: 'object_type', 'product' -%}
+      {%- assign queries  = search.results | where: 'object_type', 'query' -%}
+      {%- if queries.size > 0 -%}
+        <div class="predictive-search__group">
+          <h3 class="predictive-search__group-title">Suggestions</h3>
+          {%- for query in queries -%}
+            <a href="{{ query.url }}" class="predictive-search__item">{{ query.styled_text }}</a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+      {%- if products.size > 0 -%}
+        <div class="predictive-search__group">
+          <h3 class="predictive-search__group-title">Products</h3>
+          {%- for product in products -%}
+            <a href="{{ product.url }}" class="predictive-search__item predictive-search__item--product">
+              {%- if product.featured_image -%}
+                <img src="{{ product.featured_image | image_url: width: 80 }}" alt="{{ product.title }}" width="40" height="40" loading="lazy">
+              {%- endif -%}
+              <span>{{ product.title }}</span>
+              <span style="margin-left:auto;font-size:0.875rem;font-weight:600">{% render 'price', product: product %}</span>
+            </a>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Predictive Search",
+  "settings": []
+}
+{% endschema %}

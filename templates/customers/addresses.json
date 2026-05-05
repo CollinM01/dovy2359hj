@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-customers-addresses",
+      "settings": {}
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": ["main", "footer"]
+}

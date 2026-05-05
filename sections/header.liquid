@@ -1,0 +1,125 @@
+<site-header class="site-header{% if section.settings.sticky_header %} site-header--sticky{% endif %}">
+  <div class="site-header__inner">
+
+    <div class="site-header__logo">
+      <a href="{{ routes.root_url }}" aria-label="{{ shop.name }}">
+        {%- if section.settings.logo != blank -%}
+          <img src="{{ section.settings.logo | image_url: width: section.settings.logo_width }}"
+               alt="{{ section.settings.logo.alt | default: shop.name | escape }}"
+               width="{{ section.settings.logo_width }}"
+               loading="eager">
+        {%- else -%}
+          <span class="site-header__logo-text">{{ shop.name }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+    <nav class="site-header__nav" aria-label="Main navigation">
+      <ul class="site-nav" role="list">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <li>
+            <a href="{{ link.url }}"
+               class="site-nav__link{% if link.active %} site-nav__link--active{% endif %}">
+              {{ link.title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <div class="site-header__actions">
+      <predictive-search class="header-search" style="position:relative">
+        <form action="{{ routes.search_url }}" method="get" role="search">
+          <input type="search" name="q" placeholder="{{ 'general.search.placeholder' | t }}"
+                 aria-label="{{ 'general.search.search' | t }}"
+                 class="visually-hidden" id="HeaderSearch">
+          <button type="submit" class="header-icon-btn" aria-label="{{ 'general.search.search' | t }}">
+            {% render 'icon-search' %}
+          </button>
+        </form>
+        <div id="predictive-search-results" class="predictive-search" hidden aria-label="{{ 'general.search.search' | t }}"></div>
+      </predictive-search>
+
+      <a href="{{ routes.cart_url }}" class="header-icon-btn" data-open-cart
+         aria-label="{{ 'accessibility.open_cart' | t }}"
+         {% if settings.cart_type == 'drawer' %}role="button"{% endif %}>
+        {% render 'icon-cart' %}
+        <span class="cart-count" id="CartCount"
+              {% if cart.item_count == 0 %}style="display:none"{% endif %}>
+          {{ cart.item_count }}
+        </span>
+      </a>
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a href="{{ routes.account_url }}" class="header-icon-btn" aria-label="Account">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </a>
+      {%- endif -%}
+
+      <mobile-menu-toggle class="mobile-menu-toggle header-icon-btn" aria-label="{{ 'sections.header.menu' | t }}">
+        <button type="button" aria-label="{{ 'accessibility.open_navigation' | t }}">
+          {% render 'icon-hamburger' %}
+        </button>
+      </mobile-menu-toggle>
+    </div>
+  </div>
+</site-header>
+
+<menu-drawer class="mobile-nav-drawer" id="MobileMenuDrawer">
+  <div class="mobile-nav-drawer__overlay" data-close-menu></div>
+  <nav class="mobile-nav-drawer__panel" aria-label="Mobile navigation">
+    <div class="mobile-nav-drawer__header">
+      {%- if section.settings.logo != blank -%}
+        <img src="{{ section.settings.logo | image_url: width: 120 }}"
+             alt="{{ shop.name | escape }}" width="120" loading="lazy">
+      {%- else -%}
+        <span class="site-header__logo-text" style="font-size:1.2rem">{{ shop.name }}</span>
+      {%- endif -%}
+      <button class="mobile-nav-close" data-close-menu aria-label="{{ 'accessibility.close_navigation' | t }}">
+        {% render 'icon-close' %}
+      </button>
+    </div>
+    <ul role="list">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <li>
+          <a href="{{ link.url }}" class="mobile-nav__link">{{ link.title }}</a>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </nav>
+</menu-drawer>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 50,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "label": "Logo width",
+      "default": 140
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Navigation menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Sticky header",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,35 @@
+{%- comment -%}
+  Renders pagination links.
+  Accepts:
+  - paginate: {Object} The paginate object from a paginate block
+{%- endcomment -%}
+
+<nav class="pagination" aria-label="{{ 'general.pagination.label' | t }}">
+  {%- if paginate.previous -%}
+    <a href="{{ paginate.previous.url }}" class="pagination__btn" aria-label="{{ 'general.pagination.previous' | t }}">
+      <span style="display:inline-block; transform:rotate(180deg)">{% render 'icon-arrow' %}</span>
+      <span>{{ 'general.pagination.previous' | t }}</span>
+    </a>
+  {%- else -%}
+    <span class="pagination__btn is-disabled" aria-disabled="true">
+      <span style="display:inline-block; transform:rotate(180deg)">{% render 'icon-arrow' %}</span>
+      <span>{{ 'general.pagination.previous' | t }}</span>
+    </span>
+  {%- endif -%}
+
+  <span class="pagination__info">
+    {{ paginate.current_page }} / {{ paginate.pages }}
+  </span>
+
+  {%- if paginate.next -%}
+    <a href="{{ paginate.next.url }}" class="pagination__btn" aria-label="{{ 'general.pagination.next' | t }}">
+      <span>{{ 'general.pagination.next' | t }}</span>
+      {% render 'icon-arrow' %}
+    </a>
+  {%- else -%}
+    <span class="pagination__btn is-disabled" aria-disabled="true">
+      <span>{{ 'general.pagination.next' | t }}</span>
+      {% render 'icon-arrow' %}
+    </span>
+  {%- endif -%}
+</nav>

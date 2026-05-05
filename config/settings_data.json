@@ -1,0 +1,19 @@
+{
+  "current": {
+    "colors_paper": "#f5f0e8",
+    "colors_bark": "#2c1f14",
+    "colors_sage": "#6b7c61",
+    "colors_fog": "#d4cfc4",
+    "colors_ink": "#3d3228",
+    "colors_cream": "#faf7f2",
+    "colors_moss": "#4a5e3a",
+    "logo_width": 140,
+    "sticky_header": true,
+    "show_announcement": true,
+    "announcement_text": "Free shipping on orders over $75 — Wild & Free",
+    "cart_type": "drawer",
+    "shipping_policy_text": "Free standard shipping on orders over $75. Expedited options available at checkout.",
+    "newsletter_title": "Stay Connected to the Wild",
+    "newsletter_subtitle": "Field notes, new arrivals, and conservation updates."
+  }
+}
