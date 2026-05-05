@@ -63,6 +63,11 @@
           <input type="hidden" name="utf8" value="✓">
           <input type="hidden" name="id" id="variant-id-{{ section.id }}" value="{{ current_variant.id }}">
 
+          {%- comment -%} Variant data for product-form.js {%- endcomment -%}
+          <script id="ProductVariants-{{ section.id }}" type="application/json">
+            {{ product.variants | json }}
+          </script>
+
           {% render 'variant-selectors', product: product, section: section %}
 
           {%- if section.settings.show_quantity -%}
@@ -114,7 +119,7 @@
           {%- if product.metafields.custom.features != blank -%}
             {% render 'accordion',
                id: 'feat',
-               title: 'Features',
+               title: 'Features & Materials',
                content: product.metafields.custom.features | metafield_tag %}
           {%- endif -%}
           {%- if product.metafields.custom.care != blank -%}

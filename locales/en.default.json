@@ -53,7 +53,9 @@
       "unit_price": "Unit price",
       "unit_price_separator": "per",
       "added_to_cart": "Added to cart",
-      "error_adding_to_cart": "Error adding to cart"
+      "error_adding_to_cart": "Error adding to cart",
+      "quick_view": "Quick view",
+      "select_variant": "Select variant"
     },
     "general": {
       "from": "From",
@@ -61,6 +63,23 @@
       "results_count": {
         "one": "{{ count }} product",
         "other": "{{ count }} products"
+      }
+    },
+    "facets": {
+      "color": "Color",
+      "size": "Size",
+      "clear": "Clear all",
+      "filter_by": "Filter",
+      "sort_by": "Sort by",
+      "sort_options": {
+        "manual": "Featured",
+        "best-selling": "Best selling",
+        "title-ascending": "A–Z",
+        "title-descending": "Z–A",
+        "price-ascending": "Price: Low to High",
+        "price-descending": "Price: High to Low",
+        "created-ascending": "Oldest",
+        "created-descending": "Newest"
       }
     }
   },

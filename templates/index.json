@@ -10,8 +10,8 @@
         "eyebrow": "Pacific Northwest",
         "title": "Wear the Wild",
         "subtitle": "Clothing that carries the spirit of old-growth forests, tidepools, and mountain meadows.",
-        "cta_label": "Shop Collection",
-        "cta_url": "/collections/all",
+        "button_label": "Shop Collection",
+        "button_link": "/collections/all",
         "overlay_opacity": 30
       }
     },
@@ -31,7 +31,7 @@
       "settings": {
         "title": "New Arrivals",
         "subtitle": "Seasonally inspired pieces for life in the field and on the trail.",
-        "products_count": 4
+        "products_to_show": 4
       }
     },
     "story": {
@@ -39,9 +39,9 @@
       "settings": {
         "eyebrow": "Our Story",
         "title": "Born from the Field",
-        "content": "<p>Atlas Dovy was founded by Mel, a lifelong Pacific Northwest naturalist with a sketchbook always in her back pocket. Every design begins with time spent in the field — watching, listening, sketching.</p>",
-        "cta_label": "Meet Mel",
-        "cta_url": "/pages/about"
+        "body": "<p>Atlas Dovy was founded by Mel, a lifelong Pacific Northwest naturalist with a sketchbook always in her back pocket. Every design begins with time spent in the field — watching, listening, sketching.</p>",
+        "button_label": "Meet Mel",
+        "button_link": "/pages/about"
       }
     },
     "conservation": {
@@ -49,9 +49,9 @@
       "settings": {
         "eyebrow": "Conservation Commitment",
         "title": "Rooted in the Places We Love",
-        "content": "We partner with regional land trusts and wildlife organizations to protect the ecosystems that inspire our designs. 1% of every sale goes directly to conservation.",
-        "cta_label": "Learn More",
-        "cta_url": "/pages/conservation"
+        "subtitle": "We partner with regional land trusts and wildlife organizations to protect the ecosystems that inspire our designs. 1% of every sale goes directly to conservation.",
+        "button_label": "Learn More",
+        "button_link": "/pages/conservation"
       }
     },
     "newsletter": {
@@ -59,7 +59,7 @@
       "settings": {
         "eyebrow": "Field Notes",
         "title": "Stay Connected to the Wild",
-        "content": "Seasonal stories, new arrivals, and conservation updates — straight to your inbox."
+        "subtitle": "Seasonal stories, new arrivals, and conservation updates — straight to your inbox."
       }
     },
     "footer": {

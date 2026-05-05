@@ -41,6 +41,10 @@
             <input type="hidden" name="utf8" value="✓">
             <input type="hidden" name="id" id="variant-id-QuickView" value="{{ product.selected_or_first_available_variant.id }}">
 
+            <script id="ProductVariants-QuickView" type="application/json">
+              {{ product.variants | json }}
+            </script>
+
             {% render 'variant-selectors', product: product, section: section %}
 
             <div class="product-qty-row">
