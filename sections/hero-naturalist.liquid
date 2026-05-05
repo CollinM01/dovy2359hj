@@ -15,7 +15,120 @@
            loading="eager"
            fetchpriority="high">
     {%- else -%}
-      {{ 'lifestyle-2' | placeholder_svg_tag: 'hero__placeholder' }}
+      <div class="hero__placeholder hero__placeholder--birds" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"  stop-color="#1a2e3b"/>
+              <stop offset="55%" stop-color="#2d4a38"/>
+              <stop offset="100%" stop-color="#1c2c1e"/>
+            </linearGradient>
+            <linearGradient id="mist-grad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"  stop-color="#4a6b52" stop-opacity="0.6"/>
+              <stop offset="100%" stop-color="#4a6b52" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Sky -->
+          <rect width="1440" height="810" fill="url(#sky-grad)"/>
+
+          <!-- Distant moon / hazy orb -->
+          <circle cx="1060" cy="140" r="70" fill="#e8dfc8" opacity="0.18"/>
+          <circle cx="1060" cy="140" r="52" fill="#f5f0e8" opacity="0.22"/>
+
+          <!-- Distant treeline layer 3 (lightest) -->
+          <path d="M0,680 Q80,620 140,660 Q200,640 260,620 Q320,600 380,630
+                   Q440,610 500,595 Q560,580 620,605 Q680,590 740,575
+                   Q800,560 860,585 Q920,570 980,555 Q1040,540 1100,565
+                   Q1160,550 1220,535 Q1280,520 1340,545 Q1380,555 1440,540
+                   L1440,810 L0,810 Z"
+                fill="#2a4030" opacity="0.7"/>
+
+          <!-- Treeline layer 2 -->
+          <path d="M0,720 Q60,680 100,700
+                   Q140,660 180,690 Q220,665 270,685
+                   Q310,650 360,672 Q400,648 450,668
+                   Q490,644 540,664 Q580,640 630,658
+                   Q670,635 720,656 Q760,632 810,650
+                   Q850,628 900,646 Q950,624 1000,642
+                   Q1050,620 1100,640 Q1150,618 1200,636
+                   Q1250,615 1300,632 Q1360,610 1440,625
+                   L1440,810 L0,810 Z"
+                fill="#1e3026" opacity="0.85"/>
+
+          <!-- Foreground trees / silhouette -->
+          <!-- Tall firs left cluster -->
+          <polygon points="60,560 80,440 100,560" fill="#12201a"/>
+          <polygon points="90,590 115,450 140,590" fill="#0e1c15"/>
+          <polygon points="120,610 148,460 176,610" fill="#12201a"/>
+          <polygon points="30,620 52,500 74,620" fill="#0e1c15"/>
+
+          <!-- Tall firs right cluster -->
+          <polygon points="1300,580 1320,445 1340,580" fill="#12201a"/>
+          <polygon points="1330,600 1355,460 1380,600" fill="#0e1c15"/>
+          <polygon points="1360,615 1388,475 1416,615" fill="#12201a"/>
+          <polygon points="1265,595 1285,460 1305,595" fill="#0e1c15"/>
+
+          <!-- Mid trees scattered -->
+          <polygon points="420,640 438,520 456,640" fill="#162418"/>
+          <polygon points="640,635 660,510 680,635" fill="#12201a"/>
+          <polygon points="840,640 862,515 884,640" fill="#162418"/>
+          <polygon points="1060,630 1082,505 1104,630" fill="#12201a"/>
+
+          <!-- Mist layer -->
+          <rect x="0" y="580" width="1440" height="120" fill="url(#mist-grad)"/>
+
+          <!-- ═══ BIRDS IN FLIGHT ═══ -->
+          <!-- Bird 1 – large, mid-left, soaring hawk shape -->
+          <g transform="translate(280, 195)" opacity="0.92">
+            <path d="M0,0 C-18,-8 -42,-5 -58,4 C-42,2 -22,8 0,0 Z" fill="#e8dfc8"/>
+            <path d="M0,0 C18,-8 42,-5 58,4 C42,2 22,8 0,0 Z" fill="#e8dfc8"/>
+            <path d="M0,0 C-4,6 -2,12 0,14 C2,12 4,6 0,0 Z" fill="#d4cfc4"/>
+          </g>
+
+          <!-- Bird 2 – upper-center, slightly smaller -->
+          <g transform="translate(620, 145)" opacity="0.85">
+            <path d="M0,0 C-14,-6 -32,-4 -44,3 C-32,1 -16,6 0,0 Z" fill="#e8dfc8"/>
+            <path d="M0,0 C14,-6 32,-4 44,3 C32,1 16,6 0,0 Z" fill="#e8dfc8"/>
+            <path d="M0,0 C-3,5 -1,10 0,11 C1,10 3,5 0,0 Z" fill="#d4cfc4"/>
+          </g>
+
+          <!-- Bird 3 – upper-right, small, distant -->
+          <g transform="translate(980, 120)" opacity="0.7">
+            <path d="M0,0 C-9,-4 -22,-3 -30,2 C-22,1 -10,4 0,0 Z" fill="#c8c4bc"/>
+            <path d="M0,0 C9,-4 22,-3 30,2 C22,1 10,4 0,0 Z" fill="#c8c4bc"/>
+          </g>
+
+          <!-- Bird 4 – very distant, tiny -->
+          <g transform="translate(820, 100)" opacity="0.55">
+            <path d="M0,0 C-6,-3 -15,-2 -20,1 C-15,0 -7,3 0,0 Z" fill="#b0aba3"/>
+            <path d="M0,0 C6,-3 15,-2 20,1 C15,0 7,3 0,0 Z" fill="#b0aba3"/>
+          </g>
+
+          <!-- Bird 5 – mid-right, medium, slightly lower -->
+          <g transform="translate(1150, 230)" opacity="0.88">
+            <path d="M0,0 C-16,-7 -36,-4 -50,3 C-36,2 -18,7 0,0 Z" fill="#e8dfc8"/>
+            <path d="M0,0 C16,-7 36,-4 50,3 C36,2 18,7 0,0 Z" fill="#e8dfc8"/>
+            <path d="M0,0 C-3,5 -1,9 0,11 C1,9 3,5 0,0 Z" fill="#d4cfc4"/>
+          </g>
+
+          <!-- Bird 6 – lower-left, large perched-wing shape (heron silhouette) -->
+          <g transform="translate(185, 310)" opacity="0.8">
+            <path d="M0,0 C-22,-10 -50,-6 -68,5 C-50,3 -26,10 0,0 Z" fill="#ddd8ce"/>
+            <path d="M0,0 C22,-10 50,-6 68,5 C50,3 26,10 0,0 Z" fill="#ddd8ce"/>
+            <path d="M0,0 C-4,8 -2,16 0,18 C2,16 4,8 0,0 Z" fill="#c8c4bc"/>
+          </g>
+
+          <!-- Bird flock – 5 tiny birds upper-center-right -->
+          <g opacity="0.6" fill="#b8b3ab">
+            <path transform="translate(700,88)"  d="M0,0 C-5,-2 -12,-2 -16,1 C-12,0 -6,2 0,0 Z M0,0 C5,-2 12,-2 16,1 C12,0 6,2 0,0 Z"/>
+            <path transform="translate(718,82)"  d="M0,0 C-4,-2 -10,-1 -14,1 C-10,0 -5,2 0,0 Z M0,0 C4,-2 10,-1 14,1 C10,0 5,2 0,0 Z"/>
+            <path transform="translate(735,90)"  d="M0,0 C-4,-2 -10,-1 -14,1 C-10,0 -5,2 0,0 Z M0,0 C4,-2 10,-1 14,1 C10,0 5,2 0,0 Z"/>
+            <path transform="translate(748,84)"  d="M0,0 C-3,-1 -8,-1 -11,1 C-8,0 -4,1 0,0 Z M0,0 C3,-1 8,-1 11,1 C8,0 4,1 0,0 Z"/>
+            <path transform="translate(760,92)"  d="M0,0 C-3,-1 -8,-1 -11,1 C-8,0 -4,1 0,0 Z M0,0 C3,-1 8,-1 11,1 C8,0 4,1 0,0 Z"/>
+          </g>
+        </svg>
+      </div>
     {%- endif -%}
     <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }}"></div>
   </div>
