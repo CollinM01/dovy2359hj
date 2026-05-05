@@ -904,11 +904,25 @@ accordion-component.accordion:first-child {
   background: var(--color-bark);
 }
 
-.hero__content {
+/* ── Hero inner: single-col (default) vs. split bird layout ── */
+.hero__inner {
   position: relative;
   z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+/* Default: content takes up left portion */
+.hero__content {
+  flex: 0 1 560px;
   color: var(--color-paper);
-  max-width: 680px;
+}
+
+/* Split mode: left col shrinks a touch, right col holds bird panel */
+.hero-naturalist--split .hero__content {
+  flex: 0 1 480px;
 }
 
 .hero__eyebrow {
@@ -945,6 +959,87 @@ accordion-component.accordion:first-child {
 .hero__cta:hover {
   background: var(--color-cream);
   border-color: var(--color-cream);
+}
+
+/* ── Bird Panel (right column in split hero) ──────────────── */
+.hero__bird-panel {
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.hero__bird-image {
+  width: 100%;
+  max-width: 340px;
+}
+
+.hero__bird-image img {
+  width: 100%;
+  height: auto;
+  /* Gentle float/drift animation for the bird illustration */
+  animation: bird-float 6s ease-in-out infinite;
+  filter: drop-shadow(0 8px 24px rgba(44,31,20,0.45));
+}
+
+@keyframes bird-float {
+  0%, 100% { transform: translateY(0);   }
+  50%       { transform: translateY(-10px); }
+}
+
+.hero__bird-copy {
+  text-align: center;
+  color: var(--color-paper);
+  max-width: 320px;
+}
+
+.hero__bird-heading {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--color-fog);
+  margin-bottom: var(--space-3);
+}
+
+.hero__bird-body {
+  font-size: 0.9rem;
+  color: rgba(245,240,232,0.75);
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* Mobile: stack vertically, hide bird panel if no image to save space */
+@media (max-width: 900px) {
+  .hero__inner {
+    flex-direction: column;
+    gap: var(--space-8);
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero__content,
+  .hero-naturalist--split .hero__content {
+    flex: none;
+    width: 100%;
+  }
+
+  .hero__subtitle {
+    max-width: 100%;
+  }
+
+  .hero__bird-panel {
+    flex: none;
+    width: 100%;
+    max-width: 320px;
+    margin-inline: auto;
+  }
+
+  /* Hide the bird panel's body text on small screens to keep the hero tight */
+  .hero__bird-body {
+    display: none;
+  }
 }
 
 /* ── Site Header ──────────────────────────────────────────── */
@@ -2083,6 +2178,7 @@ accordion-component.accordion:first-child {
   }
 
   .hero__image { animation: none; }
+  .hero__bird-image img { animation: none; }
   .marquee-inner { animation: none; }
   .icon-loader { animation: none; }
 }

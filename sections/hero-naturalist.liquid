@@ -1,4 +1,5 @@
-<section class="hero-naturalist" style="--hero-height: {{ section.settings.height }}vh">
+<section class="hero-naturalist{% if section.settings.show_bird_panel %} hero-naturalist--split{% endif %}"
+         style="--hero-height: {{ section.settings.height }}vh">
   <div class="hero__media">
     {%- if section.settings.image != blank -%}
       <img class="hero__image"
@@ -14,25 +15,56 @@
            loading="eager"
            fetchpriority="high">
     {%- else -%}
-      {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'hero__placeholder' }}
     {%- endif -%}
     <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }}"></div>
   </div>
 
-  <div class="hero__content container">
-    {%- if section.settings.eyebrow != blank -%}
-      <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
+  <div class="hero__inner container">
+
+    {%- comment -%} Left / main copy column {%- endcomment -%}
+    <div class="hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h1 class="hero__title">{{ section.settings.title }}</h1>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link | default: '/collections/all' }}"
+           class="btn btn--primary hero__cta">
+          {{ section.settings.button_label }}
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Right / bird panel column (optional) {%- endcomment -%}
+    {%- if section.settings.show_bird_panel -%}
+      <div class="hero__bird-panel">
+        {%- if section.settings.bird_image != blank -%}
+          <div class="hero__bird-image">
+            <img src="{{ section.settings.bird_image | image_url: width: 560 }}"
+                 srcset="{{ section.settings.bird_image | image_url: width: 280 }} 280w,
+                         {{ section.settings.bird_image | image_url: width: 560 }} 560w"
+                 sizes="(max-width: 900px) 60vw, 320px"
+                 alt="{{ section.settings.bird_image.alt | default: 'Bird illustration' | escape }}"
+                 loading="eager">
+          </div>
+        {%- endif -%}
+        {%- if section.settings.bird_panel_heading != blank or section.settings.bird_panel_body != blank -%}
+          <div class="hero__bird-copy">
+            {%- if section.settings.bird_panel_heading != blank -%}
+              <p class="hero__bird-heading">{{ section.settings.bird_panel_heading }}</p>
+            {%- endif -%}
+            {%- if section.settings.bird_panel_body != blank -%}
+              <p class="hero__bird-body">{{ section.settings.bird_panel_body }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
     {%- endif -%}
-    <h1 class="hero__title">{{ section.settings.title }}</h1>
-    {%- if section.settings.subtitle != blank -%}
-      <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
-    {%- endif -%}
-    {%- if section.settings.button_label != blank -%}
-      <a href="{{ section.settings.button_link | default: '/collections/all' }}"
-         class="btn btn--primary hero__cta">
-        {{ section.settings.button_label }}
-      </a>
-    {%- endif -%}
+
   </div>
 </section>
 
@@ -43,7 +75,7 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Hero image"
+      "label": "Background image"
     },
     {
       "type": "range",
@@ -74,13 +106,13 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Wear the Wild"
+      "default": "Dressed for the Field"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Subheading",
-      "default": "Clothing inspired by the Pacific Northwest wilderness."
+      "default": "Wear the birds. Pieces drawn from Pacific Northwest field journals."
     },
     {
       "type": "text",
@@ -92,6 +124,35 @@
       "type": "url",
       "id": "button_link",
       "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Bird Panel"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_bird_panel",
+      "label": "Show bird panel",
+      "default": true,
+      "info": "Adds a second column with a bird illustration and short copy."
+    },
+    {
+      "type": "image_picker",
+      "id": "bird_image",
+      "label": "Bird illustration image",
+      "info": "Works best with a transparent-background PNG or a portrait crop. Recommended width: 560px."
+    },
+    {
+      "type": "text",
+      "id": "bird_panel_heading",
+      "label": "Bird panel heading",
+      "default": "Spotted in the Wild"
+    },
+    {
+      "type": "textarea",
+      "id": "bird_panel_body",
+      "label": "Bird panel body text",
+      "default": "Every Atlas Dovy design starts with a sketch in the field. From Steller's Jays to Great Horned Owls, our prints are drawn from Mel's firsthand observations across the Pacific Northwest."
     }
   ],
   "presets": [

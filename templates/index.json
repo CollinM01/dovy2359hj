@@ -7,12 +7,15 @@
     "hero": {
       "type": "hero-naturalist",
       "settings": {
-        "eyebrow": "Pacific Northwest",
-        "title": "Wear the Wild",
-        "subtitle": "Clothing that carries the spirit of old-growth forests, tidepools, and mountain meadows.",
+        "eyebrow": "Atlas Dovy",
+        "title": "Dressed for the Field",
+        "subtitle": "Wear the birds. Pieces drawn from Pacific Northwest field journals — for birders, naturalists, and everyone in between.",
         "button_label": "Shop Collection",
         "button_link": "/collections/all",
-        "overlay_opacity": 30
+        "overlay_opacity": 35,
+        "show_bird_panel": true,
+        "bird_panel_heading": "Spotted in the Wild",
+        "bird_panel_body": "Every Atlas Dovy design starts with a sketch in the field. From Steller's Jays to Great Horned Owls, our prints are drawn from Mel's firsthand observations across the Pacific Northwest."
       }
     },
     "marquee": {
@@ -21,18 +24,11 @@
         "item_1": { "type": "item", "settings": { "text": "Free shipping on orders over $75" } },
         "item_2": { "type": "item", "settings": { "text": "1% of revenue donated to conservation" } },
         "item_3": { "type": "item", "settings": { "text": "Made from sustainable materials" } },
-        "item_4": { "type": "item", "settings": { "text": "Designed in the Pacific Northwest" } }
+        "item_4": { "type": "item", "settings": { "text": "Designed in the Pacific Northwest" } },
+        "item_5": { "type": "item", "settings": { "text": "Field-sketched original artwork" } }
       },
-      "block_order": ["item_1", "item_2", "item_3", "item_4"],
+      "block_order": ["item_1", "item_2", "item_3", "item_4", "item_5"],
       "settings": {}
-    },
-    "featured_products": {
-      "type": "featured-products-grid",
-      "settings": {
-        "title": "New Arrivals",
-        "subtitle": "Seasonally inspired pieces for life in the field and on the trail.",
-        "products_to_show": 4
-      }
     },
     "story": {
       "type": "story-strip",
@@ -71,7 +67,6 @@
     "announcement",
     "hero",
     "marquee",
-    "featured_products",
     "story",
     "conservation",
     "newsletter",
