@@ -131,71 +131,112 @@
             <path transform="translate(760,92)"  d="M0,0 C-3,-1 -8,-1 -11,1 C-8,0 -4,1 0,0 Z M0,0 C3,-1 8,-1 11,1 C8,0 4,1 0,0 Z"/>
           </g>
 
-          <!-- ═══ GREAT BLUE HERON — silhouette in flight above treeline ═══
-               The most recognisable PNW large bird in flight: neck folded
-               in S-curve, very long wings, trailing legs extended behind.
-               Rendered as a pure dark silhouette — no fill details, no character.
-               Flying left-to-right, low in the scene just above the mist. -->
-          <g transform="translate(690, 490)" opacity="0.82">
-            <!-- Right wing — outstretched, bowed slightly at wrist -->
-            <path d="M0,0 C18,-12 50,-18 88,-8 C110,-2 126,6 118,14
-                     C100,8 72,4 46,10 C24,14 8,10 0,0 Z"
-                  fill="#162018"/>
-            <!-- Left wing — matching, slightly higher at tip -->
-            <path d="M0,0 C-16,-14 -46,-22 -82,-14 C-104,-8 -118,2 -110,10
-                     C-94,4 -68,0 -42,6 C-20,10 -6,8 0,0 Z"
-                  fill="#162018"/>
-            <!-- Body — elongated, low-slung between wings -->
-            <path d="M-14,2 C-8,-4 8,-4 14,2 C10,8 0,12 -4,12 C-10,10 -14,8 -14,2 Z"
-                  fill="#0e1810"/>
-            <!-- Neck S-curve — head pulled back onto shoulders (heron's flight posture) -->
-            <!-- Lower neck (horizontal, tucked toward body) -->
-            <path d="M10,-2 C18,0 24,-4 26,-12"
-                  stroke="#0e1810" stroke-width="5" fill="none" stroke-linecap="round"/>
-            <!-- Upper neck (angled forward and down — the S) -->
-            <path d="M26,-12 C28,-22 24,-30 18,-34"
-                  stroke="#0e1810" stroke-width="4" fill="none" stroke-linecap="round"/>
-            <!-- Head — flat, angular (heron has flat crown) -->
-            <path d="M18,-34 C14,-40 10,-42 6,-40 C8,-36 14,-32 18,-34 Z"
-                  fill="#0e1810"/>
-            <!-- Dagger bill — long, pointed straight forward -->
-            <path d="M6,-40 C-4,-42 -14,-42 -22,-40 C-14,-38 -4,-36 6,-40 Z"
-                  fill="#0e1810"/>
-            <!-- Trailing legs — heron extends legs straight behind in flight -->
-            <path d="M-8,10 C-10,22 -12,34 -12,44"
-                  stroke="#0e1810" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <path d="M-4,12 C-4,24 -4,36 -2,46"
-                  stroke="#0e1810" stroke-width="3" fill="none" stroke-linecap="round"/>
-            <!-- Feet dangling slightly (not folded tight — typical in slow glide) -->
-            <path d="M-12,44 C-16,48 -20,50 -22,50" stroke="#0e1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M-12,44 C-10,48 -8,52 -8,54"   stroke="#0e1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M-2,46  C-6,50 -10,52 -12,52"  stroke="#0e1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-            <path d="M-2,46  C2,50 6,54 8,56"        stroke="#0e1810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-          </g>
-          <!-- /heron -->
+          <!-- ═══════════════════════════════════════════════════════
+               BARBARY DOVE — Atlas Dovy brand signature
+               Perched on foreground branch, warm buff against dark sky
+               The beloved bird that started it all, in the landscape
+               ═══════════════════════════════════════════════════════ -->
+          <!-- Branch for dove to perch on (simple, naturalistic) -->
+          <path d="M820,500 Q910,488 1010,494 Q1080,498 1140,492"
+                stroke="#1a100a" stroke-width="14" fill="none" stroke-linecap="round"/>
+          <path d="M820,500 Q910,488 1010,494 Q1080,498 1140,492"
+                stroke="#2c1a0e" stroke-width="8"  fill="none" stroke-linecap="round"/>
+          <path d="M820,500 Q910,488 1010,494 Q1080,498 1140,492"
+                stroke="#3e2612" stroke-width="3"  fill="none" stroke-linecap="round" opacity="0.4"/>
 
-          <!-- ═══ OSPREY — banking hard right, lower-left sky ═══
-               Distinctive bent-wing shape (crooked at wrist, almost M-shaped),
-               white belly flashing in the light. Pure silhouette + pale underside. -->
-          <g transform="translate(380, 290)" opacity="0.78">
-            <!-- Left wing — angled up, bent at wrist (osprey's kinked wing) -->
-            <path d="M0,0 C-12,-8 -28,-6 -38,0 C-46,4 -52,10 -48,16
-                     C-40,10 -28,6 -16,8 C-8,10 -2,6 0,0 Z"
-                  fill="#182420"/>
-            <!-- Right wing — angled down, also kinked -->
-            <path d="M0,0 C10,-10 26,-10 36,-4 C44,2 48,8 44,14
-                     C36,8 24,4 12,6 C4,8 0,4 0,0 Z"
-                  fill="#182420"/>
-            <!-- Body — compact, torpedo-shaped -->
-            <path d="M-8,4 C-4,-2 4,-2 8,4 C6,10 0,13 -3,13 C-7,11 -8,8 -8,4 Z"
-                  fill="#0e1810"/>
-            <!-- Pale belly flash (white underpart catching sky light) -->
-            <path d="M-5,5 C-2,2 3,2 6,5 C4,9 0,11 -2,11 C-5,9 -5,7 -5,5 Z"
-                  fill="#2a3c30" opacity="0.5"/>
-            <!-- Head — round, looking forward -->
-            <ellipse cx="10" cy="-4" rx="6" ry="5" fill="#0e1810"/>
+          <!-- Dove silhouette — perched, facing left, warm buff tone -->
+          <!-- Rendered as a confident field sketch: smooth pear-shaped body,
+               folded wing, rounded head — expressive but NOT cartoonish -->
+          <g transform="translate(928, 456)" opacity="0.95">
+            <!-- Soft glow behind dove — Atlas Dovy warmth emanating from the bird -->
+            <ellipse cx="0" cy="10" rx="72" ry="52" fill="#c8a882" opacity="0.08"/>
+
+            <!-- TAIL FEATHERS — splayed slightly, warm brown buff -->
+            <path d="M-62,4 C-90,-2 -108,8 -106,20 C-96,14 -80,10 -66,10 C-60,11 -58,8 -62,4 Z"
+                  fill="#8a6e48"/>
+            <path d="M-57,2 C-82,-4 -98,6 -96,16 C-88,11 -73,7 -61,8 C-55,9 -53,5 -57,2 Z"
+                  fill="#a08060"/>
+            <path d="M-52,0 C-74,-6 -88,4 -86,13 C-79,8 -65,5 -56,6 C-50,7 -49,3 -52,0 Z"
+                  fill="#b89070"/>
+            <!-- Tail shaft lines -->
+            <line x1="-61" y1="4"  x2="-104" y2="18" stroke="#7a5e38" stroke-width="0.9" opacity="0.55"/>
+            <line x1="-56" y1="2"  x2="-94"  y2="14" stroke="#7a5e38" stroke-width="0.8" opacity="0.48"/>
+            <line x1="-51" y1="0"  x2="-84"  y2="11" stroke="#8a6e48" stroke-width="0.7" opacity="0.42"/>
+
+            <!-- WING (folded — dove body upper surface) -->
+            <!-- Wing primary base -->
+            <path d="M-44,-4 C-60,-18 -44,-32 -12,-28 C4,-22 14,-10 10,0 C-2,6 -24,4 -44,-4 Z"
+                  fill="#9e8460"/>
+            <!-- Wing coverts overlay -->
+            <path d="M-28,-2 C-40,-14 -28,-26 0,-22 C12,-18 20,-8 16,0 C6,4 -14,4 -28,-2 Z"
+                  fill="#b09070"/>
+            <!-- Wing feather detail lines -->
+            <path d="M-40,-4 C-28,-16 -6,-20 12,-14" stroke="#8a7050" stroke-width="1.4" fill="none" opacity="0.55"/>
+            <path d="M-34,-2 C-22,-12 0,-16 16,-10"  stroke="#8a7050" stroke-width="1.2" fill="none" opacity="0.45"/>
+            <path d="M-26,-1 C-15,-10 6,-13 20,-8"   stroke="#9a8060" stroke-width="1.0" fill="none" opacity="0.38"/>
+
+            <!-- BODY — pear/teardrop profile, sandy buff -->
+            <path d="M-56,6 C-52,-16 -32,-30 0,-28 C28,-26 48,-14 52,4
+                     C55,18 44,30 22,34 C-4,38 -32,32 -46,20 C-56,12 -56,6 -56,6 Z"
+                  fill="#c8a882"/>
+            <!-- Breast / belly (warmer, lighter centre) -->
+            <path d="M-30,6 C-20,-12 0,-22 22,-20 C40,-18 52,-8 52,4
+                     C52,15 40,26 20,30 C0,34 -18,28 -28,18 C-36,10 -30,6 -30,6 Z"
+                  fill="#dcc8a0" opacity="0.60"/>
+            <!-- Body feather texture (subtle curved strokes on rump) -->
+            <path d="M-50,8  C-34,4 -12,6 8,10"  stroke="#a88860" stroke-width="0.9" fill="none" opacity="0.32"/>
+            <path d="M-48,16 C-32,12 -10,14 10,18" stroke="#a88860" stroke-width="0.8" fill="none" opacity="0.28"/>
+            <path d="M-44,24 C-28,20 -8,22 12,26"  stroke="#a88860" stroke-width="0.7" fill="none" opacity="0.24"/>
+
+            <!-- NECK (connecting head to body) -->
+            <path d="M30,-2 C38,-12 40,-24 34,-30 C26,-26 22,-14 24,-4 Z"
+                  fill="#bea07a"/>
+
+            <!-- NECK COLLAR — the defining Barbary dove field mark
+                 Black semicircle at nape, the species signature -->
+            <path d="M24,-30 C18,-42 6,-48 -6,-46 C-16,-44 -20,-36 -16,-30
+                     C-10,-34 -2,-36 8,-34 C16,-32 22,-30 24,-30 Z"
+                  fill="#140c04" opacity="0.88"/>
+
+            <!-- HEAD — round, warm, slightly flattened crown -->
+            <ellipse cx="36" cy="-38" rx="22" ry="20" fill="#c2a07c"/>
+            <!-- Crown (slightly darker) -->
+            <path d="M18,-50 C26,-60 48,-60 56,-50 C50,-44 38,-38 38,-38 C32,-42 22,-46 18,-50 Z"
+                  fill="#a88860" opacity="0.45"/>
+            <!-- Face highlight (lore area, pale) -->
+            <ellipse cx="50" cy="-42" rx="10" ry="7" fill="#dcc8a8" opacity="0.50"/>
+
+            <!-- EYE — the warm reddish orbital ring of a Barbary dove -->
+            <circle cx="52" cy="-40" r="7.5" fill="#b85020" opacity="0.85"/>
+            <circle cx="52" cy="-40" r="5.2" fill="#1e0e06"/>
+            <circle cx="52" cy="-40" r="3.2" fill="#0c0804"/>
+            <!-- Eye highlight -->
+            <circle cx="50" cy="-42" r="2.0" fill="#ffffff" opacity="0.85"/>
+            <circle cx="54" cy="-40" r="1.0" fill="#ffffff" opacity="0.35"/>
+
+            <!-- BILL — slender, short, slightly hooked at tip -->
+            <path d="M60,-42 C70,-40 78,-38 76,-34 C70,-31 62,-32 60,-36 Z"
+                  fill="#8a7250" stroke="#6a5238" stroke-width="0.5"/>
+            <path d="M60,-36 C68,-34 74,-33 72,-30 C67,-28 60,-29 59,-32 Z"
+                  fill="#98806a" stroke="#7a6050" stroke-width="0.5"/>
+            <!-- Bill tip -->
+            <path d="M74,-37 C78,-35 79,-31 74,-29 C71,-30 70,-33 74,-37 Z"
+                  fill="#5a4030"/>
+
+            <!-- LEGS — simple but organic, reddish-coral -->
+            <path d="M-4,32  C-4,40 -5,47 -6,53"  stroke="#c06030" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <path d="M14,34  C14,42 13,49 13,55"  stroke="#c06030" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <!-- Front toes (3) + hallux (1) — simple strokes, naturalistic -->
+            <path d="M-6,53  C-14,57 -22,58 -25,57" stroke="#c06030" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M-6,53  C-6,60 -4,65 -2,67"    stroke="#c06030" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M-6,53  C4,57 12,58 15,57"      stroke="#c06030" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M-6,53  C-10,46 -14,42 -17,40"  stroke="#c06030" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M13,55  C5,59 -2,60 -5,59"      stroke="#c06030" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M13,55  C13,62 15,67 17,69"     stroke="#c06030" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M13,55  C22,59 30,60 33,59"     stroke="#c06030" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M13,55  C9,48 6,44 3,42"        stroke="#c06030" stroke-width="3" fill="none" stroke-linecap="round"/>
           </g>
-          <!-- /osprey -->
+          <!-- /dove -->
 
         </svg>
       </div>
