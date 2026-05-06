@@ -15,8 +15,9 @@
   --color-ink:    #3d3228;
   --color-cream:  #faf7f2;
   --color-moss:   #4a5e3a;
-  --color-blush:  #d4a890;  /* dove breast / warm rose-tan */
-  --color-dove:   #c8a882;  /* Barbary dove feather / sandy buff */
+  --color-mist:   #adc4bc;  /* atmospheric Pacific mist / field illustration tones */
+  --color-field:  #e4dccc;  /* aged field-journal page / parchment */
+  --color-dove:   #c8a882;  /* Barbary dove sandy-buff feather (brand accent) */
 
   /* Typography */
   --font-heading: 'Cormorant Garamond', Georgia, serif;
@@ -903,13 +904,13 @@ accordion-component.accordion:first-child {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  /* Warm amber gradient — reads naturally over the golden dove scene
-     and darkens sufficiently for white text to pop */
+  /* Atmospheric PNW dark gradient — cool blue-charcoal deepens toward
+     the bottom so white text stays legible over the dawn scene */
   background: linear-gradient(
-    to bottom,
-    rgba(60, 35, 10, 0.15) 0%,
-    rgba(50, 28, 8, 0.42) 55%,
-    rgba(35, 18, 4, 0.68) 100%
+    160deg,
+    rgba(15, 28, 38, 0.16) 0%,
+    rgba(12, 22, 30, 0.46) 55%,
+    rgba(8,  15, 20, 0.74) 100%
   );
 }
 
