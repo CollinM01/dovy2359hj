@@ -16,389 +16,536 @@
            fetchpriority="high">
     {%- else -%}
       <div class="hero__placeholder hero__placeholder--birds" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice" style="display:block;width:100%;height:100%">
           <defs>
-            <!-- Bright PNW daytime sky through canopy -->
-            <linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"   stop-color="#90bcd8"/>
-              <stop offset="45%"  stop-color="#b8d8ee"/>
-              <stop offset="100%" stop-color="#cce4f0"/>
+            <!-- Sky: bright Pacific NW daytime blue -->
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"   stop-color="#6aaed8"/>
+              <stop offset="55%"  stop-color="#9ecce8"/>
+              <stop offset="100%" stop-color="#bcddf2"/>
             </linearGradient>
-            <!-- Ground: moss left → dirt path → leaf litter right -->
-            <linearGradient id="ground-grad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"   stop-color="#4a8820"/>
-              <stop offset="38%"  stop-color="#5a9828"/>
-              <stop offset="52%"  stop-color="#8a6838"/>
-              <stop offset="66%"  stop-color="#6e8828"/>
-              <stop offset="100%" stop-color="#6a5828"/>
-            </linearGradient>
-            <!-- Dome: clear with very faint teal tint -->
-            <radialGradient id="dome-grad" cx="0.35" cy="0.28" r="0.75">
-              <stop offset="0%"   stop-color="#ffffff"  stop-opacity="0.22"/>
-              <stop offset="45%"  stop-color="#88c8cc"  stop-opacity="0.08"/>
-              <stop offset="100%" stop-color="#3a8888"  stop-opacity="0.20"/>
+            <!-- Warm afternoon sun flooding from upper-right -->
+            <radialGradient id="sunray" cx="0.82" cy="0.0" r="0.75">
+              <stop offset="0%"   stop-color="#fff8c8" stop-opacity="0.92"/>
+              <stop offset="38%"  stop-color="#ffec70" stop-opacity="0.38"/>
+              <stop offset="100%" stop-color="#ffec70" stop-opacity="0"/>
             </radialGradient>
-            <!-- Forest reflection visible in dome glass -->
-            <radialGradient id="dome-reflect" cx="0.5" cy="0.38" r="0.6">
-              <stop offset="0%"   stop-color="#2a4828" stop-opacity="0.28"/>
-              <stop offset="55%"  stop-color="#3a5a38" stop-opacity="0.14"/>
-              <stop offset="100%" stop-color="#2a4828" stop-opacity="0"/>
+            <!-- Dappled sunlight pools on ground -->
+            <radialGradient id="dapple" cx="0.5" cy="0.5" r="0.5">
+              <stop offset="0%"   stop-color="#f8e840" stop-opacity="0.58"/>
+              <stop offset="100%" stop-color="#f8e840" stop-opacity="0"/>
             </radialGradient>
-            <!-- Dome specular highlight upper-left -->
-            <radialGradient id="dome-shine" cx="0.26" cy="0.20" r="0.46">
-              <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.72"/>
-              <stop offset="50%"  stop-color="#ffffff" stop-opacity="0.20"/>
+            <!-- Dome glass: nearly clear, faint teal -->
+            <radialGradient id="dome-glass" cx="0.32" cy="0.22" r="0.80">
+              <stop offset="0%"   stop-color="#ffffff"  stop-opacity="0.18"/>
+              <stop offset="40%"  stop-color="#90d0d0"  stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#2a8080"  stop-opacity="0.15"/>
+            </radialGradient>
+            <!-- Dome specular bright patch upper-left -->
+            <radialGradient id="dome-spec" cx="0.24" cy="0.16" r="0.44">
+              <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.85"/>
+              <stop offset="50%"  stop-color="#ffffff" stop-opacity="0.25"/>
               <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
             </radialGradient>
-            <!-- Warm sun glow upper-right -->
-            <radialGradient id="sun-glow" cx="0.72" cy="0.08" r="0.55">
-              <stop offset="0%"   stop-color="#fff8d8" stop-opacity="0.80"/>
-              <stop offset="50%"  stop-color="#f8e870" stop-opacity="0.28"/>
-              <stop offset="100%" stop-color="#f8e870" stop-opacity="0"/>
+            <!-- Forest reflection inside dome -->
+            <radialGradient id="dome-refl" cx="0.50" cy="0.28" r="0.68">
+              <stop offset="0%"   stop-color="#1e3018" stop-opacity="0.50"/>
+              <stop offset="55%"  stop-color="#2e4228" stop-opacity="0.24"/>
+              <stop offset="100%" stop-color="#1e3018" stop-opacity="0"/>
             </radialGradient>
-            <!-- Dappled sunlight patches on ground -->
-            <radialGradient id="dapple" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0%"   stop-color="#f8e858" stop-opacity="0.52"/>
-              <stop offset="100%" stop-color="#f8e858" stop-opacity="0"/>
-            </radialGradient>
-            <!-- Clip path for dome interior (keeps reflections inside) -->
+            <!-- Clip dome contents -->
             <clipPath id="dome-clip">
-              <ellipse cx="720" cy="455" rx="184" ry="214"/>
+              <ellipse cx="720" cy="472" rx="192" ry="222"/>
             </clipPath>
           </defs>
 
-          <!-- ═══ SKY ═══ -->
-          <rect width="1440" height="810" fill="url(#sky-grad)"/>
-          <!-- Sun glow wash from upper right -->
-          <rect width="1440" height="810" fill="url(#sun-glow)"/>
-          <!-- Light shaft -->
-          <path d="M860,0 L1440,0 L1440,460 L1080,180 Z" fill="#fff8d0" opacity="0.10"/>
+          <!-- ══════════════════════════════════════
+               SKY BASE + SUNLIGHT
+          ══════════════════════════════════════ -->
+          <rect width="1440" height="810" fill="url(#sky)"/>
+          <rect width="1440" height="810" fill="url(#sunray)"/>
+          <!-- Light column down from sun -->
+          <path d="M1040,0 L1440,0 L1440,520 L1100,220 Z" fill="#fff8e0" opacity="0.09"/>
 
-          <!-- ═══ SKY PATCHES THROUGH CANOPY ═══ -->
-          <ellipse cx="720"  cy="95"  rx="190" ry="95"  fill="#d8eef8" opacity="0.72"/>
-          <ellipse cx="500"  cy="75"  rx="110" ry="62"  fill="#cce4f4" opacity="0.65"/>
-          <ellipse cx="960"  cy="85"  rx="130" ry="68"  fill="#cce4f4" opacity="0.60"/>
-          <ellipse cx="580"  cy="45"  rx="65"  ry="42"  fill="#e4f2fa" opacity="0.55"/>
-          <ellipse cx="870"  cy="55"  rx="85"  ry="52"  fill="#e4f2fa" opacity="0.58"/>
+          <!-- ══════════════════════════════════════
+               SKY OPENING THROUGH CANOPY (center)
+          ══════════════════════════════════════ -->
+          <ellipse cx="720" cy="130" rx="245" ry="128" fill="#8ec8e8" opacity="0.82"/>
+          <ellipse cx="720" cy="105" rx="195" ry="98"  fill="#a8d8f0" opacity="0.88"/>
+          <ellipse cx="720" cy="82"  rx="148" ry="72"  fill="#c0e6f8" opacity="0.90"/>
+          <ellipse cx="600" cy="92"  rx="108" ry="62"  fill="#a0d0ec" opacity="0.70"/>
+          <ellipse cx="855" cy="88"  rx="120" ry="66"  fill="#a8d4ee" opacity="0.66"/>
+          <ellipse cx="490" cy="60"  rx="72"  ry="46"  fill="#b8e0f4" opacity="0.58"/>
+          <ellipse cx="980" cy="65"  rx="86"  ry="52"  fill="#b8e0f4" opacity="0.55"/>
 
-          <!-- ═══ BACKGROUND TREES (receded, backlit pale) ═══ -->
-          <rect x="600"  y="55"  width="13" height="555" fill="#8aaa80" opacity="0.38" rx="3"/>
-          <rect x="665"  y="35"  width="15" height="575" fill="#7a9a70" opacity="0.42" rx="3"/>
-          <rect x="755"  y="60"  width="12" height="545" fill="#8aaa80" opacity="0.36" rx="3"/>
-          <rect x="825"  y="40"  width="14" height="565" fill="#7a9a70" opacity="0.40" rx="3"/>
-          <rect x="895"  y="25"  width="17" height="585" fill="#6a8a60" opacity="0.48" rx="3"/>
+          <!-- ══════════════════════════════════════
+               DISTANT / BACKGROUND TREES
+               (receding up the path, pale backlit)
+          ══════════════════════════════════════ -->
+          <rect x="545" y="55"  width="8"  height="548" fill="#92b88e" opacity="0.38" rx="2"/>
+          <rect x="592" y="35"  width="10" height="568" fill="#82a87e" opacity="0.42" rx="2"/>
+          <rect x="642" y="58"  width="7"  height="545" fill="#92b88e" opacity="0.36" rx="2"/>
+          <rect x="688" y="28"  width="9"  height="574" fill="#82a87e" opacity="0.40" rx="2"/>
+          <rect x="744" y="48"  width="8"  height="558" fill="#92b88e" opacity="0.36" rx="2"/>
+          <rect x="796" y="32"  width="9"  height="565" fill="#82a87e" opacity="0.38" rx="2"/>
+          <rect x="848" y="55"  width="7"  height="548" fill="#92b88e" opacity="0.34" rx="2"/>
+          <rect x="898" y="28"  width="9"  height="568" fill="#82a87e" opacity="0.38" rx="2"/>
 
-          <!-- ═══ MID-DISTANCE TREES — LEFT ═══ -->
-          <rect x="55"   y="0"   width="46" height="685" fill="#364c2c" rx="5"/>
-          <rect x="155"  y="18"  width="38" height="665" fill="#3e5432" rx="4"/>
-          <rect x="248"  y="44"  width="32" height="645" fill="#364c2c" rx="4"/>
-          <rect x="334"  y="28"  width="27" height="655" fill="#445a36" opacity="0.88" rx="3"/>
-          <rect x="412"  y="58"  width="23" height="625" fill="#364c2c" opacity="0.92" rx="3"/>
-          <!-- Branch stubs left -->
-          <path d="M52,125  Q78,118  115,125"  stroke="#263820" stroke-width="9"  fill="none" opacity="0.68" stroke-linecap="round"/>
-          <path d="M52,215  Q78,208  116,215"  stroke="#263820" stroke-width="7"  fill="none" opacity="0.58" stroke-linecap="round"/>
-          <path d="M52,340  Q78,333  114,340"  stroke="#263820" stroke-width="6"  fill="none" opacity="0.50" stroke-linecap="round"/>
-          <path d="M145,145 Q172,138 202,145"  stroke="#263820" stroke-width="8"  fill="none" opacity="0.65" stroke-linecap="round"/>
-          <path d="M145,258 Q172,250 204,258"  stroke="#263820" stroke-width="6"  fill="none" opacity="0.55" stroke-linecap="round"/>
-          <path d="M238,172 Q264,164 292,172"  stroke="#263820" stroke-width="7"  fill="none" opacity="0.60" stroke-linecap="round"/>
-          <path d="M238,298 Q264,290 294,298"  stroke="#263820" stroke-width="5"  fill="none" opacity="0.50" stroke-linecap="round"/>
-          <path d="M322,148 Q346,140 372,148"  stroke="#263820" stroke-width="6"  fill="none" opacity="0.58" stroke-linecap="round"/>
+          <!-- ══════════════════════════════════════
+               FOREGROUND TREES — LEFT
+               (tall, thin, deeply receding, PNW firs)
+          ══════════════════════════════════════ -->
+          <rect x="18"  y="0" width="54" height="695" fill="#44582e" rx="6"/>
+          <!-- Sunlit edge highlight -->
+          <rect x="66"  y="0" width="7"  height="695" fill="#7a9a5e" opacity="0.52" rx="2"/>
+          <rect x="126" y="0" width="44" height="682" fill="#4c6034" rx="5"/>
+          <rect x="164" y="0" width="6"  height="682" fill="#7a9a5e" opacity="0.45" rx="2"/>
+          <rect x="218" y="8" width="38" height="672" fill="#44582e" rx="4"/>
+          <rect x="250" y="8" width="5"  height="672" fill="#7a9a5e" opacity="0.40" rx="2"/>
+          <rect x="305" y="0" width="32" height="682" fill="#4c6034" rx="4"/>
+          <rect x="332" y="0" width="5"  height="682" fill="#7a9a5e" opacity="0.36" rx="2"/>
+          <rect x="386" y="14" width="27" height="668" fill="#44582e" rx="3"/>
+          <rect x="452" y="28" width="24" height="655" fill="#4c6034" rx="3"/>
+          <rect x="502" y="42" width="20" height="642" fill="#44582e" rx="3"/>
+          <!-- Branch stubs left trees -->
+          <path d="M16,105 Q54,96 86,104"   stroke="#28381a" stroke-width="11" fill="none" opacity="0.60" stroke-linecap="round"/>
+          <path d="M16,195 Q55,185 88,193"  stroke="#28381a" stroke-width="9"  fill="none" opacity="0.52" stroke-linecap="round"/>
+          <path d="M16,310 Q54,300 87,308"  stroke="#28381a" stroke-width="7"  fill="none" opacity="0.44" stroke-linecap="round"/>
+          <path d="M16,435 Q54,425 86,433"  stroke="#28381a" stroke-width="5"  fill="none" opacity="0.38" stroke-linecap="round"/>
+          <path d="M120,118 Q156,108 188,116" stroke="#28381a" stroke-width="10" fill="none" opacity="0.58" stroke-linecap="round"/>
+          <path d="M120,230 Q157,220 190,228" stroke="#28381a" stroke-width="8"  fill="none" opacity="0.50" stroke-linecap="round"/>
+          <path d="M120,358 Q157,348 190,355" stroke="#28381a" stroke-width="6"  fill="none" opacity="0.42" stroke-linecap="round"/>
+          <path d="M210,130 Q244,120 272,128" stroke="#28381a" stroke-width="9"  fill="none" opacity="0.56" stroke-linecap="round"/>
+          <path d="M210,255 Q245,245 274,252" stroke="#28381a" stroke-width="7"  fill="none" opacity="0.48" stroke-linecap="round"/>
+          <path d="M210,385 Q245,375 274,382" stroke="#28381a" stroke-width="5"  fill="none" opacity="0.40" stroke-linecap="round"/>
+          <path d="M296,142 Q328,132 356,140" stroke="#28381a" stroke-width="8"  fill="none" opacity="0.54" stroke-linecap="round"/>
+          <path d="M296,272 Q329,262 357,270" stroke="#28381a" stroke-width="6"  fill="none" opacity="0.46" stroke-linecap="round"/>
+          <path d="M378,155 Q406,145 430,153" stroke="#28381a" stroke-width="7"  fill="none" opacity="0.52" stroke-linecap="round"/>
+          <path d="M378,285 Q407,275 432,282" stroke="#28381a" stroke-width="5"  fill="none" opacity="0.44" stroke-linecap="round"/>
+          <path d="M442,168 Q466,159 488,166" stroke="#28381a" stroke-width="6"  fill="none" opacity="0.50" stroke-linecap="round"/>
+          <path d="M494,180 Q516,171 536,178" stroke="#28381a" stroke-width="5"  fill="none" opacity="0.46" stroke-linecap="round"/>
 
-          <!-- ═══ MID-DISTANCE TREES — RIGHT ═══ -->
-          <rect x="990"  y="38"  width="27" height="645" fill="#364c2c" opacity="0.92" rx="3"/>
-          <rect x="1052" y="18"  width="33" height="665" fill="#364c2c" rx="4"/>
-          <rect x="1145" y="0"   width="40" height="680" fill="#445a36" rx="4"/>
-          <rect x="1248" y="24"  width="35" height="660" fill="#364c2c" rx="4"/>
-          <rect x="1358" y="0"   width="48" height="682" fill="#364c2c" rx="5"/>
-          <!-- Branch stubs right -->
-          <path d="M1325,130 Q1352,122 1385,130" stroke="#263820" stroke-width="9"  fill="none" opacity="0.68" stroke-linecap="round"/>
-          <path d="M1325,225 Q1352,217 1387,225" stroke="#263820" stroke-width="7"  fill="none" opacity="0.58" stroke-linecap="round"/>
-          <path d="M1325,345 Q1352,337 1386,345" stroke="#263820" stroke-width="5"  fill="none" opacity="0.48" stroke-linecap="round"/>
-          <path d="M1230,148 Q1254,140 1282,148" stroke="#263820" stroke-width="8"  fill="none" opacity="0.65" stroke-linecap="round"/>
-          <path d="M1230,265 Q1254,256 1283,265" stroke="#263820" stroke-width="6"  fill="none" opacity="0.55" stroke-linecap="round"/>
-          <path d="M1134,136 Q1160,128 1190,136" stroke="#263820" stroke-width="8"  fill="none" opacity="0.70" stroke-linecap="round"/>
-          <path d="M1134,252 Q1160,244 1192,252" stroke="#263820" stroke-width="6"  fill="none" opacity="0.58" stroke-linecap="round"/>
-          <path d="M978,158  Q1002,150 1030,158" stroke="#263820" stroke-width="7"  fill="none" opacity="0.62" stroke-linecap="round"/>
+          <!-- ══════════════════════════════════════
+               FOREGROUND TREES — RIGHT
+          ══════════════════════════════════════ -->
+          <rect x="948"  y="38"  width="22" height="648" fill="#44582e" rx="3"/>
+          <rect x="965"  y="38"  width="5"  height="648" fill="#7a9a5e" opacity="0.38" rx="2"/>
+          <rect x="1010" y="16"  width="28" height="672" fill="#4c6034" rx="4"/>
+          <rect x="1034" y="16"  width="5"  height="672" fill="#7a9a5e" opacity="0.40" rx="2"/>
+          <rect x="1090" y="0"   width="34" height="680" fill="#44582e" rx="4"/>
+          <rect x="1120" y="0"   width="5"  height="680" fill="#7a9a5e" opacity="0.42" rx="2"/>
+          <rect x="1180" y="0"   width="40" height="682" fill="#4c6034" rx="5"/>
+          <rect x="1215" y="0"   width="6"  height="682" fill="#7a9a5e" opacity="0.44" rx="2"/>
+          <rect x="1290" y="0"   width="46" height="688" fill="#44582e" rx="5"/>
+          <rect x="1330" y="0"   width="7"  height="688" fill="#7a9a5e" opacity="0.48" rx="2"/>
+          <rect x="1392" y="0"   width="48" height="680" fill="#4c6034" rx="5"/>
+          <!-- Branch stubs right trees -->
+          <path d="M1330,115 Q1366,105 1404,113" stroke="#28381a" stroke-width="11" fill="none" opacity="0.60" stroke-linecap="round"/>
+          <path d="M1330,212 Q1367,202 1406,210" stroke="#28381a" stroke-width="9"  fill="none" opacity="0.52" stroke-linecap="round"/>
+          <path d="M1330,330 Q1368,320 1406,328" stroke="#28381a" stroke-width="7"  fill="none" opacity="0.44" stroke-linecap="round"/>
+          <path d="M1330,458 Q1367,448 1404,456" stroke="#28381a" stroke-width="5"  fill="none" opacity="0.36" stroke-linecap="round"/>
+          <path d="M1222,126 Q1256,116 1288,124" stroke="#28381a" stroke-width="10" fill="none" opacity="0.58" stroke-linecap="round"/>
+          <path d="M1222,242 Q1257,232 1290,240" stroke="#28381a" stroke-width="8"  fill="none" opacity="0.50" stroke-linecap="round"/>
+          <path d="M1222,370 Q1258,360 1290,368" stroke="#28381a" stroke-width="6"  fill="none" opacity="0.42" stroke-linecap="round"/>
+          <path d="M1132,138 Q1162,128 1190,136" stroke="#28381a" stroke-width="9"  fill="none" opacity="0.56" stroke-linecap="round"/>
+          <path d="M1132,260 Q1163,250 1192,258" stroke="#28381a" stroke-width="7"  fill="none" opacity="0.48" stroke-linecap="round"/>
+          <path d="M1132,390 Q1163,380 1192,388" stroke="#28381a" stroke-width="5"  fill="none" opacity="0.40" stroke-linecap="round"/>
+          <path d="M1048,150 Q1076,140 1102,148" stroke="#28381a" stroke-width="8"  fill="none" opacity="0.54" stroke-linecap="round"/>
+          <path d="M1048,278 Q1077,268 1104,276" stroke="#28381a" stroke-width="6"  fill="none" opacity="0.46" stroke-linecap="round"/>
+          <path d="M960,162  Q986,152 1010,160"  stroke="#28381a" stroke-width="7"  fill="none" opacity="0.52" stroke-linecap="round"/>
+          <path d="M960,292  Q987,282 1012,290"  stroke="#28381a" stroke-width="5"  fill="none" opacity="0.44" stroke-linecap="round"/>
 
-          <!-- ═══ MOSSY EMBANKMENT (left foreground) ═══ -->
-          <path d="M0,490 Q90,435 200,455 Q285,448 325,498
-                   Q240,542 155,562 Q75,572 0,562 Z"
-                fill="#4a8818" opacity="0.88"/>
-          <path d="M0,562 Q75,534 198,544 Q278,552 325,584
-                   Q238,626 116,644 Q56,654 0,644 Z"
-                fill="#559820" opacity="0.80"/>
-          <!-- Sunlit moss highlight -->
-          <ellipse cx="160" cy="510" rx="110" ry="38" fill="#78c030" opacity="0.42"/>
-          <ellipse cx="80"  cy="548" rx="80"  ry="28" fill="#66b028" opacity="0.38"/>
+          <!-- ══════════════════════════════════════
+               MOSSY LEFT EMBANKMENT
+               (bright vivid green, raised, dominant)
+          ══════════════════════════════════════ -->
+          <!-- Upper slope -->
+          <path d="M0,468 Q48,432 118,440 Q188,435 255,452
+                   Q308,462 348,504 Q295,544 210,560
+                   Q130,572 62,568 Q26,566 0,558 Z"
+                fill="#4e9e18"/>
+          <!-- Main body -->
+          <path d="M0,558 Q62,530 205,538 Q300,542 355,574
+                   Q288,622 175,642 Q88,654 0,648 Z"
+                fill="#58aa1e"/>
+          <!-- Lower foreground moss -->
+          <path d="M0,648 Q88,628 200,636 Q295,642 370,665
+                   Q285,700 158,712 Q72,718 0,710 Z"
+                fill="#5cb022"/>
+          <!-- Moss to bottom edge -->
+          <path d="M0,710 Q72,696 165,702 Q265,708 375,728 L385,810 L0,810 Z"
+                fill="#52a01c"/>
+          <!-- Vivid sunlit moss highlights -->
+          <ellipse cx="128" cy="498" rx="130" ry="44" fill="#70cc28" opacity="0.52"/>
+          <ellipse cx="72"  cy="544" rx="98"  ry="34" fill="#66c022" opacity="0.46"/>
+          <ellipse cx="192" cy="586" rx="115" ry="37" fill="#70cc28" opacity="0.50"/>
+          <ellipse cx="108" cy="634" rx="132" ry="42" fill="#68be22" opacity="0.44"/>
+          <ellipse cx="50"  cy="672" rx="84"  ry="28" fill="#76cc28" opacity="0.40"/>
+          <ellipse cx="220" cy="658" rx="105" ry="32" fill="#5eb820" opacity="0.42"/>
+          <!-- Ferns on embankment -->
+          <path d="M290,460 C276,449 259,440 250,432" stroke="#3c721a" stroke-width="4.5" fill="none" opacity="0.55" stroke-linecap="round"/>
+          <path d="M290,460 C285,446 282,432 284,422"  stroke="#3c721a" stroke-width="4.5" fill="none" opacity="0.52" stroke-linecap="round"/>
+          <path d="M290,460 C302,447 311,436 314,426"  stroke="#3c721a" stroke-width="4.5" fill="none" opacity="0.52" stroke-linecap="round"/>
+          <path d="M318,498 C303,487 286,478 277,470" stroke="#3c721a" stroke-width="4"   fill="none" opacity="0.48" stroke-linecap="round"/>
+          <path d="M318,498 C312,483 308,468 311,458"  stroke="#3c721a" stroke-width="4"   fill="none" opacity="0.45" stroke-linecap="round"/>
+          <path d="M318,498 C330,484 338,472 340,462"  stroke="#3c721a" stroke-width="4"   fill="none" opacity="0.45" stroke-linecap="round"/>
 
-          <!-- ═══ GROUND BASE ═══ -->
-          <path d="M0,655 Q360,626 720,642 Q1080,626 1440,650 L1440,810 L0,810 Z"
-                fill="url(#ground-grad)"/>
-          <!-- Bright moss left -->
-          <path d="M0,655 Q195,634 415,650 Q295,676 158,698 Q78,708 0,702 Z"
-                fill="#62a028" opacity="0.92"/>
-          <ellipse cx="95"  cy="688" rx="135" ry="40" fill="#72b035" opacity="0.50"/>
-          <ellipse cx="275" cy="668" rx="115" ry="30" fill="#62a028" opacity="0.58"/>
-          <ellipse cx="175" cy="678" rx="92"  ry="26" fill="#84c040" opacity="0.48"/>
-          <!-- Dirt path center -->
-          <path d="M555,638 Q640,628 720,623 Q800,628 885,638
-                   Q858,668 720,676 Q582,668 555,638 Z"
-                fill="#9a7848" opacity="0.72"/>
-          <path d="M598,664 Q678,654 720,650 Q762,654 842,664
-                   Q822,686 720,692 Q618,686 598,664 Z"
-                fill="#8a6838" opacity="0.52"/>
-          <!-- Leaf litter right -->
-          <path d="M1005,642 Q1155,628 1440,642 L1440,810 L1005,810 Z"
-                fill="#7a5828" opacity="0.62"/>
-          <ellipse cx="1155" cy="688" rx="205" ry="42" fill="#6a4e20" opacity="0.48"/>
-          <ellipse cx="1355" cy="708" rx="125" ry="34" fill="#7a5828" opacity="0.42"/>
-          <!-- Small rocks -->
-          <ellipse cx="1055" cy="668" rx="24" ry="13" fill="#6a5838" opacity="0.62"/>
-          <ellipse cx="1205" cy="660" rx="19" ry="10" fill="#7a6040" opacity="0.56"/>
-          <ellipse cx="1308" cy="676" rx="26" ry="14" fill="#6a5030" opacity="0.52"/>
+          <!-- ══════════════════════════════════════
+               DIRT PATH (center, curving into forest)
+          ══════════════════════════════════════ -->
+          <!-- Path body -->
+          <path d="M498,810 Q545,715 565,635 Q582,562 598,484
+                   Q618,398 645,332 Q665,280 688,255
+                   Q704,237 722,234 Q740,237 756,255
+                   Q779,280 799,332 Q826,398 846,484
+                   Q862,562 878,635 Q898,715 945,810 Z"
+                fill="#7a5c2e"/>
+          <!-- Path left shadow edge -->
+          <path d="M498,810 Q545,715 565,635 Q582,562 598,484 Q618,398 645,332 Q660,286 678,260"
+                stroke="#68481e" stroke-width="18" fill="none" stroke-linecap="round"/>
+          <!-- Sunlit path center -->
+          <ellipse cx="720" cy="690" rx="120" ry="42" fill="#9e7c40" opacity="0.55"/>
+          <ellipse cx="715" cy="580" rx="80"  ry="30" fill="#8e6c32" opacity="0.42"/>
+          <ellipse cx="718" cy="475" rx="55"  ry="22" fill="#7e5c2a" opacity="0.35"/>
+          <ellipse cx="720" cy="375" rx="36"  ry="16" fill="#6e4e20" opacity="0.30"/>
 
-          <!-- ═══ DAPPLED SUNLIGHT ON GROUND ═══ -->
-          <ellipse cx="205"  cy="682" rx="85"  ry="30" fill="url(#dapple)"/>
-          <ellipse cx="388"  cy="694" rx="58"  ry="22" fill="url(#dapple)"/>
-          <ellipse cx="1108" cy="692" rx="95"  ry="32" fill="url(#dapple)"/>
-          <ellipse cx="1360" cy="712" rx="68"  ry="24" fill="url(#dapple)"/>
-          <ellipse cx="955"  cy="660" rx="48"  ry="16" fill="url(#dapple)"/>
+          <!-- ══════════════════════════════════════
+               RIGHT GROUND — LEAF LITTER / BARK
+          ══════════════════════════════════════ -->
+          <path d="M945,810 Q898,715 878,635 Q862,562 846,484
+                   Q826,398 799,332 Q779,280 756,255
+                   Q778,262 820,290 Q888,348 952,432
+                   Q1022,526 1072,628 Q1130,738 1440,810 Z"
+                fill="#7a5828"/>
+          <path d="M945,810 Q990,768 1055,742 Q1165,712 1295,728
+                   Q1395,744 1440,762 L1440,810 Z"
+                fill="#6a4e20" opacity="0.55"/>
+          <!-- Sunlit litter patches right -->
+          <ellipse cx="1082" cy="658" rx="162" ry="48" fill="url(#dapple)"/>
+          <ellipse cx="1348" cy="702" rx="118" ry="40" fill="url(#dapple)"/>
+          <ellipse cx="1205" cy="736" rx="95"  ry="32" fill="url(#dapple)"/>
+          <!-- Rocks right side -->
+          <ellipse cx="1018" cy="648" rx="30" ry="14" fill="#6e5230" opacity="0.65"/>
+          <ellipse cx="1162" cy="676" rx="24" ry="12" fill="#7a5a30" opacity="0.58"/>
+          <ellipse cx="1295" cy="695" rx="32" ry="16" fill="#6a5028" opacity="0.55"/>
+          <ellipse cx="1108" cy="702" rx="18" ry="9"  fill="#7e5830" opacity="0.50"/>
 
-          <!-- ═══ BACKPACK SHADOW ═══ -->
-          <ellipse cx="720" cy="720" rx="168" ry="33" fill="#1a1006" opacity="0.42"/>
-          <ellipse cx="720" cy="724" rx="128" ry="20" fill="#1a1006" opacity="0.26"/>
+          <!-- Moss wraps into foreground lower-left -->
+          <path d="M0,738 Q115,718 270,726 Q348,730 416,756 L428,810 L0,810 Z"
+                fill="#5ab022"/>
+          <ellipse cx="95"  cy="762" rx="148" ry="44" fill="#64ba28" opacity="0.50"/>
+          <ellipse cx="260" cy="756" rx="108" ry="34" fill="#5ab022" opacity="0.56"/>
 
-          <!-- ═══ BACKPACK BODY — TEAL SHELL ═══ -->
-          <!-- Main teal body (egg/teardrop silhouette) -->
-          <path d="M546,556 Q538,474 556,394
-                   Q576,324 616,282 Q658,248 720,246
-                   Q782,248 824,282 Q864,324 884,394
-                   Q902,474 894,556 Q872,618 842,656
-                   Q820,678 798,690 Q760,704 720,707
-                   Q680,704 642,690 Q620,678 598,656
-                   Q568,618 546,556 Z"
-                fill="#2e8a8a"/>
-          <!-- Teal shadow right/bottom edge -->
-          <path d="M820,395 Q872,440 894,556 Q882,618 842,656
-                   Q820,678 798,690 Q760,704 720,707
-                   Q760,692 800,660 Q842,628 860,578
-                   Q877,528 872,466 Z"
-                fill="#1c6868" opacity="0.52"/>
-          <!-- Teal highlight left edge -->
-          <path d="M546,556 Q538,474 556,394 Q576,324 616,282
-                   Q658,248 720,246 Q678,260 648,292
-                   Q616,326 603,386 Q588,448 592,538
-                   Q598,598 618,644 Z"
-                fill="#3aacac" opacity="0.36"/>
+          <!-- Dappled light on moss -->
+          <ellipse cx="168" cy="524" rx="88"  ry="28" fill="url(#dapple)"/>
+          <ellipse cx="46"  cy="568" rx="65"  ry="22" fill="url(#dapple)"/>
+          <ellipse cx="228" cy="610" rx="76"  ry="26" fill="url(#dapple)"/>
+          <ellipse cx="115" cy="658" rx="92"  ry="30" fill="url(#dapple)"/>
 
-          <!-- ═══ DOME (clear front bubble) ═══ -->
-          <!-- Dome teal border ring -->
-          <ellipse cx="720" cy="452" rx="192" ry="222" fill="none" stroke="#2e8a8a" stroke-width="12"/>
-          <!-- Dome interior — forest reflection clipped inside -->
+          <!-- ══════════════════════════════════════
+               BACKPACK SHADOW
+          ══════════════════════════════════════ -->
+          <ellipse cx="720" cy="784" rx="200" ry="26" fill="#0c0804" opacity="0.50"/>
+          <ellipse cx="720" cy="788" rx="158" ry="17" fill="#0c0804" opacity="0.28"/>
+
+          <!-- ══════════════════════════════════════
+               TEAL SHELL (backpack body)
+          ══════════════════════════════════════ -->
+          <path d="M522,534
+                   C518,446 532,360 558,294
+                   C580,238 620,198 662,180
+                   C680,172 700,168 720,168
+                   C740,168 760,172 778,180
+                   C820,198 860,238 882,294
+                   C908,360 922,446 918,534
+                   C914,600 895,650 862,690
+                   C836,722 800,746 760,759
+                   C748,763 734,766 720,767
+                   C706,766 692,763 680,759
+                   C640,746 604,722 578,690
+                   C545,650 526,600 522,534 Z"
+                fill="#2c8a86"/>
+          <!-- Right side shadow (depth) -->
+          <path d="M822,302 C878,386 915,468 918,534
+                   C914,600 895,650 862,690
+                   C836,722 800,746 760,759
+                   C748,763 734,766 720,767
+                   C744,758 772,742 796,720
+                   C832,684 858,642 876,592
+                   C896,536 908,476 905,412 Z"
+                fill="#1a6864" opacity="0.60"/>
+          <!-- Left/top sunlit highlight -->
+          <path d="M522,534 C518,446 532,360 558,294
+                   C580,238 620,198 662,180
+                   C680,172 700,168 720,168
+                   C700,174 682,186 668,200
+                   C642,228 625,268 614,318
+                   C600,378 594,448 596,528 Z"
+                fill="#3eaaa6" opacity="0.40"/>
+
+          <!-- ══════════════════════════════════════
+               DOME — CLEAR BUBBLE FRONT
+          ══════════════════════════════════════ -->
+          <!-- Teal rim ring -->
+          <ellipse cx="720" cy="472" rx="200" ry="230" fill="none" stroke="#2c8a86" stroke-width="15"/>
+          <!-- Forest reflection (clipped inside dome) -->
           <g clip-path="url(#dome-clip)">
             <!-- Reflected sky wash -->
-            <ellipse cx="720" cy="335" rx="185" ry="125" fill="#98c8d8" opacity="0.28"/>
-            <!-- Reflected tree trunks -->
-            <rect x="644" y="268" width="11" height="188" fill="#263820" opacity="0.18" rx="2"/>
-            <rect x="685" y="248" width="9"  height="205" fill="#263820" opacity="0.16" rx="2"/>
-            <rect x="726" y="262" width="10" height="195" fill="#263820" opacity="0.18" rx="2"/>
-            <rect x="763" y="254" width="8"  height="202" fill="#263820" opacity="0.15" rx="2"/>
-            <!-- Reflection radial fill -->
-            <ellipse cx="720" cy="452" rx="184" ry="214" fill="url(#dome-reflect)"/>
+            <ellipse cx="720" cy="280" rx="200" ry="98" fill="#80b8d0" opacity="0.30"/>
+            <!-- Reflected tree trunks dark vertical lines -->
+            <rect x="620" y="250" width="10" height="228" fill="#162010" opacity="0.24" rx="2"/>
+            <rect x="652" y="238" width="8"  height="240" fill="#162010" opacity="0.22" rx="2"/>
+            <rect x="682" y="246" width="9"  height="234" fill="#162010" opacity="0.24" rx="2"/>
+            <rect x="714" y="242" width="8"  height="238" fill="#162010" opacity="0.22" rx="2"/>
+            <rect x="744" y="248" width="9"  height="232" fill="#162010" opacity="0.22" rx="2"/>
+            <rect x="774" y="254" width="8"  height="226" fill="#162010" opacity="0.20" rx="2"/>
+            <rect x="802" y="260" width="9"  height="220" fill="#162010" opacity="0.20" rx="2"/>
+            <!-- Radial forest fill -->
+            <ellipse cx="720" cy="472" rx="192" ry="222" fill="url(#dome-refl)"/>
           </g>
-          <!-- Dome clear fill -->
-          <ellipse cx="720" cy="452" rx="188" ry="218" fill="url(#dome-grad)"/>
+          <!-- Dome clear glass -->
+          <ellipse cx="720" cy="472" rx="196" ry="226" fill="url(#dome-glass)"/>
           <!-- Specular highlight upper-left -->
-          <ellipse cx="637" cy="348" rx="88" ry="60" fill="url(#dome-shine)" transform="rotate(-16,637,348)"/>
-          <path d="M576,314 Q616,286 668,300 Q648,342 606,352 Z" fill="#ffffff" opacity="0.46"/>
-          <!-- Dome inner edge glare -->
-          <ellipse cx="720" cy="452" rx="188" ry="218" fill="none" stroke="#c8e8e8" stroke-width="2.5" opacity="0.55"/>
-          <!-- Curved rim-light left -->
-          <path d="M544,386 Q530,452 544,520" stroke="#ffffff" stroke-width="3" fill="none" opacity="0.28" stroke-linecap="round"/>
+          <ellipse cx="620" cy="348" rx="108" ry="70" fill="url(#dome-spec)" transform="rotate(-14,620,348)"/>
+          <path d="M558,314 Q596,285 650,300 Q630,348 585,360 Z" fill="#ffffff" opacity="0.55"/>
+          <!-- Curved rim glare left -->
+          <path d="M520,420 Q504,472 520,528" stroke="#ffffff" stroke-width="4" fill="none" opacity="0.30" stroke-linecap="round"/>
+          <!-- Inner ring glow -->
+          <ellipse cx="720" cy="472" rx="196" ry="226" fill="none" stroke="#a8dede" stroke-width="2.5" opacity="0.40"/>
 
-          <!-- ═══ MESH PANEL (lower dome, teal mesh base) ═══ -->
-          <path d="M534,554 Q546,598 566,633 Q598,666 638,685
-                   Q680,702 720,705 Q760,702 802,685
-                   Q842,666 874,633 Q894,598 906,554
-                   Q874,533 802,521 Q760,514 720,512
-                   Q680,514 638,521 Q566,533 534,554 Z"
-                fill="#2e8a8a" opacity="0.52"/>
-          <!-- Mesh dot texture -->
-          <path d="M534,554 Q546,598 566,633 Q598,666 638,685
-                   Q680,702 720,705 Q760,702 802,685
-                   Q842,666 874,633 Q894,598 906,554
-                   Q874,533 802,521 Q760,514 720,512
-                   Q680,514 638,521 Q566,533 534,554 Z"
-                fill="none" stroke="#3aaaaa" stroke-width="1.4" opacity="0.38"/>
+          <!-- ══════════════════════════════════════
+               LOWER MESH PANEL
+          ══════════════════════════════════════ -->
+          <path d="M522,534
+                   C526,530 538,526 558,522
+                   C602,514 660,510 720,510
+                   C780,510 838,514 882,522
+                   C902,526 914,530 918,534
+                   C914,600 895,650 862,690
+                   C836,722 800,746 760,759
+                   C748,763 734,766 720,767
+                   C706,766 692,763 680,759
+                   C640,746 604,722 578,690
+                   C545,650 526,600 522,534 Z"
+                fill="#257e7a" opacity="0.68"/>
+          <!-- Mesh highlight lines -->
+          <path d="M522,534 C526,530 538,526 558,522 C602,514 660,510 720,510 C780,510 838,514 882,522 C902,526 914,530 918,534"
+                stroke="#2e9e9a" stroke-width="2" fill="none" opacity="0.35"/>
+          <path d="M528,556 Q720,538 912,556" stroke="#2e9e9a" stroke-width="1.6" fill="none" opacity="0.26"/>
+          <path d="M535,578 Q720,560 905,578" stroke="#2e9e9a" stroke-width="1.3" fill="none" opacity="0.20"/>
 
-          <!-- ═══ ZIPPER RING — TOP ═══ -->
-          <ellipse cx="720" cy="234" rx="30" ry="10" fill="#237070" stroke="#184e4e" stroke-width="2.5"/>
-          <rect x="712" y="223" width="16" height="18" fill="#2e8a8a" rx="3"/>
-          <circle cx="720" cy="220" r="8"  fill="#184e4e" stroke="#3aaaaa" stroke-width="1.8"/>
-          <circle cx="720" cy="220" r="4"  fill="#0e3838"/>
+          <!-- ══════════════════════════════════════
+               ZIPPER / HANDLE TOP
+          ══════════════════════════════════════ -->
+          <rect x="690" y="162" width="60" height="14" fill="#1e6e6a" rx="7"/>
+          <circle cx="720" cy="168" r="14" fill="#186060" stroke="#2a9090" stroke-width="3.5"/>
+          <circle cx="720" cy="168" r="7"  fill="#0e4848"/>
           <!-- D-ring clip -->
-          <path d="M705,231 Q698,226 698,220 Q698,214 705,209" stroke="#b0c8c8" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <path d="M702,178 Q692,171 692,163 Q692,155 702,149" stroke="#88c8c8" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          <!-- Zipper pull tab -->
+          <rect x="714" y="152" width="12" height="22" fill="#227070" rx="3.5" opacity="0.82"/>
 
-          <!-- ═══ SIDE STUDS (wooden hardware) ═══ -->
-          <circle cx="536" cy="486" r="13" fill="#c8a060" stroke="#8a6830" stroke-width="2.5"/>
-          <circle cx="536" cy="486" r="7"  fill="#e0b870"/>
-          <circle cx="904" cy="486" r="13" fill="#c8a060" stroke="#8a6830" stroke-width="2.5"/>
-          <circle cx="904" cy="486" r="7"  fill="#e0b870"/>
+          <!-- ══════════════════════════════════════
+               WOODEN BALL STUDS (2 per side = 4 total)
+          ══════════════════════════════════════ -->
+          <!-- Left upper -->
+          <circle cx="522" cy="422" r="18" fill="#c8a058" stroke="#8a6828" stroke-width="3.5"/>
+          <circle cx="522" cy="422" r="10" fill="#deb86a"/>
+          <circle cx="522" cy="422" r="4.5" fill="#c09040" opacity="0.75"/>
+          <!-- Left lower -->
+          <circle cx="522" cy="528" r="18" fill="#c8a058" stroke="#8a6828" stroke-width="3.5"/>
+          <circle cx="522" cy="528" r="10" fill="#deb86a"/>
+          <circle cx="522" cy="528" r="4.5" fill="#c09040" opacity="0.75"/>
+          <!-- Right upper -->
+          <circle cx="918" cy="422" r="18" fill="#c8a058" stroke="#8a6828" stroke-width="3.5"/>
+          <circle cx="918" cy="422" r="10" fill="#deb86a"/>
+          <circle cx="918" cy="422" r="4.5" fill="#c09040" opacity="0.75"/>
+          <!-- Right lower -->
+          <circle cx="918" cy="528" r="18" fill="#c8a058" stroke="#8a6828" stroke-width="3.5"/>
+          <circle cx="918" cy="528" r="10" fill="#deb86a"/>
+          <circle cx="918" cy="528" r="4.5" fill="#c09040" opacity="0.75"/>
 
-          <!-- ═══ SHOULDER STRAP (right side hint) ═══ -->
-          <path d="M898,418 Q940,398 958,440 Q950,510 924,558"
-                stroke="#2e8a8a" stroke-width="20" fill="none" stroke-linecap="round" opacity="0.58"/>
-          <path d="M898,418 Q940,398 958,440 Q950,510 924,558"
-                stroke="#3aaaaa" stroke-width="6"  fill="none" stroke-linecap="round" opacity="0.30"/>
+          <!-- ══════════════════════════════════════
+               SHOULDER STRAP (right side, partial)
+          ══════════════════════════════════════ -->
+          <path d="M914,375 Q962,346 982,393 Q974,478 946,558"
+                stroke="#2c8a86" stroke-width="26" fill="none" stroke-linecap="round" opacity="0.60"/>
+          <path d="M914,375 Q962,346 982,393 Q974,478 946,558"
+                stroke="#3aacac" stroke-width="7"  fill="none" stroke-linecap="round" opacity="0.25"/>
 
-          <!-- ═══ WHEELS (bottom) ═══ -->
-          <circle cx="652" cy="726" r="18" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="2.5"/>
-          <circle cx="652" cy="726" r="9"  fill="#2a2a2a"/>
-          <circle cx="652" cy="726" r="4"  fill="#444444"/>
-          <circle cx="788" cy="726" r="18" fill="#1a1a1a" stroke="#3a3a3a" stroke-width="2.5"/>
-          <circle cx="788" cy="726" r="9"  fill="#2a2a2a"/>
-          <circle cx="788" cy="726" r="4"  fill="#444444"/>
+          <!-- ══════════════════════════════════════
+               WHEELS — 2 black casters at bottom
+          ══════════════════════════════════════ -->
+          <circle cx="645" cy="770" r="24" fill="#181818" stroke="#383838" stroke-width="3.5"/>
+          <circle cx="645" cy="770" r="13" fill="#262626"/>
+          <circle cx="645" cy="770" r="5"  fill="#3e3e3e"/>
+          <circle cx="795" cy="770" r="24" fill="#181818" stroke="#383838" stroke-width="3.5"/>
+          <circle cx="795" cy="770" r="13" fill="#262626"/>
+          <circle cx="795" cy="770" r="5"  fill="#3e3e3e"/>
+          <!-- Axle bar -->
+          <rect x="645" y="766" width="150" height="8" fill="#202020" rx="4" opacity="0.60"/>
 
-          <!-- ═══ WOODEN PERCH BAR (upper) ═══ -->
-          <rect x="612" y="424" width="216" height="12" fill="#c8a060" rx="6"/>
-          <rect x="616" y="433" width="214" height="5"  fill="#9a7030" opacity="0.42" rx="2"/>
+          <!-- ══════════════════════════════════════
+               WOODEN BEAD TOY — hanging left inside dome
+          ══════════════════════════════════════ -->
+          <line x1="612" y1="376" x2="612" y2="534" stroke="#b89428" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Bead 1 -->
+          <circle cx="612" cy="392" r="15" fill="#c8a058" stroke="#8a6828" stroke-width="2.5"/>
+          <circle cx="612" cy="392" r="8"  fill="#ddb86a"/>
+          <!-- knot -->
+          <circle cx="612" cy="408" r="4.5" fill="#9a7222" opacity="0.72"/>
+          <!-- Bead 2 -->
+          <circle cx="612" cy="424" r="15" fill="#b89048" stroke="#8a6828" stroke-width="2.5"/>
+          <circle cx="612" cy="424" r="8"  fill="#ceaa5e"/>
+          <!-- knot -->
+          <circle cx="612" cy="440" r="4.5" fill="#9a7222" opacity="0.72"/>
+          <!-- Bead 3 -->
+          <circle cx="612" cy="456" r="15" fill="#c8a058" stroke="#8a6828" stroke-width="2.5"/>
+          <circle cx="612" cy="456" r="8"  fill="#ddb86a"/>
 
-          <!-- Perch support cords -->
-          <path d="M636,436 Q628,476 632,518" stroke="#c0982a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-          <path d="M804,436 Q812,476 808,518" stroke="#c0982a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- ══════════════════════════════════════
+               FEATHER TOY — below hammock
+          ══════════════════════════════════════ -->
+          <line x1="735" y1="550" x2="735" y2="608" stroke="#9c9090" stroke-width="3.5" stroke-linecap="round"/>
+          <ellipse cx="735" cy="624" rx="10" ry="24" fill="#f2eee8" opacity="0.88"/>
+          <ellipse cx="729" cy="628" rx="8"  ry="19" fill="#f6f2ee" opacity="0.76"/>
+          <ellipse cx="741" cy="630" rx="9"  ry="17" fill="#f0ece6" opacity="0.72"/>
+          <line x1="735" y1="604" x2="735" y2="648" stroke="#d4d0ca" stroke-width="1.8" opacity="0.62"/>
 
-          <!-- ═══ COLORFUL BRAIDED ROPE HAMMOCK ═══ -->
-          <path d="M634,518 Q678,542 720,538 Q762,542 806,518"
-                stroke="#cc2828" stroke-width="6"  fill="none" stroke-linecap="round"/>
-          <path d="M634,523 Q678,548 720,544 Q762,548 806,523"
-                stroke="#2858c0" stroke-width="4.5" fill="none" stroke-linecap="round"/>
-          <path d="M634,527 Q678,552 720,548 Q762,552 806,527"
-                stroke="#28a028" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+          <!-- ══════════════════════════════════════
+               HAMMOCK ROPE (braided, colorful)
+               — the main perch Atlas sits on
+          ══════════════════════════════════════ -->
+          <!-- Vertical anchor lines inside dome -->
+          <line x1="560" y1="460" x2="560" y2="542" stroke="#2c8a86" stroke-width="5.5" stroke-linecap="round" opacity="0.70"/>
+          <line x1="880" y1="460" x2="880" y2="542" stroke="#2c8a86" stroke-width="5.5" stroke-linecap="round" opacity="0.70"/>
+          <!-- Hammock strands — catenary curve, 3 colored ropes -->
+          <path d="M560,542 Q642,520 720,516 Q798,520 880,542"
+                stroke="#cc2c24" stroke-width="8" fill="none" stroke-linecap="round"/>
+          <path d="M560,547 Q642,525 720,521 Q798,525 880,547"
+                stroke="#2858cc" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M560,551 Q642,529 720,525 Q798,529 880,551"
+                stroke="#28a82c" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          <path d="M560,554 Q642,532 720,528 Q798,532 880,554"
+                stroke="#cc2c24" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.52"/>
 
-          <!-- ═══ WOODEN BEAD TOYS (left cluster) ═══ -->
-          <line x1="622" y1="490" x2="622" y2="560" stroke="#c0982a" stroke-width="3" stroke-linecap="round"/>
-          <circle cx="622" cy="498" r="11" fill="#c8a060" stroke="#906828" stroke-width="2"/>
-          <circle cx="622" cy="520" r="11" fill="#b89050" stroke="#906828" stroke-width="2"/>
-          <circle cx="622" cy="542" r="11" fill="#c8a060" stroke="#906828" stroke-width="2"/>
-          <!-- Feather/rope toy lower left -->
-          <rect x="599"  y="568" width="9"  height="38" fill="#cc2828" rx="3.5"/>
-          <rect x="596"  y="600" width="15" height="9"  fill="#e03a3a" rx="2"/>
-          <path d="M603,568 L603,556" stroke="#909090" stroke-width="3.5" stroke-linecap="round"/>
-          <ellipse cx="603" cy="612" rx="8" ry="12" fill="#e05050" opacity="0.60"/>
+          <!-- ══════════════════════════════════════
+               WOOD CHIP SUBSTRATE FLOOR
+          ══════════════════════════════════════ -->
+          <ellipse cx="720" cy="668" rx="175" ry="36" fill="#8a6032" opacity="0.55"/>
+          <ellipse cx="720" cy="674" rx="168" ry="28" fill="#7a5028" opacity="0.40"/>
+          <!-- Chip texture -->
+          <path d="M578,664 Q604,658 632,662"  stroke="#6a4820" stroke-width="2.5" fill="none" opacity="0.44" stroke-linecap="round"/>
+          <path d="M650,677 Q678,670 706,674"  stroke="#6a4820" stroke-width="2.2" fill="none" opacity="0.38" stroke-linecap="round"/>
+          <path d="M736,674 Q764,667 793,671"  stroke="#6a4820" stroke-width="2.5" fill="none" opacity="0.42" stroke-linecap="round"/>
+          <path d="M812,664 Q837,658 862,662"  stroke="#6a4820" stroke-width="2"   fill="none" opacity="0.36" stroke-linecap="round"/>
+          <path d="M608,688 Q635,682 660,686"  stroke="#6a4820" stroke-width="2"   fill="none" opacity="0.30" stroke-linecap="round"/>
+          <path d="M767,688 Q792,682 818,686"  stroke="#6a4820" stroke-width="2"   fill="none" opacity="0.30" stroke-linecap="round"/>
+          <path d="M682,698 Q708,692 734,696"  stroke="#6a4820" stroke-width="1.8" fill="none" opacity="0.26" stroke-linecap="round"/>
 
-          <!-- ═══ SUBSTRATE FLOOR (wood chips) ═══ -->
-          <path d="M534,554 Q546,598 566,633 Q598,666 638,685
-                   Q680,702 720,705 Q760,702 802,685
-                   Q842,666 874,633 Q894,598 906,554
-                   Q874,542 802,530 Q760,524 720,522
-                   Q680,524 638,530 Q566,542 534,554 Z"
-                fill="#9a7040" opacity="0.28"/>
-          <!-- Wood chip strokes -->
-          <path d="M598,622 Q620,617 646,621" stroke="#7a5828" stroke-width="2.5" fill="none" opacity="0.42" stroke-linecap="round"/>
-          <path d="M664,642 Q690,636 716,640"  stroke="#7a5828" stroke-width="2"   fill="none" opacity="0.36" stroke-linecap="round"/>
-          <path d="M746,638 Q772,632 800,636"  stroke="#7a5828" stroke-width="2.5" fill="none" opacity="0.40" stroke-linecap="round"/>
-          <path d="M618,655 Q648,649 673,653"  stroke="#7a5828" stroke-width="2"   fill="none" opacity="0.32" stroke-linecap="round"/>
-          <path d="M760,656 Q786,650 812,654"  stroke="#7a5828" stroke-width="2"   fill="none" opacity="0.32" stroke-linecap="round"/>
-          <path d="M690,668 Q714,662 738,666"  stroke="#7a5828" stroke-width="1.8" fill="none" opacity="0.28" stroke-linecap="round"/>
-
-          <!-- ═══════════════════════════════════════════════════
-               WHITE DOVE — Atlas (upper, on hammock perch)
-               ═══════════════════════════════════════════════════ -->
-          <g transform="translate(712, 392)">
-            <!-- Left wing (slightly raised/spread) -->
-            <path d="M-8,-4 C-28,-14 -52,-9 -63,2 C-52,6 -33,8 -14,4 Z" fill="#ececе4"/>
-            <path d="M-8,-4 C-28,-14 -52,-9 -63,2 C-52,6 -33,8 -14,4 Z" fill="#eceae2"/>
-            <!-- Wing feather lines -->
-            <path d="M-8,-4  C-26,-7 -48,-4 -58,3"  stroke="#d6d4cc" stroke-width="1.6" fill="none"/>
-            <path d="M-6,-2  C-22,-4 -38,-1 -46,5"  stroke="#d6d4cc" stroke-width="1.3" fill="none"/>
+          <!-- ══════════════════════════════════════
+               ATLAS — pure white dove (upper, on hammock)
+          ══════════════════════════════════════ -->
+          <g transform="translate(728,456)">
+            <!-- Left wing (relaxed, spread slightly over hammock) -->
+            <path d="M-11,-3 C-35,-14 -62,-8 -76,5 C-61,9 -38,13 -16,7 Z" fill="#edebe4"/>
+            <path d="M-11,-3 C-32,-8 -57,-4 -70,5"  stroke="#d6d4cc" stroke-width="2.2" fill="none" opacity="0.46"/>
+            <path d="M-9,1   C-28,-3 -49,1  -60,9"  stroke="#d6d4cc" stroke-width="1.6" fill="none" opacity="0.38"/>
+            <path d="M-7,5   C-23,2  -40,5  -49,12" stroke="#d6d4cc" stroke-width="1.2" fill="none" opacity="0.30"/>
             <!-- Right wing -->
-            <path d="M8,-4 C28,-14 52,-9 63,2 C52,6 33,8 14,4 Z" fill="#eceae2"/>
-            <path d="M8,-4  C26,-7 48,-4 58,3"  stroke="#d6d4cc" stroke-width="1.6" fill="none"/>
+            <path d="M11,-3 C35,-14 62,-8 76,5 C61,9 38,13 16,7 Z" fill="#edebe4"/>
+            <path d="M11,-3 C32,-8 57,-4 70,5"  stroke="#d6d4cc" stroke-width="2.2" fill="none" opacity="0.46"/>
+            <path d="M9,1   C28,-3 49,1  60,9"  stroke="#d6d4cc" stroke-width="1.6" fill="none" opacity="0.38"/>
             <!-- Body -->
-            <ellipse cx="0" cy="3" rx="40" ry="23" fill="#f5f4f0"/>
-            <!-- Breast highlight -->
-            <ellipse cx="4" cy="5" rx="25" ry="16" fill="#ffffff" opacity="0.50"/>
-            <!-- Body feather texture -->
-            <path d="M-32,4  C-16,0 4,2 18,6"  stroke="#dcdad2" stroke-width="1.0" fill="none" opacity="0.40"/>
-            <path d="M-28,12 C-12,8 8,10 22,14" stroke="#dcdad2" stroke-width="0.9" fill="none" opacity="0.35"/>
+            <ellipse cx="2" cy="8" rx="44" ry="27" fill="#f5f3ee"/>
+            <!-- Breast sunlit highlight -->
+            <ellipse cx="8" cy="9" rx="29" ry="18" fill="#ffffff" opacity="0.50"/>
+            <!-- Feather texture -->
+            <path d="M-36,7  C-15,2  8,4  24,10" stroke="#dbdad2" stroke-width="1.2" fill="none" opacity="0.35"/>
+            <path d="M-32,17 C-11,12 11,14 26,20" stroke="#dbdad2" stroke-width="1.0" fill="none" opacity="0.28"/>
             <!-- Neck -->
-            <path d="M16,-8 C24,-20 26,-32 20,-38 C12,-34 8,-22 10,-10 Z" fill="#edebe4"/>
+            <path d="M24,-12 C32,-26 34,-40 26,-46 C18,-42 13,-27 16,-14 Z" fill="#eeecea"/>
             <!-- Head -->
-            <circle cx="24" cy="-38" r="18" fill="#f5f2ec"/>
-            <!-- Crown (subtle darker) -->
-            <path d="M10,-52 C18,-60 34,-60 42,-52 C36,-44 26,-38 26,-38 C20,-44 14,-48 10,-52 Z" fill="#d8d4c8" opacity="0.38"/>
-            <!-- Face highlight lore area -->
-            <ellipse cx="36" cy="-44" rx="10" ry="7" fill="#ffffff" opacity="0.45"/>
-            <!-- Eye — orange-red orbital ring of Barbary dove -->
-            <circle cx="38" cy="-42" r="6"   fill="#cc4010" opacity="0.90"/>
-            <circle cx="38" cy="-42" r="4.2" fill="#180c04"/>
-            <circle cx="37" cy="-43" r="1.7" fill="#ffffff" opacity="0.92"/>
-            <circle cx="40" cy="-41" r="0.9" fill="#ffffff" opacity="0.40"/>
+            <circle cx="30" cy="-46" r="22" fill="#f4f2ec"/>
+            <!-- Crown subtle -->
+            <path d="M13,-63 C22,-72 40,-72 49,-63 C41,-54 30,-46 30,-46 C24,-52 17,-57 13,-63 Z" fill="#d4d2ca" opacity="0.32"/>
+            <!-- Face highlight -->
+            <ellipse cx="43" cy="-52" rx="12" ry="9" fill="#ffffff" opacity="0.44"/>
+            <!-- Eye: Barbary dove orange-red orbital ring -->
+            <circle cx="45" cy="-50" r="7.5"  fill="#d43e0e" opacity="0.94"/>
+            <circle cx="45" cy="-50" r="5.2"  fill="#0a0402"/>
+            <circle cx="44" cy="-51" r="2.4"  fill="#ffffff" opacity="0.96"/>
+            <circle cx="47" cy="-49" r="1.1"  fill="#ffffff" opacity="0.44"/>
             <!-- Bill -->
-            <path d="M48,-44 C58,-42 62,-40 60,-36 C56,-33 48,-35 46,-39 Z" fill="#d09870"/>
-            <path d="M46,-39 C54,-37 58,-35 56,-32 C52,-30 46,-32 45,-34 Z" fill="#e0a880"/>
+            <path d="M54,-51 C66,-50 70,-47 68,-43 C64,-40 54,-42 52,-47 Z" fill="#c49060"/>
+            <path d="M52,-47 C62,-45 66,-42 64,-38 C60,-36 52,-38 51,-41 Z" fill="#d4a070"/>
             <!-- Tail -->
-            <path d="M-38,6 C-56,12 -60,24 -54,30 C-46,18 -36,12 -28,11 Z" fill="#e8e6de"/>
-            <path d="M-33,8 C-48,16 -50,26 -44,30 C-38,20 -30,14 -24,13 Z" fill="#f0eee8"/>
-            <!-- Feet gripping rope -->
-            <path d="M-4,22  L-4,32"  stroke="#dfa055" stroke-width="3.8" fill="none" stroke-linecap="round"/>
-            <path d="M12,22  L12,32"  stroke="#dfa055" stroke-width="3.8" fill="none" stroke-linecap="round"/>
-            <path d="M-4,32 C-10,36 -19,37 -23,35" stroke="#dfa055" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-            <path d="M-4,32 C2,36  11,37  15,34"   stroke="#dfa055" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-            <path d="M12,32 C18,36  26,37  30,34"   stroke="#dfa055" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-            <path d="M12,32 C6,36  -2,37  -6,34"    stroke="#dfa055" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+            <path d="M-42,9 C-62,18 -66,31 -58,37 C-50,25 -38,16 -28,14 Z" fill="#eae8e0"/>
+            <path d="M-38,11 C-54,22 -56,33 -48,37 C-42,27 -32,18 -24,15 Z" fill="#f2f0ea" opacity="0.55"/>
+            <!-- Feet on rope -->
+            <path d="M-2,30  L-2,43"  stroke="#dea050" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M15,30  L15,43"  stroke="#dea050" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+            <path d="M-2,43 C-9,48 -20,50 -25,47"  stroke="#dea050" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M-2,43 C5,48  14,50  18,46"   stroke="#dea050" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M-2,43 C-2,50 -2,57 -3,60"   stroke="#dea050" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <path d="M15,43 C22,48 32,50  36,46"   stroke="#dea050" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M15,43 C8,48  -1,50  -5,46"   stroke="#dea050" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M15,43 C15,50 15,57  14,60"   stroke="#dea050" stroke-width="2.6" fill="none" stroke-linecap="round"/>
           </g>
 
-          <!-- ═══════════════════════════════════════════════════
-               BUFF / CINNAMON DOVE — Peabody (lower, sitting on floor)
-               ═══════════════════════════════════════════════════ -->
-          <g transform="translate(735, 574)">
-            <!-- Body — plump, settled low -->
-            <ellipse cx="0" cy="0" rx="52" ry="31" fill="#d4a870" transform="rotate(4,0,0)"/>
-            <!-- Wing (folded, darker) -->
-            <path d="M-44,-6 C-64,-22 -58,-38 -26,-30
-                     C-6,-22 8,-10 4,4 C-10,10 -30,8 -44,-6 Z"
-                  fill="#c09060"/>
+          <!-- ══════════════════════════════════════
+               PEABODY — buff/cinnamon dove (lower, floor)
+          ══════════════════════════════════════ -->
+          <g transform="translate(742,600)">
+            <!-- Body — plump, settled, slightly tilted -->
+            <ellipse cx="0" cy="2" rx="58" ry="35" fill="#d0a268" transform="rotate(4,0,2)"/>
+            <!-- Left wing over back (folded, darker) -->
+            <path d="M-52,-10 C-74,-28 -68,-46 -30,-36
+                     C-10,-27 6,-12 2,5 C-13,14 -36,12 -52,-10 Z"
+                  fill="#b88858"/>
             <!-- Wing feather lines -->
-            <path d="M-42,-6 C-28,-20 -4,-24 10,-14" stroke="#a87848" stroke-width="2.0" fill="none" opacity="0.58"/>
-            <path d="M-36,-4 C-22,-16 2,-19 16,-10"  stroke="#a87848" stroke-width="1.6" fill="none" opacity="0.48"/>
-            <path d="M-28,-2 C-16,-12 6,-15 18,-7"   stroke="#b09058" stroke-width="1.3" fill="none" opacity="0.40"/>
+            <path d="M-50,-10 C-33,-26  -6,-28  9,-15" stroke="#a07848" stroke-width="2.4" fill="none" opacity="0.54"/>
+            <path d="M-44,-7  C-28,-21  -3,-23  11,-11" stroke="#a07848" stroke-width="2.0" fill="none" opacity="0.46"/>
+            <path d="M-36,-4  C-22,-16  -1,-18  13,-8"  stroke="#a87c50" stroke-width="1.5" fill="none" opacity="0.36"/>
             <!-- Breast / belly highlight -->
-            <ellipse cx="7" cy="5" rx="32" ry="21" fill="#e8c890" opacity="0.55"/>
+            <ellipse cx="9" cy="7" rx="36" ry="25" fill="#e8c888" opacity="0.54"/>
             <!-- Rump feather texture -->
-            <path d="M-42,3  C-26,-2 -4,0 14,5"  stroke="#b89060" stroke-width="1.1" fill="none" opacity="0.34"/>
-            <path d="M-40,12 C-24,7 -2,9 16,14"  stroke="#b89060" stroke-width="1.0" fill="none" opacity="0.28"/>
-            <path d="M-36,20 C-20,15 2,17 20,22"  stroke="#b89060" stroke-width="0.9" fill="none" opacity="0.24"/>
+            <path d="M-46,5  C-27,0  -3,2  17,8"  stroke="#b09060" stroke-width="1.3" fill="none" opacity="0.30"/>
+            <path d="M-44,16 C-25,11 -1,13 19,19" stroke="#b09060" stroke-width="1.1" fill="none" opacity="0.24"/>
             <!-- Neck -->
-            <path d="M26,-8 C34,-20 36,-34 30,-40 C22,-36 18,-22 20,-10 Z" fill="#c8a070"/>
-            <!-- Barbary dove black collar at nape -->
-            <path d="M22,-40 C16,-50 4,-54 -8,-52 C-18,-50 -22,-40 -18,-34
-                     C-12,-38 -2,-40 8,-38 C16,-36 20,-34 22,-38 Z"
-                  fill="#160e06" opacity="0.82"/>
+            <path d="M32,-12 C40,-26 42,-42 34,-48 C25,-44 20,-29 23,-14 Z" fill="#c09a64"/>
+            <!-- Barbary dove black nape collar -->
+            <path d="M28,-48 C22,-60  7,-64  -8,-62
+                     C-21,-60 -26,-47 -21,-38
+                     C-14,-44  -2,-46  9,-44
+                     C18,-42  24,-40  26,-44 Z"
+                  fill="#120c06" opacity="0.82"/>
             <!-- Head -->
-            <circle cx="32" cy="-42" r="21" fill="#d4a870"/>
+            <circle cx="38" cy="-48" r="24" fill="#d0a268"/>
             <!-- Crown shading -->
-            <path d="M16,-58 C24,-66 44,-66 52,-58 C46,-50 34,-42 34,-42 C28,-48 20,-54 16,-58 Z" fill="#a87848" opacity="0.38"/>
+            <path d="M20,-68 C30,-76 50,-76 60,-68 C52,-59 38,-48 38,-48 C32,-54 24,-61 20,-68 Z" fill="#a07848" opacity="0.34"/>
             <!-- Face highlight -->
-            <ellipse cx="42" cy="-48" rx="11" ry="8" fill="#e8c890" opacity="0.50"/>
-            <!-- Eye -->
-            <circle cx="46" cy="-50" r="7"   fill="#cc4010" opacity="0.90"/>
-            <circle cx="46" cy="-50" r="4.8" fill="#180c04"/>
-            <circle cx="45" cy="-51" r="2.0" fill="#ffffff" opacity="0.92"/>
-            <circle cx="48" cy="-49" r="1.0" fill="#ffffff" opacity="0.38"/>
+            <ellipse cx="50" cy="-56" rx="14" ry="10" fill="#e8c280" opacity="0.50"/>
+            <!-- Eye: Barbary dove orange-red orbital ring -->
+            <circle cx="54" cy="-56" r="8.5"  fill="#d43e0e" opacity="0.94"/>
+            <circle cx="54" cy="-56" r="5.8"  fill="#0a0402"/>
+            <circle cx="53" cy="-57" r="2.6"  fill="#ffffff" opacity="0.96"/>
+            <circle cx="57" cy="-55" r="1.2"  fill="#ffffff" opacity="0.38"/>
             <!-- Bill -->
-            <path d="M56,-52 C68,-50 72,-48 70,-43 C66,-40 56,-42 54,-47 Z" fill="#a88060"/>
-            <path d="M54,-47 C64,-44 68,-42 66,-38 C62,-36 54,-38 53,-41 Z" fill="#b89070"/>
+            <path d="M63,-58 C76,-56 80,-53 78,-48 C74,-45 63,-47 61,-52 Z" fill="#a07858"/>
+            <path d="M61,-52 C72,-49 76,-46 74,-42 C70,-39 61,-41 59,-45 Z" fill="#b08868"/>
             <!-- Tail -->
-            <path d="M-50,5 C-70,14 -74,26 -66,32 C-58,20 -46,12 -36,12 Z" fill="#c89868"/>
-            <path d="M-46,7 C-62,18 -64,30 -56,34 C-50,24 -40,16 -32,14 Z" fill="#d4a870" opacity="0.55"/>
-            <!-- Feet (sitting) -->
-            <path d="M-4,28 C-8,36 -10,44 -10,48"  stroke="#d09060" stroke-width="3.8" fill="none" stroke-linecap="round"/>
-            <path d="M14,30 C16,38 16,45 15,49"     stroke="#d09060" stroke-width="3.8" fill="none" stroke-linecap="round"/>
-            <path d="M-10,48 C-16,52 -25,53 -30,51" stroke="#d09060" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-            <path d="M-10,48 C-4,52  5,53   9,51"   stroke="#d09060" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-            <path d="M15,49 C9,53   0,54  -4,52"    stroke="#d09060" stroke-width="2.8" fill="none" stroke-linecap="round"/>
-            <path d="M15,49 C21,53  30,54  34,52"   stroke="#d09060" stroke-width="2.8" fill="none" stroke-linecap="round"/>
+            <path d="M-56,7 C-77,18 -81,32 -72,38 C-62,24 -50,15 -38,14 Z" fill="#c09860"/>
+            <path d="M-52,9 C-68,22 -70,34 -62,38 C-54,28 -44,19 -34,16 Z" fill="#d0a870" opacity="0.52"/>
+            <!-- Feet sitting on substrate -->
+            <path d="M-4,33 C-8,44 -10,54 -10,59"  stroke="#c09060" stroke-width="4.2" fill="none" stroke-linecap="round"/>
+            <path d="M17,35 C19,46 19,56 18,61"    stroke="#c09060" stroke-width="4.2" fill="none" stroke-linecap="round"/>
+            <path d="M-10,59 C-17,64 -28,66 -34,62" stroke="#c09060" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M-10,59 C-3,64   7,65   11,62" stroke="#c09060" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M-10,59 C-10,66 -10,72 -11,76" stroke="#c09060" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+            <path d="M18,61 C11,66   1,67  -3,63"   stroke="#c09060" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M18,61 C25,66  35,67  39,63"   stroke="#c09060" stroke-width="3.2" fill="none" stroke-linecap="round"/>
+            <path d="M18,61 C18,68  18,74  17,78"   stroke="#c09060" stroke-width="2.6" fill="none" stroke-linecap="round"/>
           </g>
         </svg>
       </div>
