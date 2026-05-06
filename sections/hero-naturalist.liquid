@@ -18,115 +18,197 @@
       <div class="hero__placeholder hero__placeholder--birds" aria-hidden="true">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice">
           <defs>
-            <linearGradient id="sky-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"  stop-color="#1a2e3b"/>
-              <stop offset="55%" stop-color="#2d4a38"/>
-              <stop offset="100%" stop-color="#1c2c1e"/>
+            <!-- Warm golden morning sky -->
+            <linearGradient id="sky-bg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"   stop-color="#faf3e8"/>
+              <stop offset="35%"  stop-color="#f5e0c0"/>
+              <stop offset="70%"  stop-color="#e8cfa0"/>
+              <stop offset="100%" stop-color="#d4b07a"/>
             </linearGradient>
-            <linearGradient id="mist-grad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"  stop-color="#4a6b52" stop-opacity="0.6"/>
-              <stop offset="100%" stop-color="#4a6b52" stop-opacity="0"/>
+            <!-- Sun glow (upper-left) -->
+            <radialGradient id="sun-glow" cx="0.22" cy="0.22" r="0.55" gradientUnits="objectBoundingBox">
+              <stop offset="0%"   stop-color="#fde8b0" stop-opacity="0.95"/>
+              <stop offset="40%"  stop-color="#f8d898" stop-opacity="0.55"/>
+              <stop offset="100%" stop-color="#f0c880" stop-opacity="0"/>
+            </radialGradient>
+            <!-- Soft ground haze -->
+            <linearGradient id="ground-haze" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%"   stop-color="#c8a070" stop-opacity="0.0"/>
+              <stop offset="100%" stop-color="#a07840" stop-opacity="0.45"/>
             </linearGradient>
           </defs>
 
-          <!-- Sky -->
-          <rect width="1440" height="810" fill="url(#sky-grad)"/>
+          <!-- ── Sky ─────────────────────────────────────────── -->
+          <rect width="1440" height="810" fill="url(#sky-bg)"/>
+          <rect width="1440" height="810" fill="url(#sun-glow)"/>
 
-          <!-- Distant moon / hazy orb -->
-          <circle cx="1060" cy="140" r="70" fill="#e8dfc8" opacity="0.18"/>
-          <circle cx="1060" cy="140" r="52" fill="#f5f0e8" opacity="0.22"/>
+          <!-- Distant rolling hills (warm muted tones) -->
+          <path d="M0,620 Q180,568 360,592 Q540,568 720,582
+                   Q900,558 1080,574 Q1260,552 1440,566 L1440,810 L0,810 Z"
+                fill="#c4946a" opacity="0.28"/>
+          <path d="M0,680 Q240,640 480,658 Q720,640 960,652
+                   Q1200,636 1440,648 L1440,810 L0,810 Z"
+                fill="#b87e50" opacity="0.30"/>
 
-          <!-- Distant treeline layer 3 (lightest) -->
-          <path d="M0,680 Q80,620 140,660 Q200,640 260,620 Q320,600 380,630
-                   Q440,610 500,595 Q560,580 620,605 Q680,590 740,575
-                   Q800,560 860,585 Q920,570 980,555 Q1040,540 1100,565
-                   Q1160,550 1220,535 Q1280,520 1340,545 Q1380,555 1440,540
-                   L1440,810 L0,810 Z"
-                fill="#2a4030" opacity="0.7"/>
+          <!-- Ground / lower warmth -->
+          <rect x="0" y="660" width="1440" height="150" fill="url(#ground-haze)"/>
 
-          <!-- Treeline layer 2 -->
-          <path d="M0,720 Q60,680 100,700
-                   Q140,660 180,690 Q220,665 270,685
-                   Q310,650 360,672 Q400,648 450,668
-                   Q490,644 540,664 Q580,640 630,658
-                   Q670,635 720,656 Q760,632 810,650
-                   Q850,628 900,646 Q950,624 1000,642
-                   Q1050,620 1100,640 Q1150,618 1200,636
-                   Q1250,615 1300,632 Q1360,610 1440,625
-                   L1440,810 L0,810 Z"
-                fill="#1e3026" opacity="0.85"/>
+          <!-- ── Botanical branch ──────────────────────────── -->
+          <!-- Main branch (warm dark brown, slight dip in middle) -->
+          <path d="M-10,418 Q360,398 720,426 Q1080,454 1450,432"
+                stroke="#6b4020" stroke-width="26" fill="none" stroke-linecap="round"/>
+          <!-- Branch highlight / texture -->
+          <path d="M-10,418 Q360,398 720,426 Q1080,454 1450,432"
+                stroke="#8a5a32" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.35"/>
 
-          <!-- Foreground trees / silhouette -->
-          <!-- Tall firs left cluster -->
-          <polygon points="60,560 80,440 100,560" fill="#12201a"/>
-          <polygon points="90,590 115,450 140,590" fill="#0e1c15"/>
-          <polygon points="120,610 148,460 176,610" fill="#12201a"/>
-          <polygon points="30,620 52,500 74,620" fill="#0e1c15"/>
+          <!-- Left upper twig -->
+          <path d="M280,408 Q262,368 248,330" stroke="#6b4020" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <path d="M248,330 Q232,298 220,272" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M248,330 Q268,298 282,272" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Right upper twig -->
+          <path d="M1060,440 Q1078,398 1092,360" stroke="#6b4020" stroke-width="9" fill="none" stroke-linecap="round"/>
+          <path d="M1092,360 Q1108,325 1118,298" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M1092,360 Q1074,325 1064,298" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- Small side twigs -->
+          <path d="M620,420 Q605,392 596,368" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <path d="M820,434 Q840,405 852,380" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
 
-          <!-- Tall firs right cluster -->
-          <polygon points="1300,580 1320,445 1340,580" fill="#12201a"/>
-          <polygon points="1330,600 1355,460 1380,600" fill="#0e1c15"/>
-          <polygon points="1360,615 1388,475 1416,615" fill="#12201a"/>
-          <polygon points="1265,595 1285,460 1305,595" fill="#0e1c15"/>
+          <!-- ── Leaves ─────────────────────────────────────── -->
+          <!-- Left twig leaves -->
+          <ellipse cx="220" cy="272" rx="20" ry="11" fill="#7a9858" transform="rotate(-35,220,272)" opacity="0.9"/>
+          <ellipse cx="244" cy="260" rx="17" ry="9"  fill="#6a8848" transform="rotate(12,244,260)" opacity="0.88"/>
+          <ellipse cx="282" cy="268" rx="19" ry="10" fill="#88aa60" transform="rotate(48,282,268)" opacity="0.85"/>
+          <ellipse cx="264" cy="280" rx="16" ry="9"  fill="#7a9858" transform="rotate(-12,264,280)" opacity="0.8"/>
+          <ellipse cx="232" cy="282" rx="14" ry="8"  fill="#6a8848" transform="rotate(65,232,282)" opacity="0.78"/>
+          <!-- Right twig leaves -->
+          <ellipse cx="1118" cy="298" rx="20" ry="11" fill="#7a9858" transform="rotate(-28,1118,298)" opacity="0.9"/>
+          <ellipse cx="1142" cy="288" rx="17" ry="9"  fill="#6a8848" transform="rotate(16,1142,288)" opacity="0.88"/>
+          <ellipse cx="1065" cy="292" rx="18" ry="10" fill="#88aa60" transform="rotate(52,1065,292)" opacity="0.85"/>
+          <ellipse cx="1086" cy="304" rx="15" ry="8"  fill="#7a9858" transform="rotate(-8,1086,304)" opacity="0.8"/>
+          <!-- Scattered small leaves along branch -->
+          <ellipse cx="470" cy="406" rx="13" ry="7" fill="#7a9858" transform="rotate(-42,470,406)" opacity="0.72"/>
+          <ellipse cx="596" cy="358" rx="11" ry="6" fill="#6a8848" transform="rotate(28,596,358)" opacity="0.68"/>
+          <ellipse cx="850" cy="370" rx="12" ry="7" fill="#88aa60" transform="rotate(-18,850,370)" opacity="0.70"/>
+          <ellipse cx="1180" cy="422" rx="13" ry="7" fill="#7a9858" transform="rotate(38,1180,422)" opacity="0.68"/>
 
-          <!-- Mid trees scattered -->
-          <polygon points="420,640 438,520 456,640" fill="#162418"/>
-          <polygon points="640,635 660,510 680,635" fill="#12201a"/>
-          <polygon points="840,640 862,515 884,640" fill="#162418"/>
-          <polygon points="1060,630 1082,505 1104,630" fill="#12201a"/>
-
-          <!-- Mist layer -->
-          <rect x="0" y="580" width="1440" height="120" fill="url(#mist-grad)"/>
-
-          <!-- ═══ BIRDS IN FLIGHT ═══ -->
-          <!-- Bird 1 – large, mid-left, soaring hawk shape -->
-          <g transform="translate(280, 195)" opacity="0.92">
-            <path d="M0,0 C-18,-8 -42,-5 -58,4 C-42,2 -22,8 0,0 Z" fill="#e8dfc8"/>
-            <path d="M0,0 C18,-8 42,-5 58,4 C42,2 22,8 0,0 Z" fill="#e8dfc8"/>
-            <path d="M0,0 C-4,6 -2,12 0,14 C2,12 4,6 0,0 Z" fill="#d4cfc4"/>
+          <!-- ── DOVE 1 — Atlas (perched left, facing right toward Peabody) ── -->
+          <g transform="translate(498, 388)">
+            <!-- Drop shadow -->
+            <ellipse cx="0" cy="48" rx="44" ry="9" fill="#6b4020" opacity="0.25"/>
+            <!-- Tail feathers (rendered behind body) -->
+            <path d="M-54,6 L-72,22 L-64,28 L-76,30 L-66,36 L-48,14 Z" fill="#a07850"/>
+            <path d="M-55,2 L-76,12 L-70,18 L-82,16 L-74,22 L-56,8 Z"  fill="#b89068" opacity="0.85"/>
+            <!-- Body -->
+            <ellipse cx="0" cy="0" rx="54" ry="37" fill="#c8a882"/>
+            <!-- Breast / belly highlight -->
+            <ellipse cx="4" cy="9" rx="38" ry="27" fill="#e2cca8" opacity="0.72"/>
+            <!-- Wing (upper surface) -->
+            <path d="M50,5 Q22,-34 -18,-22 Q-8,-4 50,5 Z" fill="#b89070"/>
+            <!-- Wing feather detail -->
+            <path d="M48,2 Q20,-30 -14,-18" stroke="#a07850" stroke-width="2.2" fill="none" opacity="0.65"/>
+            <path d="M44,-2 Q18,-26 -10,-14" stroke="#a07850" stroke-width="1.6" fill="none" opacity="0.45"/>
+            <path d="M40,-6 Q16,-22 -6,-10" stroke="#a07850" stroke-width="1.2" fill="none" opacity="0.35"/>
+            <!-- Head -->
+            <circle cx="47" cy="-29" r="23" fill="#c8a882"/>
+            <!-- Head highlight (soft) -->
+            <ellipse cx="51" cy="-36" rx="13" ry="11" fill="#dab898" opacity="0.62"/>
+            <!-- Neck connection -->
+            <path d="M28,-14 Q20,-5 18,-4 Q20,3 30,5 Q38,-3 28,-14 Z" fill="#bea075"/>
+            <!-- ✦ Barbary dove neck ring ✦ -->
+            <path d="M18,-10 Q6,-5 -2,-10 Q6,-2 18,-6 Z" fill="#2c1a0a" opacity="0.88"/>
+            <path d="M16,-10 Q12,-17 5,-21 Q2,-12 6,-6 Q10,-6 16,-10 Z" fill="#2c1a0a" opacity="0.80"/>
+            <!-- Eye ring (reddish iris typical of Barbary dove) -->
+            <circle cx="55" cy="-33" r="7" fill="#b85830" opacity="0.92"/>
+            <!-- Pupil -->
+            <circle cx="55" cy="-33" r="5" fill="#1a0c04"/>
+            <!-- Eye highlight -->
+            <circle cx="53" cy="-35" r="1.9" fill="#ffffff" opacity="0.92"/>
+            <!-- Beak (short, dark-tipped) -->
+            <path d="M70,-34 Q80,-32 73,-27 Q66,-25 64,-30 Z" fill="#7a6245"/>
+            <!-- Feet / legs -->
+            <line x1="-8"  y1="35" x2="-8"  y2="52" stroke="#b85830" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="12"  y1="36" x2="12"  y2="53" stroke="#b85830" stroke-width="3.5" stroke-linecap="round"/>
+            <!-- Toes (3 forward, 1 back) -->
+            <line x1="-8"  y1="52" x2="-22" y2="59" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="-8"  y1="52" x2="-2"  y2="60" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="-8"  y1="52" x2="5"   y2="57" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="12"  y1="53" x2="0"   y2="60" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="12"  y1="53" x2="24"  y2="59" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="12"  y1="53" x2="12"  y2="62" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
           </g>
 
-          <!-- Bird 2 – upper-center, slightly smaller -->
-          <g transform="translate(620, 145)" opacity="0.85">
-            <path d="M0,0 C-14,-6 -32,-4 -44,3 C-32,1 -16,6 0,0 Z" fill="#e8dfc8"/>
-            <path d="M0,0 C14,-6 32,-4 44,3 C32,1 16,6 0,0 Z" fill="#e8dfc8"/>
-            <path d="M0,0 C-3,5 -1,10 0,11 C1,10 3,5 0,0 Z" fill="#d4cfc4"/>
+          <!-- ── DOVE 2 — Peabody (perched right, facing left toward Atlas) ── -->
+          <!-- Mirrored copy of Atlas with a slightly warmer tint -->
+          <g transform="translate(942, 400) scale(-1,1)">
+            <!-- Drop shadow -->
+            <ellipse cx="0" cy="44" rx="40" ry="8" fill="#6b4020" opacity="0.22"/>
+            <!-- Tail -->
+            <path d="M-50,5 L-66,20 L-59,25 L-70,27 L-61,33 L-44,12 Z" fill="#a07850"/>
+            <path d="M-51,2 L-70,11 L-65,17 L-76,15 L-68,21 L-52,7 Z"  fill="#b89068" opacity="0.82"/>
+            <!-- Body -->
+            <ellipse cx="0" cy="0" rx="50" ry="34" fill="#c4a27c"/>
+            <!-- Belly -->
+            <ellipse cx="3" cy="8" rx="35" ry="25" fill="#dcc8a0" opacity="0.70"/>
+            <!-- Wing -->
+            <path d="M46,4 Q20,-30 -16,-20 Q-7,-4 46,4 Z" fill="#b08862"/>
+            <path d="M44,1 Q18,-26 -12,-16" stroke="#986848" stroke-width="2" fill="none" opacity="0.60"/>
+            <path d="M40,-3 Q15,-22 -8,-12" stroke="#986848" stroke-width="1.5" fill="none" opacity="0.42"/>
+            <!-- Head -->
+            <circle cx="44" cy="-27" r="21" fill="#c4a27c"/>
+            <ellipse cx="48" cy="-33" rx="12" ry="10" fill="#d6b48a" opacity="0.60"/>
+            <!-- Neck -->
+            <path d="M26,-12 Q18,-5 17,-4 Q19,3 28,5 Q36,-2 26,-12 Z" fill="#b89870"/>
+            <!-- ✦ Neck ring ✦ -->
+            <path d="M17,-9 Q5,-5 -2,-9 Q5,-2 17,-5 Z" fill="#2c1a0a" opacity="0.85"/>
+            <path d="M15,-9 Q11,-16 4,-20 Q1,-11 5,-5 Q9,-5 15,-9 Z" fill="#2c1a0a" opacity="0.78"/>
+            <!-- Eye ring -->
+            <circle cx="51" cy="-31" r="6.5" fill="#b85830" opacity="0.90"/>
+            <!-- Pupil -->
+            <circle cx="51" cy="-31" r="4.8" fill="#1a0c04"/>
+            <!-- Highlight -->
+            <circle cx="49" cy="-33" r="1.8" fill="#ffffff" opacity="0.90"/>
+            <!-- Beak -->
+            <path d="M65,-32 Q74,-30 68,-26 Q61,-24 59,-28 Z" fill="#7a6245"/>
+            <!-- Feet -->
+            <line x1="-6"  y1="32" x2="-6"  y2="48" stroke="#b85830" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="12"  y1="33" x2="12"  y2="49" stroke="#b85830" stroke-width="3.5" stroke-linecap="round"/>
+            <line x1="-6"  y1="48" x2="-19" y2="55" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="-6"  y1="48" x2="0"   y2="57" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="-6"  y1="48" x2="6"   y2="54" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="12"  y1="49" x2="0"   y2="57" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="12"  y1="49" x2="23"  y2="55" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
+            <line x1="12"  y1="49" x2="12"  y2="60" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
           </g>
 
-          <!-- Bird 3 – upper-right, small, distant -->
-          <g transform="translate(980, 120)" opacity="0.7">
-            <path d="M0,0 C-9,-4 -22,-3 -30,2 C-22,1 -10,4 0,0 Z" fill="#c8c4bc"/>
-            <path d="M0,0 C9,-4 22,-3 30,2 C22,1 10,4 0,0 Z" fill="#c8c4bc"/>
+          <!-- ── Tiny distant doves in flight (M-shapes) ──── -->
+          <!-- Left cluster -->
+          <g fill="none" stroke="#8a6040" stroke-linecap="round" opacity="0.38">
+            <path d="M148,198 Q156,191 164,198" stroke-width="2.5"/>
+            <path d="M170,190 Q178,183 186,190" stroke-width="2.5"/>
+            <path d="M158,212 Q166,205 174,212" stroke-width="2.5"/>
+            <path d="M182,202 Q190,195 198,202" stroke-width="2"/>
+          </g>
+          <!-- Right cluster -->
+          <g fill="none" stroke="#8a6040" stroke-linecap="round" opacity="0.32">
+            <path d="M1172,175 Q1181,168 1190,175" stroke-width="2.5"/>
+            <path d="M1198,165 Q1207,158 1216,165" stroke-width="2.5"/>
+            <path d="M M1185,190 Q1194,183 1203,190" stroke-width="2"/>
+            <path d="M1215,178 Q1224,171 1233,178" stroke-width="2"/>
+          </g>
+          <!-- Centre stray pair -->
+          <g fill="none" stroke="#8a6040" stroke-linecap="round" opacity="0.28">
+            <path d="M688,142 Q696,135 704,142" stroke-width="2"/>
+            <path d="M710,133 Q718,126 726,133" stroke-width="2"/>
           </g>
 
-          <!-- Bird 4 – very distant, tiny -->
-          <g transform="translate(820, 100)" opacity="0.55">
-            <path d="M0,0 C-6,-3 -15,-2 -20,1 C-15,0 -7,3 0,0 Z" fill="#b0aba3"/>
-            <path d="M0,0 C6,-3 15,-2 20,1 C15,0 7,3 0,0 Z" fill="#b0aba3"/>
-          </g>
-
-          <!-- Bird 5 – mid-right, medium, slightly lower -->
-          <g transform="translate(1150, 230)" opacity="0.88">
-            <path d="M0,0 C-16,-7 -36,-4 -50,3 C-36,2 -18,7 0,0 Z" fill="#e8dfc8"/>
-            <path d="M0,0 C16,-7 36,-4 50,3 C36,2 18,7 0,0 Z" fill="#e8dfc8"/>
-            <path d="M0,0 C-3,5 -1,9 0,11 C1,9 3,5 0,0 Z" fill="#d4cfc4"/>
-          </g>
-
-          <!-- Bird 6 – lower-left, large perched-wing shape (heron silhouette) -->
-          <g transform="translate(185, 310)" opacity="0.8">
-            <path d="M0,0 C-22,-10 -50,-6 -68,5 C-50,3 -26,10 0,0 Z" fill="#ddd8ce"/>
-            <path d="M0,0 C22,-10 50,-6 68,5 C50,3 26,10 0,0 Z" fill="#ddd8ce"/>
-            <path d="M0,0 C-4,8 -2,16 0,18 C2,16 4,8 0,0 Z" fill="#c8c4bc"/>
-          </g>
-
-          <!-- Bird flock – 5 tiny birds upper-center-right -->
-          <g opacity="0.6" fill="#b8b3ab">
-            <path transform="translate(700,88)"  d="M0,0 C-5,-2 -12,-2 -16,1 C-12,0 -6,2 0,0 Z M0,0 C5,-2 12,-2 16,1 C12,0 6,2 0,0 Z"/>
-            <path transform="translate(718,82)"  d="M0,0 C-4,-2 -10,-1 -14,1 C-10,0 -5,2 0,0 Z M0,0 C4,-2 10,-1 14,1 C10,0 5,2 0,0 Z"/>
-            <path transform="translate(735,90)"  d="M0,0 C-4,-2 -10,-1 -14,1 C-10,0 -5,2 0,0 Z M0,0 C4,-2 10,-1 14,1 C10,0 5,2 0,0 Z"/>
-            <path transform="translate(748,84)"  d="M0,0 C-3,-1 -8,-1 -11,1 C-8,0 -4,1 0,0 Z M0,0 C3,-1 8,-1 11,1 C8,0 4,1 0,0 Z"/>
-            <path transform="translate(760,92)"  d="M0,0 C-3,-1 -8,-1 -11,1 C-8,0 -4,1 0,0 Z M0,0 C3,-1 8,-1 11,1 C8,0 4,1 0,0 Z"/>
-          </g>
+          <!-- ── Floating petal / bokeh dots for warmth ─── -->
+          <circle cx="205"  cy="342" r="4.5" fill="#e8b888" opacity="0.48"/>
+          <circle cx="1188" cy="298" r="3.5" fill="#dda870" opacity="0.42"/>
+          <circle cx="720"  cy="248" r="4"   fill="#e0b070" opacity="0.40"/>
+          <circle cx="430"  cy="515" r="3"   fill="#d4a060" opacity="0.38"/>
+          <circle cx="988"  cy="475" r="4"   fill="#e8b880" opacity="0.38"/>
+          <circle cx="350"  cy="220" r="3"   fill="#f0c890" opacity="0.35"/>
+          <circle cx="1100" cy="520" r="3.5" fill="#dda870" opacity="0.35"/>
         </svg>
       </div>
     {%- endif -%}
