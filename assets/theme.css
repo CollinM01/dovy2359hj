@@ -856,58 +856,32 @@ accordion-component.accordion:first-child {
 
 /* ── Hero Naturalist ──────────────────────────────────────── */
 .hero-naturalist {
-  position: relative;
-  height: var(--hero-height, 85vh);
-  min-height: 480px;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
+  display: block;
 }
 
 .hero__media {
-  position: absolute;
-  inset: 0;
+  width: 100%;
+  height: var(--hero-height, 70vh);
+  min-height: 360px;
+  overflow: hidden;
 }
 
 .hero__image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: hero-zoom 14s ease-in-out infinite alternate;
-  transform-origin: center center;
+  display: block;
 }
 
 .hero__placeholder {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-
-.hero__placeholder svg {
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes hero-zoom {
-  from { transform: scale(1); }
-  to   { transform: scale(1.06); }
-}
-
-@keyframes hero-drift {
-  from { transform: scale(1.06) translate(0, 0); }
-  to   { transform: scale(1.06) translate(-1.5%, 0.5%); }
-}
-
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background: var(--color-bark);
+  display: block;
 }
 
 .hero__content {
-  position: relative;
-  z-index: 2;
-  color: var(--color-paper);
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-10);
   max-width: 680px;
 }
 
@@ -916,35 +890,35 @@ accordion-component.accordion:first-child {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-fog);
+  color: var(--color-mist);
   margin-bottom: var(--space-4);
 }
 
 .hero__title {
   font-family: var(--font-heading);
-  font-size: clamp(2.75rem, 6vw, 5.5rem);
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
   font-weight: 300;
-  color: var(--color-paper);
-  line-height: 1.05;
+  color: var(--color-bark);
+  line-height: 1.08;
   margin-bottom: var(--space-5);
 }
 
 .hero__subtitle {
-  font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: rgba(245,240,232,0.85);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  color: var(--color-stone);
   font-weight: 300;
   margin-bottom: var(--space-8);
   max-width: 480px;
 }
 
 .hero__cta {
-  background: var(--color-paper);
-  color: var(--color-bark);
-  border-color: var(--color-paper);
+  background: var(--color-bark);
+  color: var(--color-paper);
+  border-color: var(--color-bark);
 }
 .hero__cta:hover {
-  background: var(--color-cream);
-  border-color: var(--color-cream);
+  background: var(--color-stone);
+  border-color: var(--color-stone);
 }
 
 /* ── Site Header ──────────────────────────────────────────── */
@@ -2082,7 +2056,6 @@ accordion-component.accordion:first-child {
     scroll-behavior: auto !important;
   }
 
-  .hero__image { animation: none; }
   .marquee-inner { animation: none; }
   .icon-loader { animation: none; }
 }

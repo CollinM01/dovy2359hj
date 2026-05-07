@@ -1,5 +1,5 @@
-<section class="hero-naturalist" style="--hero-height: {{ section.settings.height }}vh">
-  <div class="hero__media">
+<section class="hero-naturalist">
+  <div class="hero__media" style="--hero-height: {{ section.settings.height }}vh">
     {%- if section.settings.image != blank -%}
       <img class="hero__image"
            src="{{ section.settings.image | image_url: width: 2000 }}"
@@ -34,7 +34,6 @@
         <path d="M0 760L170 705L340 760L510 710L680 770L850 720L1020 780L1190 730L1360 790L1600 730V900H0Z" fill="#182c37"/>
       </svg>
     {%- endif -%}
-    <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }}"></div>
   </div>
 
   <div class="hero__content container">
@@ -71,16 +70,7 @@
       "step": 5,
       "unit": "vh",
       "label": "Hero height",
-      "default": 85
-    },
-    {
-      "type": "range",
-      "id": "overlay_opacity",
-      "min": 0,
-      "max": 80,
-      "step": 5,
-      "label": "Overlay opacity %",
-      "default": 30
+      "default": 70
     },
     {
       "type": "text",

@@ -11,20 +11,8 @@
         "title": "Vast landscapes. Everyday layers.",
         "subtitle": "A simple Pacific Northwest palette shaped by coast, forest, and mountain light.",
         "button_label": "Explore collection",
-        "button_link": "/collections/all",
-        "overlay_opacity": 30
+        "button_link": "/collections/all"
       }
-    },
-    "marquee": {
-      "type": "marquee-ticker",
-      "blocks": {
-        "item_1": { "type": "item", "settings": { "text": "Free shipping on orders over $75" } },
-        "item_2": { "type": "item", "settings": { "text": "1% of revenue donated to conservation" } },
-        "item_3": { "type": "item", "settings": { "text": "Made from sustainable materials" } },
-        "item_4": { "type": "item", "settings": { "text": "Designed in the Pacific Northwest" } }
-      },
-      "block_order": ["item_1", "item_2", "item_3", "item_4"],
-      "settings": {}
     },
     "featured_products": {
       "type": "featured-products-grid",
@@ -44,16 +32,6 @@
         "button_link": "/pages/about"
       }
     },
-    "conservation": {
-      "type": "conservation-banner",
-      "settings": {
-        "eyebrow": "Conservation commitment",
-        "title": "Protecting the landscapes that shape us",
-        "subtitle": "We support regional restoration and habitat projects so Pacific Northwest ecosystems stay resilient for the long term.",
-        "button_label": "Learn more",
-        "button_link": "/pages/conservation"
-      }
-    },
     "newsletter": {
       "type": "newsletter-naturalist",
       "settings": {
@@ -70,10 +48,8 @@
   "order": [
     "announcement",
     "hero",
-    "marquee",
     "featured_products",
     "story",
-    "conservation",
     "newsletter",
     "footer"
   ]
