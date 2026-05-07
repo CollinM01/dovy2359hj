@@ -1,5 +1,4 @@
-<section class="hero-naturalist{% if section.settings.show_bird_panel %} hero-naturalist--split{% endif %}"
-         style="--hero-height: {{ section.settings.height }}vh">
+<section class="hero-naturalist" style="--hero-height: {{ section.settings.height }}vh">
   <div class="hero__media">
     {%- if section.settings.image != blank -%}
       <img class="hero__image"
@@ -15,251 +14,25 @@
            loading="eager"
            fetchpriority="high">
     {%- else -%}
-      <div class="hero__placeholder hero__placeholder--birds" aria-hidden="true">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 810" preserveAspectRatio="xMidYMid slice">
-          <defs>
-            <!-- Warm golden morning sky -->
-            <linearGradient id="sky-bg" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"   stop-color="#faf3e8"/>
-              <stop offset="35%"  stop-color="#f5e0c0"/>
-              <stop offset="70%"  stop-color="#e8cfa0"/>
-              <stop offset="100%" stop-color="#d4b07a"/>
-            </linearGradient>
-            <!-- Sun glow (upper-left) -->
-            <radialGradient id="sun-glow" cx="0.22" cy="0.22" r="0.55" gradientUnits="objectBoundingBox">
-              <stop offset="0%"   stop-color="#fde8b0" stop-opacity="0.95"/>
-              <stop offset="40%"  stop-color="#f8d898" stop-opacity="0.55"/>
-              <stop offset="100%" stop-color="#f0c880" stop-opacity="0"/>
-            </radialGradient>
-            <!-- Soft ground haze -->
-            <linearGradient id="ground-haze" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"   stop-color="#c8a070" stop-opacity="0.0"/>
-              <stop offset="100%" stop-color="#a07840" stop-opacity="0.45"/>
-            </linearGradient>
-          </defs>
-
-          <!-- ── Sky ─────────────────────────────────────────── -->
-          <rect width="1440" height="810" fill="url(#sky-bg)"/>
-          <rect width="1440" height="810" fill="url(#sun-glow)"/>
-
-          <!-- Distant rolling hills (warm muted tones) -->
-          <path d="M0,620 Q180,568 360,592 Q540,568 720,582
-                   Q900,558 1080,574 Q1260,552 1440,566 L1440,810 L0,810 Z"
-                fill="#c4946a" opacity="0.28"/>
-          <path d="M0,680 Q240,640 480,658 Q720,640 960,652
-                   Q1200,636 1440,648 L1440,810 L0,810 Z"
-                fill="#b87e50" opacity="0.30"/>
-
-          <!-- Ground / lower warmth -->
-          <rect x="0" y="660" width="1440" height="150" fill="url(#ground-haze)"/>
-
-          <!-- ── Botanical branch ──────────────────────────── -->
-          <!-- Main branch (warm dark brown, slight dip in middle) -->
-          <path d="M-10,418 Q360,398 720,426 Q1080,454 1450,432"
-                stroke="#6b4020" stroke-width="26" fill="none" stroke-linecap="round"/>
-          <!-- Branch highlight / texture -->
-          <path d="M-10,418 Q360,398 720,426 Q1080,454 1450,432"
-                stroke="#8a5a32" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.35"/>
-
-          <!-- Left upper twig -->
-          <path d="M280,408 Q262,368 248,330" stroke="#6b4020" stroke-width="9" fill="none" stroke-linecap="round"/>
-          <path d="M248,330 Q232,298 220,272" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <path d="M248,330 Q268,298 282,272" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <!-- Right upper twig -->
-          <path d="M1060,440 Q1078,398 1092,360" stroke="#6b4020" stroke-width="9" fill="none" stroke-linecap="round"/>
-          <path d="M1092,360 Q1108,325 1118,298" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <path d="M1092,360 Q1074,325 1064,298" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <!-- Small side twigs -->
-          <path d="M620,420 Q605,392 596,368" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <path d="M820,434 Q840,405 852,380" stroke="#6b4020" stroke-width="6" fill="none" stroke-linecap="round"/>
-
-          <!-- ── Leaves ─────────────────────────────────────── -->
-          <!-- Left twig leaves -->
-          <ellipse cx="220" cy="272" rx="20" ry="11" fill="#7a9858" transform="rotate(-35,220,272)" opacity="0.9"/>
-          <ellipse cx="244" cy="260" rx="17" ry="9"  fill="#6a8848" transform="rotate(12,244,260)" opacity="0.88"/>
-          <ellipse cx="282" cy="268" rx="19" ry="10" fill="#88aa60" transform="rotate(48,282,268)" opacity="0.85"/>
-          <ellipse cx="264" cy="280" rx="16" ry="9"  fill="#7a9858" transform="rotate(-12,264,280)" opacity="0.8"/>
-          <ellipse cx="232" cy="282" rx="14" ry="8"  fill="#6a8848" transform="rotate(65,232,282)" opacity="0.78"/>
-          <!-- Right twig leaves -->
-          <ellipse cx="1118" cy="298" rx="20" ry="11" fill="#7a9858" transform="rotate(-28,1118,298)" opacity="0.9"/>
-          <ellipse cx="1142" cy="288" rx="17" ry="9"  fill="#6a8848" transform="rotate(16,1142,288)" opacity="0.88"/>
-          <ellipse cx="1065" cy="292" rx="18" ry="10" fill="#88aa60" transform="rotate(52,1065,292)" opacity="0.85"/>
-          <ellipse cx="1086" cy="304" rx="15" ry="8"  fill="#7a9858" transform="rotate(-8,1086,304)" opacity="0.8"/>
-          <!-- Scattered small leaves along branch -->
-          <ellipse cx="470" cy="406" rx="13" ry="7" fill="#7a9858" transform="rotate(-42,470,406)" opacity="0.72"/>
-          <ellipse cx="596" cy="358" rx="11" ry="6" fill="#6a8848" transform="rotate(28,596,358)" opacity="0.68"/>
-          <ellipse cx="850" cy="370" rx="12" ry="7" fill="#88aa60" transform="rotate(-18,850,370)" opacity="0.70"/>
-          <ellipse cx="1180" cy="422" rx="13" ry="7" fill="#7a9858" transform="rotate(38,1180,422)" opacity="0.68"/>
-
-          <!-- ── DOVE 1 — Atlas (perched left, facing right toward Peabody) ── -->
-          <g transform="translate(498, 388)">
-            <!-- Drop shadow -->
-            <ellipse cx="0" cy="48" rx="44" ry="9" fill="#6b4020" opacity="0.25"/>
-            <!-- Tail feathers (rendered behind body) -->
-            <path d="M-54,6 L-72,22 L-64,28 L-76,30 L-66,36 L-48,14 Z" fill="#a07850"/>
-            <path d="M-55,2 L-76,12 L-70,18 L-82,16 L-74,22 L-56,8 Z"  fill="#b89068" opacity="0.85"/>
-            <!-- Body -->
-            <ellipse cx="0" cy="0" rx="54" ry="37" fill="#c8a882"/>
-            <!-- Breast / belly highlight -->
-            <ellipse cx="4" cy="9" rx="38" ry="27" fill="#e2cca8" opacity="0.72"/>
-            <!-- Wing (upper surface) -->
-            <path d="M50,5 Q22,-34 -18,-22 Q-8,-4 50,5 Z" fill="#b89070"/>
-            <!-- Wing feather detail -->
-            <path d="M48,2 Q20,-30 -14,-18" stroke="#a07850" stroke-width="2.2" fill="none" opacity="0.65"/>
-            <path d="M44,-2 Q18,-26 -10,-14" stroke="#a07850" stroke-width="1.6" fill="none" opacity="0.45"/>
-            <path d="M40,-6 Q16,-22 -6,-10" stroke="#a07850" stroke-width="1.2" fill="none" opacity="0.35"/>
-            <!-- Head -->
-            <circle cx="47" cy="-29" r="23" fill="#c8a882"/>
-            <!-- Head highlight (soft) -->
-            <ellipse cx="51" cy="-36" rx="13" ry="11" fill="#dab898" opacity="0.62"/>
-            <!-- Neck connection -->
-            <path d="M28,-14 Q20,-5 18,-4 Q20,3 30,5 Q38,-3 28,-14 Z" fill="#bea075"/>
-            <!-- ✦ Barbary dove neck ring ✦ -->
-            <path d="M18,-10 Q6,-5 -2,-10 Q6,-2 18,-6 Z" fill="#2c1a0a" opacity="0.88"/>
-            <path d="M16,-10 Q12,-17 5,-21 Q2,-12 6,-6 Q10,-6 16,-10 Z" fill="#2c1a0a" opacity="0.80"/>
-            <!-- Eye ring (reddish iris typical of Barbary dove) -->
-            <circle cx="55" cy="-33" r="7" fill="#b85830" opacity="0.92"/>
-            <!-- Pupil -->
-            <circle cx="55" cy="-33" r="5" fill="#1a0c04"/>
-            <!-- Eye highlight -->
-            <circle cx="53" cy="-35" r="1.9" fill="#ffffff" opacity="0.92"/>
-            <!-- Beak (short, dark-tipped) -->
-            <path d="M70,-34 Q80,-32 73,-27 Q66,-25 64,-30 Z" fill="#7a6245"/>
-            <!-- Feet / legs -->
-            <line x1="-8"  y1="35" x2="-8"  y2="52" stroke="#b85830" stroke-width="3.5" stroke-linecap="round"/>
-            <line x1="12"  y1="36" x2="12"  y2="53" stroke="#b85830" stroke-width="3.5" stroke-linecap="round"/>
-            <!-- Toes (3 forward, 1 back) -->
-            <line x1="-8"  y1="52" x2="-22" y2="59" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="-8"  y1="52" x2="-2"  y2="60" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="-8"  y1="52" x2="5"   y2="57" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="12"  y1="53" x2="0"   y2="60" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="12"  y1="53" x2="24"  y2="59" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="12"  y1="53" x2="12"  y2="62" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-          </g>
-
-          <!-- ── DOVE 2 — Peabody (perched right, facing left toward Atlas) ── -->
-          <!-- Mirrored copy of Atlas with a slightly warmer tint -->
-          <g transform="translate(942, 400) scale(-1,1)">
-            <!-- Drop shadow -->
-            <ellipse cx="0" cy="44" rx="40" ry="8" fill="#6b4020" opacity="0.22"/>
-            <!-- Tail -->
-            <path d="M-50,5 L-66,20 L-59,25 L-70,27 L-61,33 L-44,12 Z" fill="#a07850"/>
-            <path d="M-51,2 L-70,11 L-65,17 L-76,15 L-68,21 L-52,7 Z"  fill="#b89068" opacity="0.82"/>
-            <!-- Body -->
-            <ellipse cx="0" cy="0" rx="50" ry="34" fill="#c4a27c"/>
-            <!-- Belly -->
-            <ellipse cx="3" cy="8" rx="35" ry="25" fill="#dcc8a0" opacity="0.70"/>
-            <!-- Wing -->
-            <path d="M46,4 Q20,-30 -16,-20 Q-7,-4 46,4 Z" fill="#b08862"/>
-            <path d="M44,1 Q18,-26 -12,-16" stroke="#986848" stroke-width="2" fill="none" opacity="0.60"/>
-            <path d="M40,-3 Q15,-22 -8,-12" stroke="#986848" stroke-width="1.5" fill="none" opacity="0.42"/>
-            <!-- Head -->
-            <circle cx="44" cy="-27" r="21" fill="#c4a27c"/>
-            <ellipse cx="48" cy="-33" rx="12" ry="10" fill="#d6b48a" opacity="0.60"/>
-            <!-- Neck -->
-            <path d="M26,-12 Q18,-5 17,-4 Q19,3 28,5 Q36,-2 26,-12 Z" fill="#b89870"/>
-            <!-- ✦ Neck ring ✦ -->
-            <path d="M17,-9 Q5,-5 -2,-9 Q5,-2 17,-5 Z" fill="#2c1a0a" opacity="0.85"/>
-            <path d="M15,-9 Q11,-16 4,-20 Q1,-11 5,-5 Q9,-5 15,-9 Z" fill="#2c1a0a" opacity="0.78"/>
-            <!-- Eye ring -->
-            <circle cx="51" cy="-31" r="6.5" fill="#b85830" opacity="0.90"/>
-            <!-- Pupil -->
-            <circle cx="51" cy="-31" r="4.8" fill="#1a0c04"/>
-            <!-- Highlight -->
-            <circle cx="49" cy="-33" r="1.8" fill="#ffffff" opacity="0.90"/>
-            <!-- Beak -->
-            <path d="M65,-32 Q74,-30 68,-26 Q61,-24 59,-28 Z" fill="#7a6245"/>
-            <!-- Feet -->
-            <line x1="-6"  y1="32" x2="-6"  y2="48" stroke="#b85830" stroke-width="3.5" stroke-linecap="round"/>
-            <line x1="12"  y1="33" x2="12"  y2="49" stroke="#b85830" stroke-width="3.5" stroke-linecap="round"/>
-            <line x1="-6"  y1="48" x2="-19" y2="55" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="-6"  y1="48" x2="0"   y2="57" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="-6"  y1="48" x2="6"   y2="54" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="12"  y1="49" x2="0"   y2="57" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="12"  y1="49" x2="23"  y2="55" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-            <line x1="12"  y1="49" x2="12"  y2="60" stroke="#b85830" stroke-width="2.5" stroke-linecap="round"/>
-          </g>
-
-          <!-- ── Tiny distant doves in flight (M-shapes) ──── -->
-          <!-- Left cluster -->
-          <g fill="none" stroke="#8a6040" stroke-linecap="round" opacity="0.38">
-            <path d="M148,198 Q156,191 164,198" stroke-width="2.5"/>
-            <path d="M170,190 Q178,183 186,190" stroke-width="2.5"/>
-            <path d="M158,212 Q166,205 174,212" stroke-width="2.5"/>
-            <path d="M182,202 Q190,195 198,202" stroke-width="2"/>
-          </g>
-          <!-- Right cluster -->
-          <g fill="none" stroke="#8a6040" stroke-linecap="round" opacity="0.32">
-            <path d="M1172,175 Q1181,168 1190,175" stroke-width="2.5"/>
-            <path d="M1198,165 Q1207,158 1216,165" stroke-width="2.5"/>
-            <path d="M M1185,190 Q1194,183 1203,190" stroke-width="2"/>
-            <path d="M1215,178 Q1224,171 1233,178" stroke-width="2"/>
-          </g>
-          <!-- Centre stray pair -->
-          <g fill="none" stroke="#8a6040" stroke-linecap="round" opacity="0.28">
-            <path d="M688,142 Q696,135 704,142" stroke-width="2"/>
-            <path d="M710,133 Q718,126 726,133" stroke-width="2"/>
-          </g>
-
-          <!-- ── Floating petal / bokeh dots for warmth ─── -->
-          <circle cx="205"  cy="342" r="4.5" fill="#e8b888" opacity="0.48"/>
-          <circle cx="1188" cy="298" r="3.5" fill="#dda870" opacity="0.42"/>
-          <circle cx="720"  cy="248" r="4"   fill="#e0b070" opacity="0.40"/>
-          <circle cx="430"  cy="515" r="3"   fill="#d4a060" opacity="0.38"/>
-          <circle cx="988"  cy="475" r="4"   fill="#e8b880" opacity="0.38"/>
-          <circle cx="350"  cy="220" r="3"   fill="#f0c890" opacity="0.35"/>
-          <circle cx="1100" cy="520" r="3.5" fill="#dda870" opacity="0.35"/>
-        </svg>
-      </div>
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'hero__placeholder' }}
     {%- endif -%}
     <div class="hero__overlay" style="opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }}"></div>
   </div>
 
-  <div class="hero__inner container">
-
-    {%- comment -%} Left / main copy column {%- endcomment -%}
-    <div class="hero__content">
-      {%- if section.settings.eyebrow != blank -%}
-        <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
-      {%- endif -%}
-      <h1 class="hero__title">{{ section.settings.title }}</h1>
-      {%- if section.settings.subtitle != blank -%}
-        <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
-      {%- endif -%}
-      {%- if section.settings.button_label != blank -%}
-        <a href="{{ section.settings.button_link | default: '/collections/all' }}"
-           class="btn btn--primary hero__cta">
-          {{ section.settings.button_label }}
-        </a>
-      {%- endif -%}
-    </div>
-
-    {%- comment -%} Right / bird panel column (optional) {%- endcomment -%}
-    {%- if section.settings.show_bird_panel -%}
-      <div class="hero__bird-panel">
-        {%- if section.settings.bird_image != blank -%}
-          <div class="hero__bird-image">
-            <img src="{{ section.settings.bird_image | image_url: width: 560 }}"
-                 srcset="{{ section.settings.bird_image | image_url: width: 280 }} 280w,
-                         {{ section.settings.bird_image | image_url: width: 560 }} 560w"
-                 sizes="(max-width: 900px) 60vw, 320px"
-                 alt="{{ section.settings.bird_image.alt | default: 'Bird illustration' | escape }}"
-                 loading="eager">
-          </div>
-        {%- endif -%}
-        {%- if section.settings.bird_panel_heading != blank or section.settings.bird_panel_body != blank -%}
-          <div class="hero__bird-copy">
-            {%- if section.settings.bird_panel_heading != blank -%}
-              <p class="hero__bird-heading">{{ section.settings.bird_panel_heading }}</p>
-            {%- endif -%}
-            {%- if section.settings.bird_panel_body != blank -%}
-              <p class="hero__bird-body">{{ section.settings.bird_panel_body }}</p>
-            {%- endif -%}
-          </div>
-        {%- endif -%}
-      </div>
+  <div class="hero__content container">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="hero__eyebrow">{{ section.settings.eyebrow }}</p>
     {%- endif -%}
-
+    <h1 class="hero__title">{{ section.settings.title }}</h1>
+    {%- if section.settings.subtitle != blank -%}
+      <p class="hero__subtitle">{{ section.settings.subtitle }}</p>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '/collections/all' }}"
+         class="btn btn--primary hero__cta">
+        {{ section.settings.button_label }}
+      </a>
+    {%- endif -%}
   </div>
 </section>
 
@@ -270,7 +43,7 @@
     {
       "type": "image_picker",
       "id": "image",
-      "label": "Background image"
+      "label": "Hero image"
     },
     {
       "type": "range",
@@ -301,13 +74,13 @@
       "type": "text",
       "id": "title",
       "label": "Heading",
-      "default": "Dressed for the Field"
+      "default": "Wear the Wild"
     },
     {
       "type": "text",
       "id": "subtitle",
       "label": "Subheading",
-      "default": "Wear the birds. Pieces drawn from Pacific Northwest field journals."
+      "default": "Clothing inspired by the Pacific Northwest wilderness."
     },
     {
       "type": "text",
@@ -319,35 +92,6 @@
       "type": "url",
       "id": "button_link",
       "label": "Button link"
-    },
-    {
-      "type": "header",
-      "content": "Bird Panel"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_bird_panel",
-      "label": "Show bird panel",
-      "default": true,
-      "info": "Adds a second column with a bird illustration and short copy."
-    },
-    {
-      "type": "image_picker",
-      "id": "bird_image",
-      "label": "Bird illustration image",
-      "info": "Works best with a transparent-background PNG or a portrait crop. Recommended width: 560px."
-    },
-    {
-      "type": "text",
-      "id": "bird_panel_heading",
-      "label": "Bird panel heading",
-      "default": "Spotted in the Wild"
-    },
-    {
-      "type": "textarea",
-      "id": "bird_panel_body",
-      "label": "Bird panel body text",
-      "default": "Every Atlas Dovy design starts with a sketch in the field. From Steller's Jays to Great Horned Owls, our prints are drawn from Mel's firsthand observations across the Pacific Northwest."
     }
   ],
   "presets": [
