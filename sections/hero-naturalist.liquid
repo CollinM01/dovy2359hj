@@ -1,0 +1,23 @@
+<section class="hero-naturalist" style="--hero-image:url('{{ section.settings.hero_image | image_url: width: 2000 }}')">
+  <div class="container hero-naturalist__content">
+    <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    <h1>{{ section.settings.heading }}</h1>
+    <p>{{ section.settings.body }}</p>
+    <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero naturalist",
+  "settings": [
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Atlas Dovy Field Notes" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Pacific Northwest naturalist outfitting" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Earthy layers, wild-bird inspired palettes, and durable essentials for field and everyday wear." },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "Shop the collection" },
+    { "type": "url", "id": "button_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Hero naturalist" }]
+}
+{% endschema %}

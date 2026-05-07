@@ -1,0 +1,26 @@
+<section class="section container">
+  <div class="section-heading">
+    <h2>{{ section.settings.heading }}</h2>
+    <a href="{{ section.settings.collection.url | default: routes.collections_url }}">{{ 'general.view_all' | t }}</a>
+  </div>
+  <div class="product-grid">
+    {% assign products = section.settings.collection.products | default: collections.all.products %}
+    {% for product in products limit: section.settings.limit %}
+      {% render 'product-card', product: product %}
+    {% else %}
+      <p>Add products to your store to populate this section.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured products grid",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Featured in the field" },
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "limit", "label": "Products", "min": 4, "max": 12, "step": 1, "default": 6 }
+  ],
+  "presets": [{ "name": "Featured products grid" }]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+<section class="marquee" aria-label="Highlights">
+  <div class="marquee__track">
+    {% for block in section.blocks %}
+      <span class="marquee__item">{{ block.settings.text }}</span>
+    {% endfor %}
+    {% for block in section.blocks %}
+      <span class="marquee__item" aria-hidden="true">{{ block.settings.text }}</span>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Marquee ticker",
+  "blocks": [
+    { "type": "item", "name": "Item", "settings": [{ "type": "text", "id": "text", "label": "Text", "default": "Designed in the Pacific Northwest" }] }
+  ],
+  "max_blocks": 8,
+  "presets": [{ "name": "Marquee ticker", "blocks": [{ "type": "item" }, { "type": "item", "settings": { "text": "Small-batch naturalist apparel" } }, { "type": "item", "settings": { "text": "Conservation-first brand" } }] }]
+}
+{% endschema %}

@@ -1,0 +1,30 @@
+<section class="section story-strip">
+  <div class="container story-strip__grid">
+    <div>
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2>{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.body }}</p>
+      <a class="button button--secondary" href="{{ section.settings.link }}">{{ section.settings.link_label }}</a>
+    </div>
+    <div class="story-strip__image">
+      {% if section.settings.image %}
+        {{ section.settings.image | image_url: width: 1100 | image_tag: loading: 'lazy', alt: section.settings.heading }}
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story strip",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Mel, Atlas & Peabody" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "A brand built from field observations and dove companionship" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Atlas Dovy blends practical trailwear and soft naturalist storytelling from the Pacific Northwest." },
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Read the story" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ],
+  "presets": [{ "name": "Story strip" }]
+}
+{% endschema %}

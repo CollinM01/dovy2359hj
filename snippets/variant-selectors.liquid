@@ -1,0 +1,43 @@
+{% unless product.has_only_default_variant %}
+  {% for option in product.options_with_values %}
+    {% assign option_name_lower = option.name | downcase %}
+    {% assign is_color = false %}
+    {% if option_name_lower == 'color' or option_name_lower == 'colour' %}
+      {% assign is_color = true %}
+    {% endif %}
+
+    <fieldset class="variant-selector">
+      {% if is_color %}
+        <legend>{{ option.name }}: <span class="variant-color-label" data-option-name="{{ option.name | escape }}">{{ option.selected_value }}</span></legend>
+      {% else %}
+        <legend>{{ option.name }}</legend>
+      {% endif %}
+
+      <div class="variant-options{% if is_color %} variant-options--swatches{% endif %}">
+        {% for value in option.values %}
+          {% assign option_disabled = true %}
+          {% for variant in product.variants %}
+            {% assign option_value_at_position = variant.options[option.position | minus: 1] %}
+            {% if variant.available and option_value_at_position == value %}
+              {% assign option_disabled = false %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% if is_color %}
+            {% assign color_css = value | downcase | remove: ' ' %}
+            <label class="variant-swatch{% if option_disabled %} is-sold-out{% endif %}" title="{{ value }}" style="--swatch-bg: {{ color_css }};">
+              <input type="radio" name="options[{{ option.name | escape }}]" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %} {% if option_disabled %}disabled{% endif %}>
+              <span class="sr-only">{{ value }}</span>
+            </label>
+          {% else %}
+            <label class="variant-pill{% if option_disabled %} is-sold-out{% endif %}">
+              <input type="radio" name="options[{{ option.name | escape }}]" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %} {% if option_disabled %}disabled{% endif %}>
+              <span>{{ value }}</span>
+            </label>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </fieldset>
+  {% endfor %}
+{% endunless %}

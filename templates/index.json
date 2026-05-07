@@ -1,0 +1,71 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero": {
+      "type": "hero-naturalist",
+      "settings": {
+        "hero_image": "shopify://shop_images/0-WN212-foggy-beige-forestt-mural_1.jpg",
+        "eyebrow": "Atlas Dovy Field Notes",
+        "heading": "Pacific Northwest naturalist outfitting",
+        "body": "Earthy layers, wild-bird inspired palettes, and durable essentials for field and everyday wear.",
+        "button_label": "Shop the collection",
+        "button_link": ""
+      }
+    },
+    "marquee": {
+      "type": "marquee-ticker",
+      "settings": {}
+    },
+    "featured": {
+      "type": "featured-products-grid",
+      "settings": {
+        "heading": "Featured in the field",
+        "collection": "",
+        "limit": 6
+      }
+    },
+    "story": {
+      "type": "story-strip",
+      "settings": {
+        "eyebrow": "Mel, Atlas & Peabody",
+        "heading": "A brand built from field observations and dove companionship",
+        "body": "Atlas Dovy blends practical trailwear and soft naturalist storytelling from the Pacific Northwest.",
+        "link_label": "Read the story",
+        "link": ""
+      }
+    },
+    "conservation": {
+      "type": "conservation-banner",
+      "settings": {
+        "heading": "Conservation is part of every order",
+        "body": "1% of all revenue supports Pacific Northwest habitat and bird conservation efforts.",
+        "link_label": "Learn more",
+        "link": ""
+      }
+    },
+    "newsletter": {
+      "type": "newsletter-naturalist",
+      "settings": {
+        "heading": "Get weekly field notes",
+        "body": "New drops, birding insights, and conservation updates from the Atlas Dovy trail.",
+        "button_label": "Subscribe"
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "marquee",
+    "featured",
+    "story",
+    "conservation",
+    "newsletter"
+  ]
+}

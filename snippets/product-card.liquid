@@ -1,0 +1,16 @@
+<article class="product-card" data-product-type="{{ product.type | default: 'all' | handleize }}">
+  <a href="{{ product.url }}" class="product-card__image-wrap">
+    {% if product.featured_image %}
+      {{ product.featured_image | image_url: width: 900 | image_tag: class: 'product-card__image', loading: 'lazy', alt: product.title }}
+    {% endif %}
+  </a>
+  <div class="product-card__body">
+    <p class="product-card__type">{{ product.type }}</p>
+    <h3><a href="{{ product.url }}">{{ product.title }}</a></h3>
+    <p>{{ product.description | strip_html | truncate: 110 }}</p>
+    <div class="product-card__meta">
+      {% render 'price', product: product %}
+      <button class="button button--small js-quick-view" type="button" data-handle="{{ product.handle }}">Quick view</button>
+    </div>
+  </div>
+</article>
