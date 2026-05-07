@@ -1,0 +1,84 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__main">
+      <div class="footer-brand">
+        <div class="footer-brand__logo">
+          {%- if settings.logo != blank -%}
+            <img src="{{ settings.logo | image_url: width: 160 }}"
+                 alt="{{ shop.name | escape }}" width="160" loading="lazy">
+          {%- else -%}
+            <span class="footer-brand__logo-text">{{ shop.name }}</span>
+          {%- endif -%}
+        </div>
+        <p class="footer-brand__tagline">Inspired by trails, rivers, and the rain-soaked forests of the Pacific Northwest.</p>
+        <div class="footer-social">
+          {%- if settings.instagram_url != blank -%}
+            <a href="{{ settings.instagram_url }}" class="footer-social__link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+              {% render 'icon-instagram' %}
+            </a>
+          {%- endif -%}
+          {%- if settings.facebook_url != blank -%}
+            <a href="{{ settings.facebook_url }}" class="footer-social__link" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+              {% render 'icon-facebook' %}
+            </a>
+          {%- endif -%}
+          {%- if settings.twitter_url != blank -%}
+            <a href="{{ settings.twitter_url }}" class="footer-social__link" aria-label="Twitter / X" target="_blank" rel="noopener noreferrer">
+              {% render 'icon-twitter' %}
+            </a>
+          {%- endif -%}
+          {%- if settings.tiktok_url != blank -%}
+            <a href="{{ settings.tiktok_url }}" class="footer-social__link" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
+              {% render 'icon-tiktok' %}
+            </a>
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <p class="footer-nav__title">Shop</p>
+        <ul class="footer-nav__list" role="list">
+          {%- for link in linklists[section.settings.menu_1].links -%}
+            <li><a href="{{ link.url }}" class="footer-nav__link">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+
+      <div class="footer-nav">
+        <p class="footer-nav__title">Company</p>
+        <ul class="footer-nav__list" role="list">
+          {%- for link in linklists[section.settings.menu_2].links -%}
+            <li><a href="{{ link.url }}" class="footer-nav__link">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <p class="footer-copyright">
+        &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.
+      </p>
+      <p class="footer-copyright" style="opacity:0.4;font-size:0.75rem">Powered by Shopify</p>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu_1",
+      "label": "First menu column",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "menu_2",
+      "label": "Second menu column",
+      "default": "footer"
+    }
+  ]
+}
+{% endschema %}

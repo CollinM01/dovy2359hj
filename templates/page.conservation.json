@@ -1,0 +1,39 @@
+{
+  "sections": {
+    "main": {
+      "type": "page-conservation",
+      "blocks": {
+        "value_1": {
+          "type": "value",
+          "settings": {
+            "title": "1% for the Planet",
+            "body": "We're proud members of 1% for the Planet, committing 1% of annual revenue to approved environmental nonprofits."
+          }
+        },
+        "value_2": {
+          "type": "value",
+          "settings": {
+            "title": "Cascades Land Trust",
+            "body": "A portion of every sale supports the Cascades Land Trust's work protecting old-growth corridors and wildlife habitat."
+          }
+        },
+        "value_3": {
+          "type": "value",
+          "settings": {
+            "title": "Sustainable Materials",
+            "body": "We source organic cotton, recycled polyester, and Tencel from mills with verified environmental and labor standards."
+          }
+        }
+      },
+      "block_order": ["value_1", "value_2", "value_3"],
+      "settings": {
+        "hero_title": "Our Conservation Commitment"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": ["main", "footer"]
+}

@@ -1,0 +1,38 @@
+{%- comment -%}
+  Renders product price.
+  Accepts:
+  - product: {Object} Product or variant object
+  - use_variant: {Boolean} Use selected variant pricing
+  - show_badges: {Boolean} Show sale/sold-out badges
+{%- endcomment -%}
+
+{%- liquid
+  if use_variant
+    assign target = product.selected_or_first_available_variant
+  else
+    assign target = product
+  endif
+
+  assign compare = target.compare_at_price
+  assign price   = target.price | default: 1999
+  assign available = target.available | default: true
+-%}
+
+<div class="price{% if compare > price %} price--on-sale{% endif %}{% unless available %} price--sold-out{% endunless %}">
+  {%- if available == false -%}
+    <span class="price__badge badge badge--ink">{{ 'products.product.sold_out' | t }}</span>
+  {%- elsif compare > price -%}
+    <span class="price__badge badge badge--sale">{{ 'products.product.sale' | t }}</span>
+  {%- endif -%}
+
+  <div class="price__figures">
+    <span class="price__current">{{ price | money }}</span>
+    {%- if compare > price -%}
+      <span class="price__compare">
+        <s>{{ compare | money }}</s>
+      </span>
+      {%- assign savings = compare | minus: price -%}
+      <span class="price__savings">{{ 'products.product.you_save' | t: amount: savings | money }}</span>
+    {%- endif -%}
+  </div>
+</div>

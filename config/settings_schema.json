@@ -1,0 +1,207 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Atlas Dovy Naturalist",
+    "theme_version": "1.0.0",
+    "theme_author": "Atlas Dovy",
+    "theme_documentation_url": "https://atlasdovy.com",
+    "theme_support_url": "https://atlasdovy.com/pages/contact"
+  },
+  {
+    "name": "Logo & Branding",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo image"
+      },
+      {
+        "type": "range",
+        "id": "logo_width",
+        "min": 50,
+        "max": 300,
+        "step": 10,
+        "unit": "px",
+        "label": "Logo width",
+        "default": 140
+      },
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon"
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "colors_paper",
+        "label": "Paper (background)",
+        "default": "#f5f0e8"
+      },
+      {
+        "type": "color",
+        "id": "colors_bark",
+        "label": "Bark (primary dark)",
+        "default": "#2c1f14"
+      },
+      {
+        "type": "color",
+        "id": "colors_sage",
+        "label": "Sage (accent green)",
+        "default": "#6b7c61"
+      },
+      {
+        "type": "color",
+        "id": "colors_fog",
+        "label": "Fog (borders/muted)",
+        "default": "#d4cfc4"
+      },
+      {
+        "type": "color",
+        "id": "colors_ink",
+        "label": "Ink (body text)",
+        "default": "#3d3228"
+      },
+      {
+        "type": "color",
+        "id": "colors_cream",
+        "label": "Cream (card background)",
+        "default": "#faf7f2"
+      },
+      {
+        "type": "color",
+        "id": "colors_moss",
+        "label": "Moss (CTA / hover)",
+        "default": "#4a5e3a"
+      }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "heading_font",
+        "label": "Heading font",
+        "default": "cormorant_garamond_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "body_font",
+        "label": "Body font",
+        "default": "jost_n4"
+      }
+    ]
+  },
+  {
+    "name": "Header",
+    "settings": [
+      {
+        "type": "link_list",
+        "id": "menu",
+        "label": "Main navigation menu",
+        "default": "main-menu"
+      },
+      {
+        "type": "checkbox",
+        "id": "sticky_header",
+        "label": "Enable sticky header",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "show_announcement",
+        "label": "Show announcement bar",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "announcement_text",
+        "label": "Announcement text",
+        "default": "Free shipping on orders over $75 — Wild & Free"
+      },
+      {
+        "type": "url",
+        "id": "announcement_link",
+        "label": "Announcement link"
+      }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      {
+        "type": "select",
+        "id": "cart_type",
+        "label": "Cart type",
+        "options": [
+          { "value": "drawer", "label": "Drawer" },
+          { "value": "page",   "label": "Page" },
+          { "value": "modal",  "label": "Modal" }
+        ],
+        "default": "drawer"
+      }
+    ]
+  },
+  {
+    "name": "Shipping Policy",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "shipping_policy_text",
+        "label": "Shipping policy (fallback)",
+        "default": "Free standard shipping on orders over $75. Expedited options available at checkout. Returns accepted within 30 days."
+      }
+    ]
+  },
+  {
+    "name": "Social Media",
+    "settings": [
+      {
+        "type": "url",
+        "id": "instagram_url",
+        "label": "Instagram URL"
+      },
+      {
+        "type": "url",
+        "id": "facebook_url",
+        "label": "Facebook URL"
+      },
+      {
+        "type": "url",
+        "id": "twitter_url",
+        "label": "Twitter / X URL"
+      },
+      {
+        "type": "url",
+        "id": "tiktok_url",
+        "label": "TikTok URL"
+      }
+    ]
+  },
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "newsletter_title",
+        "label": "Newsletter title",
+        "default": "Stay Connected to the Wild"
+      },
+      {
+        "type": "text",
+        "id": "newsletter_subtitle",
+        "label": "Newsletter subtitle",
+        "default": "Field notes, new arrivals, and conservation updates."
+      },
+      {
+        "type": "url",
+        "id": "mailchimp_url",
+        "label": "Mailchimp form action URL (optional)"
+      }
+    ]
+  }
+]

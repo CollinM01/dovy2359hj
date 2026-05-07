@@ -1,0 +1,62 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product-naturalist",
+      "blocks": {
+        "title": { "type": "title", "settings": {} },
+        "price": { "type": "price", "settings": {} },
+        "variant_picker": { "type": "variant_picker", "settings": {} },
+        "quantity": { "type": "quantity", "settings": {} },
+        "buy_buttons": { "type": "buy_buttons", "settings": {} },
+        "description": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Description",
+            "open": true
+          }
+        },
+        "features": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Features & Materials"
+          }
+        },
+        "care": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Care Instructions"
+          }
+        },
+        "shipping": {
+          "type": "accordion",
+          "settings": {
+            "heading": "Shipping & Returns"
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "price",
+        "variant_picker",
+        "quantity",
+        "buy_buttons",
+        "description",
+        "features",
+        "care",
+        "shipping"
+      ],
+      "settings": {}
+    },
+    "recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "title": "You Might Also Like"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {}
+    }
+  },
+  "order": ["main", "recommendations", "footer"]
+}

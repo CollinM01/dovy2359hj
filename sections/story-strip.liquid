@@ -1,0 +1,94 @@
+<section class="story-strip section-padding" style="background: {{ section.settings.bg_color }}">
+  <div class="container">
+    <div class="story-strip__inner"{% if section.settings.image_position == 'right' %} data-image-position="right"{% endif %}>
+      <div class="story-strip__media">
+        {%- if section.settings.image != blank -%}
+          <img src="{{ section.settings.image | image_url: width: 800 }}"
+               srcset="{{ section.settings.image | image_url: width: 400 }} 400w, {{ section.settings.image | image_url: width: 800 }} 800w"
+               sizes="(max-width: 768px) 100vw, 50vw"
+               alt="{{ section.settings.image.alt | escape }}"
+               width="{{ section.settings.image.width }}"
+               height="{{ section.settings.image.height }}"
+               loading="lazy">
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag: 'story-strip__placeholder' }}
+        {%- endif -%}
+      </div>
+      <div class="story-strip__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="story-strip__eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2 class="story-strip__title">{{ section.settings.title }}</h2>
+        {%- if section.settings.body != blank -%}
+          <div class="story-strip__body rte">{{ section.settings.body }}</div>
+        {%- endif -%}
+        {%- if section.settings.button_label != blank -%}
+          <a href="{{ section.settings.button_link }}" class="btn btn--outline">{{ section.settings.button_label }}</a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Story Strip",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#faf7f2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "select",
+      "id": "image_position",
+      "label": "Image position",
+      "options": [
+        { "value": "left",  "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Our Story"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Mel & Atlas"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text",
+      "default": "<p>Born in the Pacific Northwest, Atlas Dovy is a woman-owned clothing brand inspired by wild places and the dogs who roam them freely.</p>"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Read Our Story"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Story Strip"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,75 @@
+<div class="marquee-section" style="background: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}">
+  <marquee-component class="marquee-track" data-speed="{{ section.settings.speed }}">
+    <div class="marquee-inner" style="animation-duration: {{ section.settings.speed }}s">
+      {%- for block in section.blocks -%}
+        <span class="marquee-item" {{ block.shopify_attributes }}>
+          {{ block.settings.text }}
+          <span class="marquee-separator" aria-hidden="true">&#10022;</span>
+        </span>
+      {%- endfor -%}
+    </div>
+    <div class="marquee-inner" aria-hidden="true" style="animation-duration: {{ section.settings.speed }}s">
+      {%- for block in section.blocks -%}
+        <span class="marquee-item">
+          {{ block.settings.text }}
+          <span class="marquee-separator" aria-hidden="true">&#10022;</span>
+        </span>
+      {%- endfor -%}
+    </div>
+  </marquee-component>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee Ticker",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#2c1f14"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#f5f0e8"
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 20,
+      "max": 120,
+      "step": 5,
+      "label": "Speed (seconds for one loop)",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Ticker item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Pacific Northwest Made"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee Ticker",
+      "blocks": [
+        { "type": "item", "settings": { "text": "Pacific Northwest Made" } },
+        { "type": "item", "settings": { "text": "Woman-Owned Brand" } },
+        { "type": "item", "settings": { "text": "Inspired by the Wild" } },
+        { "type": "item", "settings": { "text": "1% for Conservation" } },
+        { "type": "item", "settings": { "text": "Sustainable Materials" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

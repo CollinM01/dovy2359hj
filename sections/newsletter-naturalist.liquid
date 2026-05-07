@@ -1,0 +1,81 @@
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-section__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="newsletter-section__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      <h2 class="newsletter-section__title">{{ section.settings.title | default: settings.newsletter_title }}</h2>
+      {%- if section.settings.subtitle != blank -%}
+        <p class="newsletter-section__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+
+      {%- form 'customer', id: 'ContactNewsletter', class: 'newsletter-form' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        {%- if section.settings.show_name -%}
+          <input type="text" name="contact[first_name]"
+                 placeholder="First name"
+                 aria-label="First name"
+                 autocomplete="given-name">
+        {%- endif -%}
+        <input type="email"
+               name="contact[email]"
+               id="NewsletterEmail"
+               value="{{ form.email }}"
+               placeholder="{{ 'newsletter.placeholder' | t }}"
+               aria-label="{{ 'newsletter.label' | t }}"
+               autocomplete="email"
+               required>
+        <button type="submit" class="btn btn--primary">
+          {{ section.settings.submit_label | default: 'Subscribe' }}
+        </button>
+      {%- endform -%}
+
+      {%- if form.posted_successfully? -%}
+        <p class="newsletter-success" role="status">{{ 'newsletter.success' | t }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Newsletter - Naturalist",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Join the Pack"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Stay Connected to the Wild"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Field notes, new arrivals, and conservation updates."
+    },
+    {
+      "type": "text",
+      "id": "submit_label",
+      "label": "Button text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_name",
+      "label": "Show first name field",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter - Naturalist"
+    }
+  ]
+}
+{% endschema %}

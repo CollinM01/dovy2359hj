@@ -1,0 +1,82 @@
+<section class="cart-page section-padding">
+  <div class="container">
+    <h1 class="section-title">{{ 'cart.title' | t }}</h1>
+    {%- if cart.item_count > 0 -%}
+      <div class="cart-page__grid">
+        <div>
+          <div class="cart-table">
+            <div class="cart-table__header">
+              <span>Product</span>
+              <span></span>
+              <span>Price</span>
+              <span>Quantity</span>
+              <span>Total</span>
+            </div>
+            {%- for item in cart.items -%}
+              <div class="cart-row" data-key="{{ item.key }}">
+                <a href="{{ item.url }}">
+                  <img src="{{ item.image | image_url: width: 160 }}"
+                       alt="{{ item.title | escape }}"
+                       width="80" height="80"
+                       loading="lazy">
+                </a>
+                <div>
+                  <p><a href="{{ item.url }}" style="font-weight:500">{{ item.product_title }}</a></p>
+                  {%- if item.variant_title != 'Default Title' -%}
+                    <p style="font-size:0.85rem; color: var(--color-sage)">{{ item.variant_title }}</p>
+                  {%- endif -%}
+                  <button style="font-size:0.8rem;color:var(--color-sage);background:none;border:none;cursor:pointer;padding:0;text-decoration:underline;margin-top:var(--space-2)"
+                          data-cart-remove="{{ item.key }}">Remove</button>
+                </div>
+                <span>{{ item.price | money }}</span>
+                <quantity-input class="qty-stepper qty-stepper--small">
+                  <button type="button" class="qty-stepper__btn" data-cart-update="{{ item.key }}" data-delta="-1" aria-label="Decrease">{% render 'icon-minus' %}</button>
+                  <input type="number" class="qty-stepper__input" value="{{ item.quantity }}" min="1">
+                  <button type="button" class="qty-stepper__btn" data-cart-update="{{ item.key }}" data-delta="1" aria-label="Increase">{% render 'icon-plus' %}</button>
+                </quantity-input>
+                <span style="font-weight:600">{{ item.final_line_price | money }}</span>
+              </div>
+            {%- endfor -%}
+          </div>
+        </div>
+
+        <div class="cart-summary">
+          <h2 class="cart-summary__title">{{ 'cart.subtotal' | t }}</h2>
+          <div class="cart-summary__row cart-summary__total">
+            <span>{{ 'cart.subtotal' | t }}</span>
+            <span>{{ cart.total_price | money }}</span>
+          </div>
+          <p style="font-size:0.8125rem;color:var(--color-sage);margin-bottom:var(--space-5)">{{ 'cart.taxes_and_shipping_at_checkout' | t }}</p>
+          <a href="/checkout" class="btn btn--primary btn--full" style="margin-bottom:var(--space-3)">{{ 'cart.checkout' | t }}</a>
+          <a href="/collections/all" class="btn btn--ghost btn--full">{{ 'cart.continue_shopping' | t }}</a>
+        </div>
+      </div>
+    {%- else -%}
+      <div style="text-align:center; padding: var(--space-16)">
+        <p style="color:var(--color-sage); margin-bottom:var(--space-8)">{{ 'cart.empty' | t }}</p>
+        <a href="/collections/all" class="btn btn--primary">Shop Now</a>
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('[data-cart-remove]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const key = btn.dataset.cartRemove;
+      await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: key, quantity: 0 })
+      });
+      window.location.reload();
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Cart Items",
+  "settings": []
+}
+{% endschema %}

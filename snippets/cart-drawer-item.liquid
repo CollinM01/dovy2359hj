@@ -1,0 +1,51 @@
+{%- comment -%}
+  Renders a single cart drawer line item.
+  Accepts:
+  - item: {Object} Cart line item
+  - index: {Integer} Line item index
+{%- endcomment -%}
+
+<div class="cart-drawer__item" data-line="{{ index }}">
+  {%- if item.image -%}
+    <div class="cart-drawer__item-image">
+      <img src="{{ item.image | image_url: width: 160 }}"
+           alt="{{ item.image.alt | default: item.title | escape }}"
+           width="80" height="80"
+           loading="lazy">
+    </div>
+  {%- endif -%}
+
+  <div class="cart-drawer__item-details">
+    <p class="cart-drawer__item-vendor">{{ item.vendor }}</p>
+    <h4 class="cart-drawer__item-title">
+      <a href="{{ item.url }}">{{ item.product_title }}</a>
+    </h4>
+    {%- unless item.variant.title == 'Default Title' -%}
+      <p class="cart-drawer__item-variant">{{ item.variant.title }}</p>
+    {%- endunless -%}
+
+    <div class="cart-drawer__item-bottom">
+      <div class="quantity-stepper quantity-stepper--sm" data-quantity-component>
+        <button type="button"
+                class="quantity-stepper__btn"
+                data-change="-1"
+                aria-label="{{ 'cart.decrease_quantity' | t }}">
+          {% render 'icon-minus' %}
+        </button>
+        <input type="number"
+               class="quantity-stepper__input"
+               value="{{ item.quantity }}"
+               min="0"
+               aria-label="{{ 'cart.item_quantity' | t }}"
+               data-quantity-input>
+        <button type="button"
+                class="quantity-stepper__btn"
+                data-change="1"
+                aria-label="{{ 'cart.increase_quantity' | t }}">
+          {% render 'icon-plus' %}
+        </button>
+      </div>
+      <p class="cart-drawer__item-price">{{ item.final_line_price | money }}</p>
+    </div>
+  </div>
+</div>

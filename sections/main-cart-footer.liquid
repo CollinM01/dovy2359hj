@@ -1,0 +1,19 @@
+<section class="section-padding" style="background: var(--color-cream)">
+  <div class="container container--xs">
+    <div class="form-group">
+      <label for="CartNote">{{ 'cart.note' | t }}</label>
+      <textarea id="CartNote" name="note" rows="4" placeholder="{{ 'cart.note_placeholder' | t }}" form="cart">{{ cart.note }}</textarea>
+    </div>
+    <div style="text-align:right">
+      <p style="font-size:0.8125rem;color:var(--color-sage);margin-bottom:var(--space-3)">{{ 'cart.taxes_and_shipping_at_checkout' | t }}</p>
+      <a href="/checkout" class="btn btn--primary">{{ 'cart.checkout' | t }}</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cart Footer",
+  "settings": []
+}
+{% endschema %}
