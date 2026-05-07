@@ -8,10 +8,10 @@
       "type": "hero-naturalist",
       "settings": {
         "eyebrow": "Pacific Northwest",
-        "title": "Wear the Wild",
-        "subtitle": "Clothing that carries the spirit of old-growth forests, tidepools, and mountain meadows.",
-        "cta_label": "Shop Collection",
-        "cta_url": "/collections/all",
+        "title": "Vast landscapes. Everyday layers.",
+        "subtitle": "A simple Pacific Northwest palette shaped by coast, forest, and mountain light.",
+        "button_label": "Explore collection",
+        "button_link": "/collections/all",
         "overlay_opacity": 30
       }
     },
@@ -29,37 +29,37 @@
     "featured_products": {
       "type": "featured-products-grid",
       "settings": {
-        "title": "New Arrivals",
-        "subtitle": "Seasonally inspired pieces for life in the field and on the trail.",
-        "products_count": 4
+        "title": "Trail-ready essentials",
+        "subtitle": "Simple layers inspired by open ridgelines, river valleys, and coastal weather.",
+        "products_to_show": 4
       }
     },
     "story": {
       "type": "story-strip",
       "settings": {
-        "eyebrow": "Our Story",
-        "title": "Born from the Field",
-        "content": "<p>Atlas Dovy was founded by Mel, a lifelong Pacific Northwest naturalist with a sketchbook always in her back pocket. Every design begins with time spent in the field — watching, listening, sketching.</p>",
-        "cta_label": "Meet Mel",
-        "cta_url": "/pages/about"
+        "eyebrow": "Landscape first",
+        "title": "A calmer Northwest direction",
+        "body": "<p>This refresh starts simple: broad horizons, cool mist tones, and durable pieces for changing weather across the Pacific Northwest.</p>",
+        "button_label": "Read the story",
+        "button_link": "/pages/about"
       }
     },
     "conservation": {
       "type": "conservation-banner",
       "settings": {
-        "eyebrow": "Conservation Commitment",
-        "title": "Rooted in the Places We Love",
-        "content": "We partner with regional land trusts and wildlife organizations to protect the ecosystems that inspire our designs. 1% of every sale goes directly to conservation.",
-        "cta_label": "Learn More",
-        "cta_url": "/pages/conservation"
+        "eyebrow": "Conservation commitment",
+        "title": "Protecting the landscapes that shape us",
+        "subtitle": "We support regional restoration and habitat projects so Pacific Northwest ecosystems stay resilient for the long term.",
+        "button_label": "Learn more",
+        "button_link": "/pages/conservation"
       }
     },
     "newsletter": {
       "type": "newsletter-naturalist",
       "settings": {
         "eyebrow": "Field Notes",
-        "title": "Stay Connected to the Wild",
-        "content": "Seasonal stories, new arrivals, and conservation updates — straight to your inbox."
+        "title": "Stories from coast to summit",
+        "subtitle": "Seasonal drops, landscape stories, and conservation updates."
       }
     },
     "footer": {

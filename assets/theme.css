@@ -8,13 +8,13 @@
 /* ── CSS Custom Properties ─────────────────────────────── */
 :root {
   /* Colors */
-  --color-paper:  #f5f0e8;
-  --color-bark:   #2c1f14;
-  --color-sage:   #6b7c61;
-  --color-fog:    #d4cfc4;
-  --color-ink:    #3d3228;
-  --color-cream:  #faf7f2;
-  --color-moss:   #4a5e3a;
+  --color-paper:  #ecf2f4;
+  --color-bark:   #20333b;
+  --color-sage:   #5f7f8e;
+  --color-fog:    #c9d8df;
+  --color-ink:    #2b454f;
+  --color-cream:  #f7fbfc;
+  --color-moss:   #3b5d6e;
 
   /* Typography */
   --font-heading: 'Cormorant Garamond', Georgia, serif;
