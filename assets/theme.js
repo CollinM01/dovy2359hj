@@ -51,13 +51,17 @@
         const res = await fetch(`/products/${openQuick.dataset.handle}.js`);
         const product = await res.json();
         const variant = product.variants?.find(v => v.available) || product.variants?.[0];
+        const currency = (window.Shopify && window.Shopify.currency && window.Shopify.currency.active) ? window.Shopify.currency.active : 'USD';
+        const displayPrice = (typeof variant?.price === 'number')
+          ? (variant.price / 100).toLocaleString(undefined, { style:'currency', currency })
+          : '';
         content.innerHTML = `
           <div class="quick-view-body">
             <img src="${product.images?.[0] || ''}" alt="${product.title}" style="width:100%;max-height:320px;object-fit:cover;border:1px solid #ccbda5;margin-bottom:.75rem;" />
             <p class="eyebrow">${product.vendor || ''}</p>
             <h3>${product.title}</h3>
             <p>${(product.description || '').replace(/<[^>]+>/g, '').slice(0, 180)}</p>
-            <p><strong>${(variant?.price / 100).toLocaleString(undefined, { style:'currency', currency: Shopify.currency.active })}</strong></p>
+            <p><strong>${displayPrice}</strong></p>
             <button class="button" type="button" data-quick-add="${variant?.id || ''}">Add to cart</button>
             <a class="button button--secondary" href="${product.url}">View details</a>
           </div>`;
