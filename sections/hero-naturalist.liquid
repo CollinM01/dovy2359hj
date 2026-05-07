@@ -1,39 +1,63 @@
 <section class="hero-naturalist">
   <div class="hero__media" style="--hero-height: {{ section.settings.height }}vh">
-    {%- if section.settings.image != blank -%}
-      <img class="hero__image"
-           src="{{ section.settings.image | image_url: width: 2000 }}"
-           srcset="{{ section.settings.image | image_url: width: 750 }} 750w,
-                   {{ section.settings.image | image_url: width: 1100 }} 1100w,
-                   {{ section.settings.image | image_url: width: 1500 }} 1500w,
-                   {{ section.settings.image | image_url: width: 2000 }} 2000w"
-           sizes="100vw"
-           width="{{ section.settings.image.width }}"
-           height="{{ section.settings.image.height }}"
-           alt="{{ section.settings.image.alt | escape }}"
-           loading="eager"
-           fetchpriority="high">
-    {%- else -%}
-      <svg class="hero__placeholder" viewBox="0 0 1600 900" role="img" aria-label="Pacific Northwest mountain landscape">
-        <defs>
-          <linearGradient id="heroSky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#b8d2df"/>
-            <stop offset="100%" stop-color="#e8eff3"/>
-          </linearGradient>
-          <linearGradient id="heroWater" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stop-color="#6f97ad"/>
-            <stop offset="100%" stop-color="#4f7287"/>
-          </linearGradient>
-        </defs>
-        <rect width="1600" height="900" fill="url(#heroSky)"/>
-        <path d="M0 430L220 360L420 395L620 300L830 350L1030 280L1240 355L1420 320L1600 390V900H0Z" fill="#5f7f8e"/>
-        <path d="M0 520L200 470L430 520L620 450L830 520L1050 470L1290 530L1600 490V900H0Z" fill="#3e5d6b"/>
-        <path d="M0 615L260 570L560 645L860 585L1150 655L1420 605L1600 655V900H0Z" fill="#2a3f4b"/>
-        <path d="M0 645C220 615 390 625 560 640C760 658 980 692 1180 680C1370 670 1490 650 1600 642V900H0Z" fill="url(#heroWater)"/>
-        <path d="M0 705C170 675 350 705 520 740C720 780 950 810 1170 798C1360 788 1480 760 1600 740V900H0Z" fill="#274252"/>
-        <path d="M0 760L170 705L340 760L510 710L680 770L850 720L1020 780L1190 730L1360 790L1600 730V900H0Z" fill="#182c37"/>
-      </svg>
-    {%- endif -%}
+    <svg class="hero__placeholder" viewBox="0 0 1600 900" role="img" aria-label="Forest landscape with birds">
+      <defs>
+        <linearGradient id="heroSky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#a7c3d0"/>
+          <stop offset="65%" stop-color="#c8dce5"/>
+          <stop offset="100%" stop-color="#e7f0f3"/>
+        </linearGradient>
+        <linearGradient id="heroHaze" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#d9e7ec" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#d9e7ec" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="1600" height="900" fill="url(#heroSky)"/>
+      <path d="M0 410L160 360L330 390L520 320L700 355L880 300L1100 360L1310 315L1600 385V900H0Z" fill="#6e8f9d"/>
+      <path d="M0 490L200 450L430 500L640 430L840 490L1040 450L1280 510L1600 470V900H0Z" fill="#587886"/>
+      <rect width="1600" height="900" fill="url(#heroHaze)"/>
+      <path d="M0 600L220 550L460 610L690 560L950 620L1210 575L1460 625L1600 600V900H0Z" fill="#3c5561"/>
+      <path d="M0 710L190 660L380 720L580 665L790 730L980 670L1210 735L1410 680L1600 730V900H0Z" fill="#2e434c"/>
+      <g fill="#25383f" opacity="0.95">
+        <polygon points="40,900 120,610 200,900"/>
+        <polygon points="130,900 205,640 280,900"/>
+        <polygon points="225,900 310,585 395,900"/>
+        <polygon points="335,900 430,620 525,900"/>
+        <polygon points="465,900 560,570 655,900"/>
+        <polygon points="595,900 690,625 785,900"/>
+        <polygon points="730,900 825,600 920,900"/>
+        <polygon points="865,900 960,560 1055,900"/>
+        <polygon points="1005,900 1090,620 1175,900"/>
+        <polygon points="1140,900 1225,590 1310,900"/>
+        <polygon points="1265,900 1355,635 1445,900"/>
+        <polygon points="1385,900 1470,600 1555,900"/>
+      </g>
+      <g fill="none" stroke="#1f2f36" stroke-width="5" stroke-linecap="round" opacity="0.85">
+        <path d="M240 250q12 -12 24 0"/>
+        <path d="M320 220q11 -10 22 0"/>
+        <path d="M420 275q10 -9 20 0"/>
+        <path d="M520 210q12 -11 24 0"/>
+        <path d="M640 245q11 -10 22 0"/>
+        <path d="M720 205q10 -9 20 0"/>
+        <path d="M810 235q11 -10 22 0"/>
+        <path d="M930 200q12 -11 24 0"/>
+        <path d="M1040 245q10 -9 20 0"/>
+        <path d="M1120 220q11 -10 22 0"/>
+        <path d="M1230 260q12 -11 24 0"/>
+        <path d="M1320 230q10 -9 20 0"/>
+      </g>
+      <g>
+        <rect x="160" y="120" width="740" height="190" rx="18" fill="#20333B" fill-opacity="0.5"/>
+        {%- if section.settings.eyebrow != blank -%}
+          <text x="205" y="174" fill="#ECF2F4" style="font-family: Jost, sans-serif; font-size: 20px; letter-spacing: 0.22em; text-transform: uppercase;">
+            {{ section.settings.eyebrow | escape | upcase }}
+          </text>
+        {%- endif -%}
+        <text x="205" y="235" fill="#F7FBFC" style="font-family: 'Cormorant Garamond', serif; font-size: 60px; font-weight: 500;">
+          {{ section.settings.title | escape }}
+        </text>
+      </g>
+    </svg>
   </div>
 
   <div class="hero__content container">
@@ -57,11 +81,6 @@
 {
   "name": "Hero - Naturalist",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Hero image"
-    },
     {
       "type": "range",
       "id": "height",
