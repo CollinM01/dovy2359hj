@@ -1,112 +1,111 @@
 {%- comment -%}
-  Renders variant selector inputs (Color swatches + Size buttons + generic selects).
+  Renders variant selector inputs.
   Accepts:
   - product: {Object} Product liquid object
-  - section: {Object} Section object (used for unique IDs)
+  - section_id: {String} Section ID for namespacing
 {%- endcomment -%}
 
 {%- for option in product.options_with_values -%}
   <div class="variant-selector" data-option-index="{{ forloop.index0 }}" data-option-name="{{ option.name | escape }}">
-
     <label class="variant-selector__label">
       {{ option.name }}
-      {%- if option.name == 'Color' or option.name == 'Colour' -%}
-        : <span class="variant-selector__selected-value" data-selected-value>{{ option.selected_value }}</span>
+      {%- if option.name == 'Color' -%}
+        <span class="variant-selector__selected" data-selected-value>{{ option.selected_value }}</span>
       {%- endif -%}
     </label>
 
     {%- if option.name == 'Color' or option.name == 'Colour' -%}
-      <div class="swatches" role="radiogroup" aria-label="{{ option.name | escape }}">
+      <div class="swatches" role="group" aria-label="{{ option.name | escape }}">
         {%- for value in option.values -%}
           {%- liquid
-            assign option_available = false
+            assign option_disabled = true
             for variant in product.variants
-              if variant.available
-                case option.position
-                  when 1
-                    if variant.option1 == value
-                      assign option_available = true
-                    end
-                  when 2
-                    if variant.option2 == value
-                      assign option_available = true
-                    end
-                  when 3
-                    if variant.option3 == value
-                      assign option_available = true
-                    end
-                endcase
-              end
+              case option.position
+                when 1
+                  if variant.option1 == value
+                    assign option_disabled = false
+                  end
+                when 2
+                  if variant.option2 == value
+                    assign option_disabled = false
+                  end
+                when 3
+                  if variant.option3 == value
+                    assign option_disabled = false
+                  end
+              endcase
             endfor
           -%}
-          <label class="swatch{% if value == option.selected_value %} swatch--selected{% endif %}{% unless option_available %} swatch--sold-out{% endunless %}"
-                 title="{{ value | escape }}"
-                 aria-label="{{ value | escape }}">
-            <input type="radio"
-                   name="options[{{ option.name | escape }}]"
-                   value="{{ value | escape }}"
-                   class="visually-hidden"
-                   {% if value == option.selected_value %}checked{% endif %}
-                   {% unless option_available %}data-sold-out="true"{% endunless %}>
-            <span class="swatch__color"
-                  style="background-color: {{ value | downcase | replace: ' ', '' | replace: '/', '-' }};"
-                  aria-hidden="true"></span>
-          </label>
+          <button type="button"
+                  class="swatch{% if value == option.selected_value %} is-active{% endif %}{% if option_disabled %} is-disabled{% endif %}"
+                  data-value="{{ value | escape }}"
+                  style="background-color: {{ value | downcase | replace: ' ', '-' }};"
+                  title="{{ value | escape }}"
+                  aria-label="{{ value | escape }}"
+                  aria-pressed="{{ value == option.selected_value }}"
+                  {% if option_disabled %}aria-disabled="true"{% endif %}>
+          </button>
         {%- endfor -%}
       </div>
 
     {%- elsif option.name == 'Size' or option.name == 'size' -%}
-      <div class="size-buttons" role="radiogroup" aria-label="{{ option.name | escape }}">
+      <div class="size-selector" role="group" aria-label="{{ option.name | escape }}">
         {%- for value in option.values -%}
           {%- liquid
-            assign option_available = false
+            assign option_disabled = true
             for variant in product.variants
-              if variant.available
-                case option.position
-                  when 1
-                    if variant.option1 == value
-                      assign option_available = true
-                    end
-                  when 2
-                    if variant.option2 == value
-                      assign option_available = true
-                    end
-                  when 3
-                    if variant.option3 == value
-                      assign option_available = true
-                    end
-                endcase
-              end
+              case option.position
+                when 1
+                  if variant.option1 == value
+                    assign option_disabled = false
+                  end
+                when 2
+                  if variant.option2 == value
+                    assign option_disabled = false
+                  end
+                when 3
+                  if variant.option3 == value
+                    assign option_disabled = false
+                  end
+              endcase
             endfor
           -%}
-          <label class="size-btn{% if value == option.selected_value %} size-btn--selected{% endif %}{% unless option_available %} size-btn--sold-out{% endunless %}"
-                 aria-label="{{ value | escape }}">
-            <input type="radio"
-                   name="options[{{ option.name | escape }}]"
-                   value="{{ value | escape }}"
-                   class="visually-hidden"
-                   {% if value == option.selected_value %}checked{% endif %}
-                   {% unless option_available %}data-sold-out="true"{% endunless %}>
+          <button type="button"
+                  class="size-btn{% if value == option.selected_value %} is-active{% endif %}{% if option_disabled %} is-disabled{% endif %}"
+                  data-value="{{ value | escape }}"
+                  aria-pressed="{{ value == option.selected_value }}"
+                  {% if option_disabled %}aria-disabled="true"{% endif %}>
             {{ value }}
-          </label>
+          </button>
         {%- endfor -%}
       </div>
 
     {%- else -%}
-      <div class="select-wrapper">
-        <select name="options[{{ option.name | escape }}]"
-                id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                class="variant-selector__select"
-                aria-label="{{ option.name | escape }}">
-          {%- for value in option.values -%}
-            <option value="{{ value | escape }}"
-                    {% if value == option.selected_value %}selected{% endif %}>
-              {{ value }}
-            </option>
-          {%- endfor -%}
-        </select>
-      </div>
+      <select name="options[{{ option.name | escape }}]"
+              id="Option-{{ section_id }}-{{ forloop.index0 }}"
+              class="variant-selector__select"
+              data-option-select>
+        {%- for value in option.values -%}
+          <option value="{{ value | escape }}"
+                  {% if value == option.selected_value %}selected{% endif %}>
+            {{ value }}
+          </option>
+        {%- endfor -%}
+      </select>
     {%- endif -%}
-
   </div>
 {%- endfor -%}
+
+<select name="id"
+        id="ProductSelect-{{ section_id }}"
+        class="visually-hidden"
+        data-variant-select
+        aria-label="{{ 'products.product.select_variant' | t }}">
+  {%- for variant in product.variants -%}
+    <option value="{{ variant.id }}"
+            {% if variant == product.selected_or_first_available_variant %}selected{% endif %}
+            {% unless variant.available %}disabled{% endunless %}>
+      {{ variant.title }}
+    </option>
+  {%- endfor -%}
+</select>

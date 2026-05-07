@@ -7,37 +7,41 @@
     "hero": {
       "type": "hero-naturalist",
       "settings": {
-        "eyebrow": "Atlas Dovy",
-        "title": "Dressed for the Field",
-        "subtitle": "Wear the birds. Pacific Northwest field art — wild skies, tall firs, and the two doves that started it all.",
-        "button_label": "Shop the Collection",
-        "button_link": "/collections/all",
-        "overlay_opacity": 55,
-        "show_bird_panel": true,
-        "bird_panel_heading": "Spotted in the Wild",
-        "bird_panel_body": "Every Atlas Dovy piece starts with time outdoors — watching, listening, sketching. Then it comes home to Atlas and Peabody, our two Barbary doves, who inspired every design from the perch up."
+        "eyebrow": "Pacific Northwest",
+        "title": "Wear the Wild",
+        "subtitle": "Clothing that carries the spirit of old-growth forests, tidepools, and mountain meadows.",
+        "cta_label": "Shop Collection",
+        "cta_url": "/collections/all",
+        "overlay_opacity": 30
       }
     },
     "marquee": {
       "type": "marquee-ticker",
       "blocks": {
-        "item_1": { "type": "item", "settings": { "text": "Field-sketched original artwork" } },
-        "item_2": { "type": "item", "settings": { "text": "Pacific Northwest born & made" } },
-        "item_3": { "type": "item", "settings": { "text": "Inspired by Atlas & Peabody" } },
-        "item_4": { "type": "item", "settings": { "text": "1% of every sale to conservation" } },
-        "item_5": { "type": "item", "settings": { "text": "For birders, naturalists & dove people" } }
+        "item_1": { "type": "item", "settings": { "text": "Free shipping on orders over $75" } },
+        "item_2": { "type": "item", "settings": { "text": "1% of revenue donated to conservation" } },
+        "item_3": { "type": "item", "settings": { "text": "Made from sustainable materials" } },
+        "item_4": { "type": "item", "settings": { "text": "Designed in the Pacific Northwest" } }
       },
-      "block_order": ["item_1", "item_2", "item_3", "item_4", "item_5"],
+      "block_order": ["item_1", "item_2", "item_3", "item_4"],
       "settings": {}
+    },
+    "featured_products": {
+      "type": "featured-products-grid",
+      "settings": {
+        "title": "New Arrivals",
+        "subtitle": "Seasonally inspired pieces for life in the field and on the trail.",
+        "products_count": 4
+      }
     },
     "story": {
       "type": "story-strip",
       "settings": {
         "eyebrow": "Our Story",
-        "title": "From Field Notes to Pet Doves",
-        "body": "<p>Atlas Dovy was born outdoors — sketches from field walks, mornings with binoculars, wild birds of the Pacific Northwest. Then came Atlas and Peabody, two Barbary doves who turned those field notes into something warmer and more personal. Every piece we make lives at that intersection.</p>",
-        "button_label": "Meet the Birds",
-        "button_link": "/pages/about"
+        "title": "Born from the Field",
+        "content": "<p>Atlas Dovy was founded by Mel, a lifelong Pacific Northwest naturalist with a sketchbook always in her back pocket. Every design begins with time spent in the field — watching, listening, sketching.</p>",
+        "cta_label": "Meet Mel",
+        "cta_url": "/pages/about"
       }
     },
     "conservation": {
@@ -45,9 +49,9 @@
       "settings": {
         "eyebrow": "Conservation Commitment",
         "title": "Rooted in the Places We Love",
-        "subtitle": "We partner with regional land trusts and wildlife organizations to protect the ecosystems that inspire our designs. 1% of every sale goes directly to conservation.",
-        "button_label": "Learn More",
-        "button_link": "/pages/conservation"
+        "content": "We partner with regional land trusts and wildlife organizations to protect the ecosystems that inspire our designs. 1% of every sale goes directly to conservation.",
+        "cta_label": "Learn More",
+        "cta_url": "/pages/conservation"
       }
     },
     "newsletter": {
@@ -55,7 +59,7 @@
       "settings": {
         "eyebrow": "Field Notes",
         "title": "Stay Connected to the Wild",
-        "subtitle": "New designs, Atlas & Peabody updates, and Pacific Northwest bird stories — straight to your inbox."
+        "content": "Seasonal stories, new arrivals, and conservation updates — straight to your inbox."
       }
     },
     "footer": {
@@ -67,6 +71,7 @@
     "announcement",
     "hero",
     "marquee",
+    "featured_products",
     "story",
     "conservation",
     "newsletter",

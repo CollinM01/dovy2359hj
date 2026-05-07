@@ -15,7 +15,6 @@
   --color-ink:    #3d3228;
   --color-cream:  #faf7f2;
   --color-moss:   #4a5e3a;
-  --color-dove:   #c8a882;  /* Barbary dove feather / sandy buff — Atlas Dovy brand accent */
 
   /* Typography */
   --font-heading: 'Cormorant Garamond', Georgia, serif;
@@ -902,34 +901,14 @@ accordion-component.accordion:first-child {
 .hero__overlay {
   position: absolute;
   inset: 0;
-  /* Gradient overlay: deepens at bottom where trees are, lighter at top for sky */
-  background: linear-gradient(
-    to bottom,
-    rgba(20, 30, 24, 0.45) 0%,
-    rgba(20, 30, 24, 0.62) 60%,
-    rgba(12, 18, 14, 0.80) 100%
-  );
+  background: var(--color-bark);
 }
 
-/* ── Hero inner: single-col (default) vs. split bird layout ── */
-.hero__inner {
+.hero__content {
   position: relative;
   z-index: 2;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: var(--space-16);
-}
-
-/* Default: content takes up left portion */
-.hero__content {
-  flex: 0 1 560px;
   color: var(--color-paper);
-}
-
-/* Split mode: left col shrinks a touch, right col holds bird panel */
-.hero-naturalist--split .hero__content {
-  flex: 0 1 480px;
+  max-width: 680px;
 }
 
 .hero__eyebrow {
@@ -937,28 +916,25 @@ accordion-component.accordion:first-child {
   font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #ffffff;
+  color: var(--color-fog);
   margin-bottom: var(--space-4);
-  text-shadow: 0 1px 6px rgba(0,0,0,0.55);
 }
 
 .hero__title {
   font-family: var(--font-heading);
   font-size: clamp(2.75rem, 6vw, 5.5rem);
   font-weight: 300;
-  color: #ffffff;
+  color: var(--color-paper);
   line-height: 1.05;
   margin-bottom: var(--space-5);
-  text-shadow: 0 2px 12px rgba(0,0,0,0.55), 0 1px 3px rgba(0,0,0,0.4);
 }
 
 .hero__subtitle {
   font-size: clamp(1rem, 1.5vw, 1.2rem);
-  color: rgba(255,255,255,0.90);
+  color: rgba(245,240,232,0.85);
   font-weight: 300;
   margin-bottom: var(--space-8);
   max-width: 480px;
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
 }
 
 .hero__cta {
@@ -969,89 +945,6 @@ accordion-component.accordion:first-child {
 .hero__cta:hover {
   background: var(--color-cream);
   border-color: var(--color-cream);
-}
-
-/* ── Bird Panel (right column in split hero) ──────────────── */
-.hero__bird-panel {
-  flex: 1 1 320px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-6);
-}
-
-.hero__bird-image {
-  width: 100%;
-  max-width: 340px;
-}
-
-.hero__bird-image img {
-  width: 100%;
-  height: auto;
-  /* Gentle float/drift animation for the bird illustration */
-  animation: bird-float 6s ease-in-out infinite;
-  filter: drop-shadow(0 8px 24px rgba(44,31,20,0.45));
-}
-
-@keyframes bird-float {
-  0%, 100% { transform: translateY(0);   }
-  50%       { transform: translateY(-10px); }
-}
-
-.hero__bird-copy {
-  text-align: center;
-  color: var(--color-paper);
-  max-width: 320px;
-}
-
-.hero__bird-heading {
-  font-family: var(--font-heading);
-  font-size: 1.375rem;
-  font-weight: 400;
-  font-style: italic;
-  color: #ffffff;
-  margin-bottom: var(--space-3);
-  text-shadow: 0 1px 8px rgba(0,0,0,0.5);
-}
-
-.hero__bird-body {
-  font-size: 0.9rem;
-  color: rgba(255,255,255,0.82);
-  font-weight: 300;
-  line-height: 1.7;
-  text-shadow: 0 1px 6px rgba(0,0,0,0.45);
-}
-
-/* Mobile: stack vertically, hide bird panel if no image to save space */
-@media (max-width: 900px) {
-  .hero__inner {
-    flex-direction: column;
-    gap: var(--space-8);
-    justify-content: center;
-    text-align: center;
-  }
-
-  .hero__content,
-  .hero-naturalist--split .hero__content {
-    flex: none;
-    width: 100%;
-  }
-
-  .hero__subtitle {
-    max-width: 100%;
-  }
-
-  .hero__bird-panel {
-    flex: none;
-    width: 100%;
-    max-width: 320px;
-    margin-inline: auto;
-  }
-
-  /* Hide the bird panel's body text on small screens to keep the hero tight */
-  .hero__bird-body {
-    display: none;
-  }
 }
 
 /* ── Site Header ──────────────────────────────────────────── */
@@ -2190,7 +2083,6 @@ accordion-component.accordion:first-child {
   }
 
   .hero__image { animation: none; }
-  .hero__bird-image img { animation: none; }
   .marquee-inner { animation: none; }
   .icon-loader { animation: none; }
 }

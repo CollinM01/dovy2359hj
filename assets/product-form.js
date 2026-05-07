@@ -5,41 +5,34 @@ class ProductForm extends HTMLElement {
     this.form = this.querySelector('form[data-product-id]');
     if (!this.form) return;
 
-    this.productId    = this.form.dataset.productId;
-    this.sectionId    = this.form.dataset.sectionId;
+    this.productId  = this.form.dataset.productId;
+    this.sectionId  = this.form.dataset.sectionId;
     this.variantInput = this.form.querySelector('input[name="id"]');
 
-    /* Load variant data from embedded JSON */
+    /* Load variant data */
     const dataEl = this.form.querySelector(`#ProductVariants-${this.sectionId}`);
     if (dataEl) {
       try { this.variants = JSON.parse(dataEl.textContent); }
       catch (e) { this.variants = []; }
     }
 
-    /* Listen to radio inputs (Color swatches & Size buttons) */
+    /* Variant selectors (radio inputs) */
     this.form.querySelectorAll('.variant-selector input[type="radio"]').forEach(radio => {
       radio.addEventListener('change', () => this.onVariantChange());
-    });
-
-    /* Listen to native selects (other option types) */
-    this.form.querySelectorAll('.variant-selector select').forEach(select => {
-      select.addEventListener('change', () => this.onVariantChange());
     });
 
     /* Add-to-cart */
     this.form.addEventListener('submit', e => this.handleAddToCart(e));
 
-    /* Set initial selected-class state */
+    /* Init selected state */
     this.onVariantChange();
   }
 
   getCurrentOptions() {
     const options = [];
     this.form.querySelectorAll('.variant-selector').forEach((selector, i) => {
-      const radio  = selector.querySelector('input[type="radio"]:checked');
-      const select = selector.querySelector('select');
-      if (radio)  options[i] = radio.value;
-      else if (select) options[i] = select.value;
+      const checked = selector.querySelector('input[type="radio"]:checked');
+      if (checked) options[i] = checked.value;
     });
     return options;
   }
@@ -56,7 +49,6 @@ class ProductForm extends HTMLElement {
     const variant = this.findVariant(options);
 
     this.updateVariantInput(variant);
-    this.updateSelectedClasses(options);
     this.updatePrice(variant);
     this.updateAvailability(variant);
     this.updateMedia(variant);
@@ -67,31 +59,6 @@ class ProductForm extends HTMLElement {
     if (this.variantInput) {
       this.variantInput.value = variant ? variant.id : '';
     }
-  }
-
-  /* Sync the --selected CSS classes with the current radio/select state */
-  updateSelectedClasses(options) {
-    this.form.querySelectorAll('.variant-selector').forEach((selector, i) => {
-      const selectedValue = options[i];
-
-      /* Swatch labels */
-      selector.querySelectorAll('.swatch').forEach(label => {
-        const input = label.querySelector('input[type="radio"]');
-        label.classList.toggle('swatch--selected', !!(input && input.value === selectedValue));
-      });
-
-      /* Size-button labels */
-      selector.querySelectorAll('.size-btn').forEach(label => {
-        const input = label.querySelector('input[type="radio"]');
-        label.classList.toggle('size-btn--selected', !!(input && input.value === selectedValue));
-      });
-
-      /* Color selected-value text */
-      const selectedValueEl = selector.querySelector('[data-selected-value]');
-      if (selectedValueEl && selectedValue !== undefined) {
-        selectedValueEl.textContent = selectedValue;
-      }
-    });
   }
 
   updatePrice(variant) {
@@ -115,7 +82,7 @@ class ProductForm extends HTMLElement {
       html += '<span class="price__sold-out">Sold out</span>';
     }
 
-    priceEl.className = `product-price${variant.compare_at_price > variant.price ? ' price--on-sale' : ''}`;
+    priceEl.className = `price${variant.compare_at_price > variant.price ? ' price--on-sale' : ''}`;
     priceEl.innerHTML = html;
   }
 
@@ -179,17 +146,17 @@ class ProductForm extends HTMLElement {
 
       const data = await res.json();
 
-      /* Refresh cart count badge */
+      /* Update cart count badge */
       await this._refreshCart();
 
-      /* Toast feedback */
+      /* Show toast */
       if (window.ToastNotification) {
         window.ToastNotification.show({ message: `${data.title || 'Item'} added to your cart!`, type: 'success' });
       }
 
       /* Open cart drawer */
       const drawer = document.getElementById('CartDrawer');
-      if (drawer && typeof drawer.open === 'function') drawer.open();
+      if (drawer) drawer.open();
 
     } catch (err) {
       if (window.ToastNotification) {
@@ -203,13 +170,13 @@ class ProductForm extends HTMLElement {
 
   async _refreshCart() {
     try {
-      const res  = await fetch('/cart.js');
+      const res = await fetch('/cart.js');
       const cart = await res.json();
       document.querySelectorAll('.cart-count').forEach(el => {
         el.textContent = cart.item_count;
         el.style.display = cart.item_count > 0 ? 'flex' : 'none';
       });
-    } catch (e) { /* fail silently */ }
+    } catch (e) {}
   }
 }
 
