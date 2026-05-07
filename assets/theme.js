@@ -1,5 +1,11 @@
 (function () {
   const toastEl = document.getElementById('site-toast');
+  const escapeHtml = (value) => String(value ?? '')
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;')
+    .replaceAll("'", '&#39;');
   const toast = (msg) => {
     if (!toastEl) return;
     toastEl.textContent = msg;
@@ -55,12 +61,15 @@
         const displayPrice = (typeof variant?.price === 'number')
           ? (variant.price / 100).toLocaleString(undefined, { style:'currency', currency })
           : '';
+        const safeTitle = escapeHtml(product.title);
+        const safeVendor = escapeHtml(product.vendor || '');
+        const safeDescription = escapeHtml((product.description || '').replace(/<[^>]+>/g, '').slice(0, 180));
         content.innerHTML = `
           <div class="quick-view-body">
-            <img src="${product.images?.[0] || ''}" alt="${product.title}" style="width:100%;max-height:320px;object-fit:cover;border:1px solid #ccbda5;margin-bottom:.75rem;" />
-            <p class="eyebrow">${product.vendor || ''}</p>
-            <h3>${product.title}</h3>
-            <p>${(product.description || '').replace(/<[^>]+>/g, '').slice(0, 180)}</p>
+            <img src="${product.images?.[0] || ''}" alt="${safeTitle}" style="width:100%;max-height:320px;object-fit:cover;border:1px solid #ccbda5;margin-bottom:.75rem;" />
+            <p class="eyebrow">${safeVendor}</p>
+            <h3>${safeTitle}</h3>
+            <p>${safeDescription}</p>
             <p><strong>${displayPrice}</strong></p>
             <button class="button" type="button" data-quick-add="${variant?.id || ''}">Add to cart</button>
             <a class="button button--secondary" href="${product.url}">View details</a>
