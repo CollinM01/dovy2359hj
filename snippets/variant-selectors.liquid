@@ -6,7 +6,8 @@
         {% for value in option.values %}
           {% assign option_disabled = true %}
           {% for variant in product.variants %}
-            {% if variant.available and variant.options contains value %}
+            {% assign option_value_at_position = variant.options[option.position | minus: 1] %}
+            {% if variant.available and option_value_at_position == value %}
               {% assign option_disabled = false %}
               {% break %}
             {% endif %}

@@ -63,7 +63,7 @@
           : '';
         const safeTitle = escapeHtml(product.title);
         const safeVendor = escapeHtml(product.vendor || '');
-        const safeDescription = escapeHtml((product.description || '').replace(/<[^>]+>/g, '').slice(0, 180));
+        const safeDescription = 'View full specifications and care details on the product page.';
         content.innerHTML = `
           <div class="quick-view-body">
             <img src="${product.images?.[0] || ''}" alt="${safeTitle}" style="width:100%;max-height:320px;object-fit:cover;border:1px solid #ccbda5;margin-bottom:.75rem;" />
@@ -115,7 +115,6 @@
       toast('Added to cart');
     } catch (e) {
       toast('Could not add to cart');
-      form.submit();
     } finally {
       if (submit) submit.disabled = false;
     }
