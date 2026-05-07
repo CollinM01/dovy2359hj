@@ -1,0 +1,10 @@
+<footer class="site-footer">
+  <div class="container">
+    <p>{{ settings.brand_tagline }}</p>
+    <p>© {{ 'now' | date: '%Y' }} {{ shop.name }} · 1% of revenue supports regional conservation.</p>
+  </div>
+</footer>
+
+{% schema %}
+{ "name": "Footer", "settings": [] }
+{% endschema %}

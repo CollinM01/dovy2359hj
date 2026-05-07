@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "main": { "type": "main-collection-naturalist", "settings": {} },
+    "quick_view": { "type": "quick-view-modal", "settings": {} }
+  },
+  "order": ["main", "quick_view"]
+}

@@ -1,0 +1,22 @@
+{% unless product.has_only_default_variant %}
+  {% for option in product.options_with_values %}
+    <fieldset class="variant-selector">
+      <legend>{{ option.name }}</legend>
+      <div class="variant-options">
+        {% for value in option.values %}
+          {% assign option_disabled = true %}
+          {% for variant in product.variants %}
+            {% if variant.available and variant.options contains value %}
+              {% assign option_disabled = false %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+          <label class="variant-pill{% if option_disabled %} is-sold-out{% endif %}">
+            <input type="radio" name="options[{{ option.name }}]" value="{{ value | escape }}" {% if option.selected_value == value %}checked{% endif %} {% if option_disabled %}disabled{% endif %}>
+            <span>{{ value }}</span>
+          </label>
+        {% endfor %}
+      </div>
+    </fieldset>
+  {% endfor %}
+{% endunless %}

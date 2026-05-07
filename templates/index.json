@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "hero": { "type": "hero-naturalist", "settings": {} },
+    "marquee": { "type": "marquee-ticker", "settings": {} },
+    "featured": { "type": "featured-products-grid", "settings": {} },
+    "story": { "type": "story-strip", "settings": {} },
+    "conservation": { "type": "conservation-banner", "settings": {} },
+    "newsletter": { "type": "newsletter-naturalist", "settings": {} }
+  },
+  "order": ["hero", "marquee", "featured", "story", "conservation", "newsletter"]
+}

@@ -1,0 +1,22 @@
+<section class="section container prose-page">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h1>{{ section.settings.heading }}</h1>
+  <p>{{ section.settings.body }}</p>
+  <div class="profile-cards">
+    <article><h3>Mel</h3><p>Founder, storyteller, and field observer behind Atlas Dovy.</p></article>
+    <article><h3>Atlas</h3><p>White Barbary dove and namesake muse.</p></article>
+    <article><h3>Peabody</h3><p>Buff dove companion and co-star of the flock.</p></article>
+  </div>
+  <p><a href="https://www.instagram.com/atlasdovy/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.youtube.com/@atlasdovy" target="_blank" rel="noopener">YouTube</a></p>
+</section>
+
+{% schema %}
+{
+  "name": "Page about",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Our Story" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Atlas Dovy: dove-hearted naturalism" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "We design apparel that feels like a field notebook: textured, grounded, and deeply tied to Pacific Northwest birdlife." }
+  ]
+}
+{% endschema %}

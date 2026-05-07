@@ -1,0 +1,25 @@
+<section class="section container" data-collection-root>
+  <div class="section-heading">
+    <h1>{{ collection.title }}</h1>
+    <p><span data-product-count>{{ collection.products_count }}</span> items</p>
+  </div>
+
+  <div class="filter-tabs" role="tablist" aria-label="Product categories">
+    <button class="filter-tab is-active" type="button" data-filter="all">All</button>
+    <button class="filter-tab" type="button" data-filter="hoodies">Hoodies</button>
+    <button class="filter-tab" type="button" data-filter="sweatshirts">Sweatshirts</button>
+    <button class="filter-tab" type="button" data-filter="t-shirts">T-Shirts</button>
+  </div>
+
+  <div class="product-grid" data-filter-grid>
+    {% for product in collection.products %}
+      {% render 'product-card', product: product %}
+    {% else %}
+      <p>No products found in this collection.</p>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Main collection naturalist", "settings": [] }
+{% endschema %}

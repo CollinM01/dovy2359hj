@@ -1,0 +1,20 @@
+<section class="conservation-banner">
+  <div class="container conservation-banner__inner">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.body }}</p>
+    <a href="{{ section.settings.link }}">{{ section.settings.link_label }}</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Conservation banner",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Conservation is part of every order" },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "1% of all revenue supports Pacific Northwest habitat and bird conservation efforts." },
+    { "type": "text", "id": "link_label", "label": "Link label", "default": "Learn more" },
+    { "type": "url", "id": "link", "label": "Link" }
+  ],
+  "presets": [{ "name": "Conservation banner" }]
+}
+{% endschema %}
