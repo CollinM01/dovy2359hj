@@ -9,13 +9,13 @@ A custom Shopify Online Store 2.0 theme for **Atlas Dovy**, a Pacific Northwest 
 ### Palette
 | Token | Hex | Use |
 |-------|-----|-----|
-| `--color-paper` | `#F5F0E8` | Page background |
-| `--color-bark` | `#5C4033` | Primary / CTAs |
-| `--color-sage` | `#6B8C6B` | Secondary / accents |
-| `--color-fog` | `#C8C4BC` | Borders / dividers |
-| `--color-ink` | `#1C1C1A` | Body text |
-| `--color-cream` | `#FAF7F2` | Card surfaces |
-| `--color-moss` | `#3A5C3A` | Conservation / accent |
+| `--color-paper` | `#ECF2F4` | Page background |
+| `--color-bark` | `#20333B` | Primary / CTAs |
+| `--color-sage` | `#5F7F8E` | Secondary / accents |
+| `--color-fog` | `#C9D8DF` | Borders / dividers |
+| `--color-ink` | `#2B454F` | Body text |
+| `--color-cream` | `#F7FBFC` | Card surfaces |
+| `--color-moss` | `#3B5D6E` | Conservation / accent |
 
 ### Typography
 - **Display / Headings:** Cormorant Garamond (Google Fonts)
