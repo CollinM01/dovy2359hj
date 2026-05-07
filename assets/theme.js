@@ -13,6 +13,14 @@
     window.setTimeout(() => toastEl.classList.remove('is-visible'), 2200);
   };
 
+  document.addEventListener('change', (event) => {
+    const radio = event.target.closest('.variant-selector input[type="radio"]');
+    if (!radio) return;
+    const fieldset = radio.closest('.variant-selector');
+    const label = fieldset?.querySelector('.variant-color-label');
+    if (label) label.textContent = radio.value;
+  });
+
   document.addEventListener('click', async (event) => {
     const tab = event.target.closest('.filter-tab');
     if (tab) {
